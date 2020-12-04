@@ -1,4 +1,4 @@
-*l,=map(int, open("day1.txt").readlines())
+*l,=map(int, open("data/day1.txt").readlines())
 i={}
 for x in l:
   if x not in i:
@@ -14,4 +14,4 @@ print(list(filter(lambda x:x[0]==2020, map(lambda x: (sum(x),reduce(mul,x)),comb
 
 print()
 print("Now for the obligatory oneliner")
-[print(list(map(lambda x:x[1],filter(lambda x:x[0]==2020, map(lambda x: (sum(x),reduce(mul,x)),combinations(map(int, open("day1.txt").readlines()),n)))))[0]) for n in (2,3)]
+[print(list(map(lambda x:x[1],filter(lambda x:x[0]==2020, map(lambda x: (sum(x),reduce(mul,x)),combinations(map(int, open("data/day1.txt").readlines()),n)))))[0]) for n in (2,3)]
