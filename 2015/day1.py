@@ -1,1 +1,1 @@
-with open("data/day1.txt") as o: print(o.read())
+with open("data/day1.txt") as o: print((s:=o.read()).count("(")-s.count(")"))
