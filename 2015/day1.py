@@ -1,0 +1,1 @@
+with open("data/day1.txt") as o: print(o.read())
