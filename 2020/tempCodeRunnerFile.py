@@ -1,0 +1,1 @@
+print(parent["clear maroon"],child["clear maroon"])
