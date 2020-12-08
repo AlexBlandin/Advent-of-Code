@@ -1,1 +1,4 @@
-print(parent["clear maroon"],child["clear maroon"])
+
+  print(c, child[c])
+  for i in child: print(i, child[i])
+p("shiny gold")
