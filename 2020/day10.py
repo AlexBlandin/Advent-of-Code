@@ -1,10 +1,9 @@
 from itertools import product
 from functools import lru_cache
 
-a = [0]+sorted([int(l.strip()) for l in open("data/day10.txt").readlines()])
+G, a = {}, [0]+sorted([int(l.strip()) for l in open("data/day10.txt").readlines()])
 a += [a[-1]+3]
-b = [y-x for x,y in zip(a,a[1:])]
-G, g = {}, [(x,y) for x,y in product(a,a) if 1<=(y-x)<=3]
+b, g = [y-x for x,y in zip(a,a[1:])], [(x,y) for x,y in product(a,a) if 1<=(y-x)<=3]
 for x,y in g: G.setdefault(x,[]).append(y)
 
 @lru_cache()
