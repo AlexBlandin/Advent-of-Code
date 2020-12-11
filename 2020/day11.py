@@ -8,7 +8,7 @@ def neighbouring(x,y): return tuple([(x+i,y+j) for i,j in product((-1,0,1),(-1,0
 def neighbours(x,y): return [p[yj][xi] for xi,yj in neighbouring(x,y)]
 @lru_cache(maxsize=mx*my)
 def firsts_from(x,y):
-  return [t for t in map(lambda g: next(g,None), [((xi,y) for xi in range(x+1,mx) if p[y][xi] != None), ((xi,y) for xi in reversed(range(x)) if p[y][xi] != None), ((x,yj) for yj in range(y+1,my) if p[yj][x] != None), ((x,yj) for yj in reversed(range(y)) if p[yj][x] != None), ((xi,yi) for xi,yi in zip(range(x+1,mx),range(y+1,my)) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(reversed(range(x)),reversed(range(y))) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(range(x+1,mx),reversed(range(y))) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(reversed(range(x)),range(y+1,my)) if p[yi][xi] != None)]) if t!=None]
+  return [t for t in [next(g,None) for g in [((xi,y) for xi in range(x+1,mx) if p[y][xi] != None), ((xi,y) for xi in reversed(range(x)) if p[y][xi] != None), ((x,yj) for yj in range(y+1,my) if p[yj][x] != None), ((x,yj) for yj in reversed(range(y)) if p[yj][x] != None), ((xi,yi) for xi,yi in zip(range(x+1,mx),range(y+1,my)) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(reversed(range(x)),reversed(range(y))) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(range(x+1,mx),reversed(range(y))) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(reversed(range(x)),range(y+1,my)) if p[yi][xi] != None)]] if t!=None]
 def sees(x,y): return [p[yi][xi] for xi,yi in firsts_from(x,y)]
 from copy import deepcopy
 P,p=deepcopy(m),None
