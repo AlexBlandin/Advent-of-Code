@@ -1,4 +1,4 @@
-from itertools import product, count
+from itertools import product
 from functools import lru_cache
 m=[[None if c == "." else False for c in line.strip()] for line in open("data/day11.txt").readlines()]
 mx,my=len(m[0]),len(m)
@@ -25,28 +25,28 @@ def firsts_from(x,y):
     if p[yj][x] != None:
       l.append((x,yj))
       break
-  for i in count(1):
+  for i in range(1,mx+my):
     xi,yi=x+i,y+i
     if xi<mx and yi<my:
       if p[yi][xi] != None:
         l.append((xi,yi))
         break
     else: break
-  for i in count(1):
+  for i in range(1,mx+my):
     xi,yi=x-i,y-i
     if 0<=xi and 0<=yi: 
       if p[yi][xi] != None:
         l.append((xi,yi))
         break
     else: break
-  for i in count(1):
+  for i in range(1,mx+my):
     xi,yi=x+i,y-i
     if xi<mx and 0<=yi: 
       if p[yi][xi] != None:
         l.append((xi,yi))
         break
     else: break
-  for i in count(1):
+  for i in range(1,mx+my):
     xi,yi=x-i,y+i
     if 0<=xi and yi<my: 
       if p[yi][xi] != None:
