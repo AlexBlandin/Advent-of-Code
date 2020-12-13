@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.imp": "go",
+    "algorithm": "c",
+    "bitset": "c",
+    "chrono": "c",
+    "map": "c",
+    "set": "c",
+    "xhash": "c",
+    "xtree": "c",
+    "xutility": "c"
+  }
+}
