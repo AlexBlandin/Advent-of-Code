@@ -4,7 +4,7 @@ e,s = int(e), [int(i) if i!="x" else None for i in s.split(",")]
 bus = [(ceil(e/i)*i,i) for i in s if i]
 mes = [((b-o)%b, b) for o,b in enumerate(s) if b] # ((T+o)%b == 0) === (T%b == (o:=(b-o)%b))
 m=max([(o,i) for o,i in enumerate(s) if i], key=lambda t:t[1])
-contest = next(T for T in reversed(range(ceil(10**14/m[1])*m[1],ceil(10**15/m[1])*m[1], m[1])) if all(T%b==o for o,b in mes)) # takes 26s max at magic 1op 4GHz (1047729918510 between 10**14 and 10**15 at 859 step)
+contest = next(T for T in reversed(range(ceil(10**14/m[1])*m[1],ceil(10**15/m[1])*m[1], m[1])) if all(T%b==o for o,b in mes)) # takes ~4 mins at magic 1op 4GHz (1047729918510 T in range(10**14,10**15,859) so 10**12 / 4*10**9 is roughly 250)
 print((min(bus)[0]-e)*min(bus)[1], contest-m[0])
 
 # print(", ".join(f"n%{b} == {o}" for o,b in mes)) # just plug into WA
