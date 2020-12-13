@@ -6,6 +6,8 @@ tempCodeRunnerFile.py
 
 # C extensions
 *.so
+c/simde
+c/advent
 
 # Distribution / packaging
 .Python
