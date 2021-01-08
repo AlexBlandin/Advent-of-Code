@@ -1,5 +1,6 @@
 from random import sample
 from parse import findall
+from math import prod
 samples = lambda s,k: sample(sorted(s),k) # 3.9 why you do this to me?
 
 with open("data/day16-1.txt") as o:
@@ -33,6 +34,15 @@ OH GOODIE, NOW WE SAT SOLVE. THAT SOUNDS SO VERY FUN. YAY.
 """
 from z3 import *
 
+s = Solver()
+x,y=Bools("x y")
+s.add(And(x,y) != Not(x))
 
-
-print(sum(errors))
+if s.check() == z3.sat:
+  print(s.check(),s.model())
+  m = s.model()
+  departure = []
+else:
+  print("uh, oh")
+  exit()
+print(sum(errors), prod(departure))

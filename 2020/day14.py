@@ -1,6 +1,3 @@
-from itertools import combinations, chain
-from functools import reduce
-from operator import or_
 m0,m1,bits,mem1,mem2,lines=-1,0,[],{},{},[tuple(map(str.strip,s.split("="))) for s in open("data/day14.txt").readlines()]
 def mask(v, bits):
   if len(bits): return [v | (1<<bits[0]), v & ~(1<<bits[0])] + mask(v,bits[1:]) + mask(v | (1<<bits[0]),bits[1:]) + mask(v & ~(1<<bits[0]),bits[1:])
