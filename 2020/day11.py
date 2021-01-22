@@ -6,7 +6,7 @@ mx,my=len(m[0]),len(m)
 def neighbouring(x,y): return [(x+i,y+j) for i,j in [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)] if 0<=x+i<mx and 0<=y+j<my]
 def neighbours(x,y): return [p[yj][xi] for xi,yj in neighbouring(x,y)]
 @lru_cache(maxsize=mx*my)
-def firsts_from(x,y): return [t for t in [next(g,None) for g in [((xi,y) for xi in range(x+1,mx) if p[y][xi] != None), ((xi,y) for xi in reversed(range(x)) if p[y][xi] != None), ((x,yj) for yj in range(y+1,my) if p[yj][x] != None), ((x,yj) for yj in reversed(range(y)) if p[yj][x] != None), ((xi,yi) for xi,yi in zip(range(x+1,mx),range(y+1,my)) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(reversed(range(x)),reversed(range(y))) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(range(x+1,mx),reversed(range(y))) if p[yi][xi] != None), ((xi,yi) for xi,yi in zip(reversed(range(x)),range(y+1,my)) if p[yi][xi] != None)]] if t!=None]
+def firsts_from(x,y): return [t for t in [next(g,None) for g in [((xi,y) for xi in range(x+1,mx) if p[y][xi] is not None), ((xi,y) for xi in reversed(range(x)) if p[y][xi] is not None), ((x,yj) for yj in range(y+1,my) if p[yj][x] is not None), ((x,yj) for yj in reversed(range(y)) if p[yj][x] is not None), ((xi,yi) for xi,yi in zip(range(x+1,mx),range(y+1,my)) if p[yi][xi] is not None), ((xi,yi) for xi,yi in zip(reversed(range(x)),reversed(range(y))) if p[yi][xi] is not None), ((xi,yi) for xi,yi in zip(range(x+1,mx),reversed(range(y))) if p[yi][xi] is not None), ((xi,yi) for xi,yi in zip(reversed(range(x)),range(y+1,my)) if p[yi][xi] is not None)]] if t is not None]
 def sees(x,y): return [p[yi][xi] for xi,yi in firsts_from(x,y)]
 P,p=deepcopy(m),None
 while m!=p:

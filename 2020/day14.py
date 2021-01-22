@@ -10,6 +10,6 @@ for op,val in lines:
     m1,m0 = int(val.replace("X","0"),2),int(val.replace("1","0").replace("X","1"),2)
     bits = [i for i,v in enumerate(reversed(val)) if v=="X"]
   else:
-    v = int(op[4:].replace("]",""))|m1
+    v = int(op[4:].replace("]","")) | m1
     for addr in set(mask(v,bits)): mem2[addr]=int(val)
 print(sum(mem1.values()), sum(mem2.values()))

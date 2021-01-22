@@ -1,6 +1,11 @@
 from random import sample
 from parse import findall
-from math import prod
+try:
+  from math import prod # 3.9
+except:
+  from functools import reduce
+  from operator import mul
+  def prod(iterable, start=1): return reduce(mul, iterable, initial=start) # not 3.9 (ie, pypy)
 samples = lambda s,k: sample(sorted(s),k) # 3.9 why you do this to me?
 
 with open("data/day16-1.txt") as o:
@@ -27,22 +32,12 @@ single = {k:v for k,v in inverse.items() if len(v)==1}
 fields = [set.union(*[inverse[field] for field in [ticket[i] for ticket in scanned]]) for i in range(len(scanned[0]))]
 
 # at least 19 rules per field... so they could be anything x_x
-# print(min(min(len(inverse[field]) for field in ticket) for ticket in scanned))
+# print(min(min([len(inverse[field]) for field in ticket) for ticket in scanned]))
 
-"""
-OH GOODIE, NOW WE SAT SOLVE. THAT SOUNDS SO VERY FUN. YAY.
-"""
-from z3 import *
+# do without full SAT solver, just by DPLL elimination
+per = [[inverse[field] for field in ticket] for ticket in scanned]
 
-s = Solver()
-x,y=Bools("x y")
-s.add(And(x,y) != Not(x))
 
-if s.check() == z3.sat:
-  print(s.check(),s.model())
-  m = s.model()
-  departure = []
-else:
-  print("uh, oh")
-  exit()
-print(sum(errors), prod(departure))
+
+# print(sum(errors), prod(departure))
+print(sum(errors))
