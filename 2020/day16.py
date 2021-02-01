@@ -13,7 +13,7 @@ with open("data/day16.txt") as o:
 mine = [int(n) for n in lines[lines.index("your ticket:")+1].split(",")]
 scanned = [[int(n) for n in line.split(",")] for line in lines[lines.index("nearby tickets:")+1:]]
 inverse, rules = {},{}
-for rule in findall("{}: {:d}-{:d} or {:d}-{:d}", " ".join(lines[:lines.index("your ticket:")-1])):
+for rule in findall("{}: {:d}-{:d} or {:d}-{:d}", "\n".join(lines[:lines.index("your ticket:")-1])):
   field,a,b,x,y=rule.fixed
   field = field.strip()
   rules[field] = (range(a,b+1),range(x,y+1))
