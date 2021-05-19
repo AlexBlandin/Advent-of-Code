@@ -18,4 +18,24 @@ for t in range(timesteps):
       d[n] = d.get(n, 0)+1
   D = {p for p, v in d.items() if v==3 or (p in D and v==2)}
 
+print(len(D), end=" ")
+
+D = set() # our set of tuples representing "on" points, we convert from dict to set as a dunder copy
+with open("data/day17.txt") as o:
+  for x, line in enumerate(o):
+    for y, v in enumerate(line.strip()):
+      if v == "#": D.add((x,y,0,0))
+
+def neighbours(p):
+  x,y,z,w = p
+  return [(x+dx,y+dy,z+dz,w+dw) for dx,dy,dz,dw in product((0,-1,1), (0,-1,1), (0,-1,1), (0,-1,1))][1:] # don't return p, so drop first (hence why the product is that way, faster than IF)
+
+timesteps = 6
+for t in range(timesteps):
+  d = {} # our partial dict, we handle off points as adjacencies to points from D (so v>0), and the value is the number of adjacencies (active and v!=2|3 -> inactive, inactive and v==3 -> active)
+  for p in D:
+    for n in neighbours(p):
+      d[n] = d.get(n, 0)+1
+  D = {p for p, v in d.items() if v==3 or (p in D and v==2)}
+
 print(len(D))
