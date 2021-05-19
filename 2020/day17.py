@@ -8,14 +8,14 @@ with open("data/day17.txt") as o:
 
 def neighbours(p):
   x,y,z = p
-  return [(x+dx,y+dy,z+dz) for dx,dy,dz in product((-1,0,1), (-1,0,1), (-1,0,1)) if (dx,dy,dz)!=(0,0,0)]
+  return [(x+dx,y+dy,z+dz) for dx,dy,dz in product((0,-1,1), (0,-1,1), (0,-1,1))][1:] # don't return p, so drop first (hence why the product is that way, faster than IF)
 
 timesteps = 6
-for t in timesteps:
+for t in range(timesteps):
   d = {} # our partial dict, we handle off points as adjacencies to points from D (so v>0), and the value is the number of adjacencies (active and v!=2|3 -> inactive, inactive and v==3 -> active)
   for p in D:
     for n in neighbours(p):
-      d.setdefault(n, 0) += 1
-  D = {p for p:v in d if v==3 or (p in D and v==2)}
+      d[n] = d.get(n, 0)+1
+  D = {p for p, v in d.items() if v==3 or (p in D and v==2)}
 
 print(len(D))
