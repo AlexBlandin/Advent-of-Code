@@ -10,10 +10,10 @@ with open("data/day17.txt") as o:
 
 def neighbours3d(p):
   x,y,z = p
-  return [(x+dx,y+dy,z+dz) for dx,dy,dz in product((0,-1,1), (0,-1,1), (0,-1,1))][1:] # we don't return p
+  return [(x+dx,y+dy,z+dz) for dx,dy,dz in product((0,-1,1), repeat=3)][1:] # we don't return p
 def neighbours4d(p):
   x,y,z,w = p
-  return [(x+dx,y+dy,z+dz,w+dw) for dx,dy,dz,dw in product((0,-1,1), (0,-1,1), (0,-1,1), (0,-1,1))][1:]
+  return [(x+dx,y+dy,z+dz,w+dw) for dx,dy,dz,dw in product((0,-1,1), repeat=4)][1:]
 
 timesteps = 6
 for t in range(timesteps):
