@@ -13,7 +13,7 @@ def neighbours(p, dim):
 
 timesteps = 6
 for t in range(timesteps):
-  d, h = {}, {} # all adjacencies points from D|H, and the value is the number of adjacencies
+  d, h = {}, {} # all adjacenct points from D|H, and the value is the number it's adjacent to
   for p in D:
     for n in neighbours(p, 3):
       d[n] = d.get(n, 0)+1
