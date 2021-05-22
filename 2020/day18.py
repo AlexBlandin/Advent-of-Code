@@ -1,7 +1,7 @@
 with open("data/day18.txt") as o:
   lines = [line.strip() for line in o]
 
-results = []
+results, log = [], []
 for line in lines:
   
   # what I want to detect is that "you have mixed + and * within the same brackets / at top-level" and only do "bracketing" then
@@ -19,8 +19,8 @@ for line in lines:
       result.append(val)
   result = " ".join(result)
   result = "("*(result.count(")")-result.count("("))+result+")"*(result.count("(")-result.count(")"))
-  results.append((result, eval(result)))
-  # results.append(eval(result)) # so a nice idea, wrong results
+  results.append(eval(result)) # so a nice idea, wrong results
+  log.append((result, eval(result)))
 
-print(results[:3])
-# print(sum(results))
+print(log[:3])
+print(sum(results))
