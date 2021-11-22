@@ -4,9 +4,9 @@ from parse import parse
 with open("data/day7.txt") as o:
   lines = [line.strip() for line in o.readlines()]
 
-G = {} # G[w] = {s0,s1?} # wire sources
+G = {} # G[w] = {s0,s1?}   # wire sources
 O = {} # O[w] = op(s0,s1?) # will lazily perform lookups for "current" value
-A = {} # the value of a wire
+A = {} # A[w] = 0-65535    # the value of a wire
 
 def add_input(G, A, w, s):
   if s.isdecimal(): A[s] = int(s)
