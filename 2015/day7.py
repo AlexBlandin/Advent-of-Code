@@ -4,8 +4,8 @@ from parse import parse
 with open("data/day7.txt") as o:
   lines = [line.strip() for line in o.readlines()]
 
-G = {} # G[w] = {s0,s1} # wire sources
-O = {} # O[w] = op() # op() lazily perform lookups for "current" value
+G = {} # G[w] = {s0,s1?} # wire sources
+O = {} # O[w] = op(s0,s1?) # will lazily perform lookups for "current" value
 A = {} # the value of a wire
 
 def add_input(G, A, w, s):
