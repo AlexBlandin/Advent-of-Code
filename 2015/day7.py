@@ -1,1 +1,2 @@
-open("data/day7.txt")
+with open("data/day7.txt") as o:
+  ...
