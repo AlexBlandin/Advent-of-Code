@@ -34,7 +34,7 @@ for line in lines:
     O[w] = rshift, s0, s1
   elif p := parse("{}", lhs):
     s0 = p.fixed[0]
-    O[w] = lambda s: s, s0
+    O[w] = int, s0
   for s in p: add_input(G, A, w, s)
 
 order = tuple(topo(G).static_order())
@@ -42,7 +42,7 @@ for e, (o, *s) in zip(order, map(O.get, order)):
   A[e] = op(o, *s)
 
 old_a = A["a"] # previous output
-O["b"], A[old_a] = (lambda s: s, old_a), old_a
+O["b"], A[old_a] = (int, old_a), old_a
 
 for e, (o, *s) in zip(order, map(O.get, order)):
   A[e] = op(o, *s)
