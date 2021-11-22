@@ -1,17 +1,16 @@
 from operator import inv, or_, and_, lshift, rshift
 from graphlib import TopologicalSorter as topo
-from collections import defaultdict
 from parse import parse
 with open("data/day7.txt") as o:
   lines = [line.strip() for line in o.readlines()]
 
-G = defaultdict(set) # G[w] = {s0,s1} # wire sources
+G = {} # G[w] = {s0,s1} # wire sources
 O = {} # O[w] = op() # op() lazily perform lookups for "current" value
 A = {} # the value of a wire
 
 def add_input(G, A, w, s):
   if s.isdecimal(): A[s] = int(s)
-  else: G[w].add(s)
+  else: G.setdefault(w,set()).add(s)
 
 def op(f, *arg):
   return f(*[A[a] for a in arg]) & 65535
