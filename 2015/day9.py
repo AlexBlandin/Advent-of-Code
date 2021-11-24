@@ -1,13 +1,13 @@
-from itertools import combinations, repeat
-from collections import defaultdict
+from collections import Counter, defaultdict
+from itertools import combinations, chain
 from operator import itemgetter
 from pathlib import Path
 from parse import parse
 
 lines = Path("data/day9.txt").read_text().splitlines()
-D = {}
-G = defaultdict(set)
-C = set()
+
+G, D, C = defaultdict(set), {}, set()
+
 for line in lines:
   if p := parse("{} to {} = {:d}", line):
     a,b,d = p.fixed
@@ -18,21 +18,19 @@ for line in lines:
     C |= {a,b}
 D = dict(sorted(D.items(), key=itemgetter(1)))
 
-def distance(candidates: tuple):
-  return sum(map(D.get, candidates))
+def distance(c: tuple):
+  return sum(map(D.get, c))
 
 def pair(G):
-  return set.union(*[set(zip(repeat(a),b)) for a,b in G.items()])
+  return {(a,b) for a,c in G.items() for b in c}
 
 def hamiltonian(c):
-  d = defaultdict(int)
-  for a,b in c:
-    d[a]+=1
-    d[b]+=1
-  d = list(d.values())
-  return d.count(1)+d.count(2)==len(d) and set.union(*[{a,b} for a,b in c]) == C
+  d, s = list(Counter(chain(map(itemgetter(0),c),map(itemgetter(1),c))).values()), set(c)
+  return d.count(1)+d.count(2)==len(d) and {a for b in c for a in b} == C and not any(True for a,b in c if (b,a) in s)
 
 mn = min(filter(hamiltonian, combinations(pair(G),len(C)-1)), key=distance)
 mx = max(filter(hamiltonian, combinations(pair(G),len(C)-1)), key=distance)
 print(distance(mn), distance(mx))
-# print({*map(" -> ".join, mn)}, {*map(" -> ".join, mx)})
+# print({*map(" -> ".join, mn)})
+# print({*map(" -> ".join, mx)})
+# print(C)
