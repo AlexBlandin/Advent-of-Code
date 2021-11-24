@@ -1,1 +1,2 @@
-open("data/day12.txt")
+from pathlib import Path
+lines = Path("data/day12.txt").read_text().splitlines()
