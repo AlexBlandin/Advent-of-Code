@@ -21,7 +21,7 @@ def distance(c: tuple):
 
 def hamiltonian(c):
   d, s = list(Counter(chain(map(itemgetter(0),c),map(itemgetter(1),c))).values()), set(c)
-  return d.count(1)+d.count(2)==len(d) and {a for b in c for a in b} == C and not any(True for a,b in c if (b,a) in s)
+  return d.count(1)+d.count(2)==len(d) and {a for b in c for a in b} == C
 
 mn = min(filter(hamiltonian, combinations(iter(D),len(C)-1)), key=distance)
 mx = max(filter(hamiltonian, combinations(iter(D),len(C)-1)), key=distance)
