@@ -5,7 +5,7 @@ from pathlib import Path
 from parse import parse
 
 lines = Path("data/day9.txt").read_text().splitlines()
-
+kv_sort = lambda d: dict(sorted(sorted(d.items(), key=itemgetter(0)), key=itemgetter(1)))
 D, C = {}, set()
 
 for line in lines:
@@ -14,8 +14,7 @@ for line in lines:
     a,b = min(a,b),max(a,b)
     D[(a,b)] = d
     C |= {a,b}
-D = dict(sorted(D.items(), key=itemgetter(0)))
-D = dict(sorted(D.items(), key=itemgetter(1)))
+D = kv_sort(D)
 
 def distance(c: tuple):
   return sum(map(D.get, c))

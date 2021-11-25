@@ -5,7 +5,7 @@ from pathlib import Path
 from parse import parse
 
 lines = Path("data/day13.txt").read_text().splitlines()
-
+kv_sort = lambda d: dict(sorted(sorted(d.items(), key=itemgetter(0)), key=itemgetter(1)))
 D, C = defaultdict(int), set()
 
 for line in lines:
@@ -14,23 +14,23 @@ for line in lines:
     a,b = min(a,b),max(a,b)
     D[(a,b)] += d if gain=="gain" else -d
     C |= {a,b}
-D = dict(sorted(sorted(D.items(), key=itemgetter(0)), key=itemgetter(1)))
+D = kv_sort(D)
 
 def delta(c):
-  return sum(map(D.__getitem__, c))
+  return sum(map(D.get, c))
 
 def hamiltonian(c):
   d, s = list(Counter(chain(map(itemgetter(0),c),map(itemgetter(1),c))).values()), set(c)
   return d.count(2)==len(d) and {a for b in c for a in b} == C and not any(True for a,b in c if (b,a) in s)
 
 optimal = max(filter(hamiltonian, combinations(iter(D),len(C))), key=delta)
-# optimal = 733
+assert(delta(optimal) == 733) # 8s on 8700k, 14s on 4700U
 
 for a in C: D[("Alex",a)]=0
-D = dict(sorted(sorted(D.items(), key=itemgetter(0)), key=itemgetter(1)))
+D = kv_sort(D)
 C.add("Alex")
 
 with_me = max(filter(hamiltonian, combinations(iter(D),len(C))), key=delta)
-# 755 is too high
+assert(delta(with_me) <= 755) # 258s on 8700k, 484s on 4700U # 755 is too high???
 
-print(delta(optimal), delta(with_me)) # optimal takes ~8s, with_me takes ~3m30s (as with_me's search space is ~30x bigger)
+print(delta(optimal), delta(with_me))
