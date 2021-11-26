@@ -24,13 +24,12 @@ def hamiltonian(c):
   return d.count(2)==len(d) and {a for b in c for a in b} == C
 
 optimal = max(filter(hamiltonian, combinations(iter(D),len(C))), key=delta)
-assert(delta(optimal) == 733) # 8s on 8700k, 14s on 4700U
-
+assert(delta(optimal) == 733) # 8s on 8700k, 10s on 4700U
 for a in C: D[("Alex",a)]=0
 D = kv_sort(D)
 C.add("Alex")
 
 with_me = max(filter(hamiltonian, combinations(iter(D),len(C))), key=delta)
-assert(delta(with_me) <= 755) # 258s on 8700k, 484s on 4700U # 755 is too high???
+assert(delta(with_me) <= 755) # 258s on 8700k, 345s on 4700U # 755 is too high???
 
 print(delta(optimal), delta(with_me))
