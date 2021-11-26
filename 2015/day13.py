@@ -25,6 +25,7 @@ def hamiltonian(c):
 
 optimal = max(filter(hamiltonian, combinations(iter(D),len(C))), key=delta)
 assert(delta(optimal) == 733) # 8s on 8700k, 10s on 4700U
+
 for a in C: D[("Alex",a)]=0
 D = kv_sort(D)
 C.add("Alex")
