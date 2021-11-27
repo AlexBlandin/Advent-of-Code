@@ -31,8 +31,8 @@ def retro_encabulator(i):
         if H[i][t] < v: m += 1
   return m
 
-S = {i:sum(1 for t,v in mfcsam.items() if i in I[t][v]) for i in set(range(1, 501))}
-U = {i:retro_encabulator(i) for i in set(range(1, 501))}
+S = {i:sum(1 for t,v in mfcsam.items() if i in I[t][v]) for i in range(1, 501)}
+U = {i:retro_encabulator(i) for i in range(1, 501)}
 g = max(S, key=S.get)
 r = max(U, key=U.get)
 print(g, r)
