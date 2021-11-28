@@ -3,8 +3,7 @@ from pathlib import Path
 from parse import parse
 
 lines = Path("data/day16.txt").read_text().splitlines()
-I = defaultdict(lambda: defaultdict(set))
-H = {}
+H, I = {}, defaultdict(lambda: defaultdict(set))
 
 for line in lines:
   if p := parse("Sue {:d}: {}: {:d}, {}: {:d}, {}: {:d}", line):
@@ -18,14 +17,10 @@ mfcsam = {"children": 3,"cats": 7,"samoyeds": 2,
           "goldfish": 5,"trees": 3,"cars": 2,"perfumes": 1}
 outdated = {"cats", "trees", "pomeranians", "goldfish"}
 comp = {"cats": +1, "trees": +1, "pomeranians": -1, "goldfish": -1, **{k:0 for k in mfcsam if k not in outdated}}
-def comparator(a,b):
-  return -1 if a < b else 1 if a > b else 0
-
-def retro_encabulator(i):
-  return sum(1 for t,v in mfcsam.items() if i in I[t][v] and comparator(H[i][t], v) == comp[t])
+comparator = lambda a,b: -1 if a < b else 1 if a > b else 0
 
 S = {i:sum(1 for t,v in mfcsam.items() if i in I[t][v]) for i in range(1, 501)}
-U = {i:retro_encabulator(i) for i in range(1, 501)}
+U = {i:sum(1 for t,v in mfcsam.items() if i in I[t][v] and comparator(H[i][t], v) == comp[t]) for i in range(1, 501)}
 g = max(S, key=S.get)
 r = max(U, key=U.get)
 print(g, r)
