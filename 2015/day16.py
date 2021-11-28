@@ -17,19 +17,12 @@ mfcsam = {"children": 3,"cats": 7,"samoyeds": 2,
           "pomeranians": 3,"akitas": 0,"vizslas": 0,
           "goldfish": 5,"trees": 3,"cars": 2,"perfumes": 1}
 outdated = {"cats", "trees", "pomeranians", "goldfish"}
-nuclear_decay = {"cats", "trees"}
-modial_interaction = {"pomeranians", "goldfish"}
+comp = {"cats": +1, "trees": +1, "pomeranians": -1, "goldfish": -1, **{k:0 for k in mfcsam if k not in outdated}}
+def comparator(a,b):
+  return -1 if a < b else 1 if a > b else 0
 
 def retro_encabulator(i):
-  m = sum(1 for t,v in mfcsam.items() if i in I[t][v] and t not in outdated)
-  for t in outdated:
-    v = mfcsam[t]
-    if t in H[i]:
-      if t in nuclear_decay:
-        if H[i][t] > v: m += 1
-      if t in modial_interaction:
-        if H[i][t] < v: m += 1
-  return m
+  return sum(1 for t,v in mfcsam.items() if i in I[t][v] and comparator(H[i][t], v) == comp[t])
 
 S = {i:sum(1 for t,v in mfcsam.items() if i in I[t][v]) for i in range(1, 501)}
 U = {i:retro_encabulator(i) for i in range(1, 501)}
