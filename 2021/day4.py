@@ -13,6 +13,6 @@ for k, bk in order.items():
   for i in bk:
     fiveinarow = lambda row: len(set(row) & seen) == 5
     if i not in score and (any(filter(fiveinarow, boards[i])) or any(filter(fiveinarow, zip(*boards[i])))):
-      score[i] = k * sum(boardsets[i]-seen)
+      score[i] = k * sum(boardsets[i] - seen)
 scores = list(score.values())
 print(scores[0], scores[-1])
