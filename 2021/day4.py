@@ -1,8 +1,8 @@
 from pathlib import Path
 lines = Path("data/day4.txt").read_text().splitlines()
 order = {int(k):set() for k in lines[0].split(",")}
-boardlines = zip(lines[2::6],lines[3::6],lines[4::6],lines[5::6],lines[6::6])
-boards = [[[int(c) for c in r.split()] for r in b] for b in boardlines]
+boardlines = lines[2::6], lines[3::6], lines[4::6], lines[5::6], lines[6::6]
+boards = [[[int(c) for c in r.split()] for r in b] for b in zip(*boardlines)]
 boardsets = [{a for b in board for a in b} for board in boards]
 for i, bs in enumerate(boardsets):
   for b in bs:
