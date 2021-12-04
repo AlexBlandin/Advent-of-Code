@@ -12,7 +12,7 @@ for k, bk in order.items():
   seen.add(k)
   for i in bk:
     boardsets[i].remove(k)
-    five_in_a_row = lambda row: len(set(row)&seen)==5
+    five_in_a_row = lambda row: len(set(row) & seen) == 5
     if i not in won and (any(filter(five_in_a_row, boards[i])) or any(filter(five_in_a_row, zip(*boards[i])))):
       scores.append(k * sum(boardsets[i]))
       won.add(i)
