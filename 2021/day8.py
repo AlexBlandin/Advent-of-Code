@@ -25,6 +25,5 @@ def find_encoding(signals):
 result = 0
 for line in lines:
   signals, values, *_ = " ".join(map("".join,map(sorted, line.split()))).split(" | ")
-  sl, vl = set(signals.split()), values.split()
-  result += int("".join(map(find_encoding(sl).get, vl)))
+  result += int("".join(map(find_encoding(signals.split()).get, values.split())))
 print(n1478, result)
