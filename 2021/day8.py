@@ -3,7 +3,7 @@ from pathlib import Path
 lines = Path("data/day8.txt").read_text().splitlines()
 n1478 = sum(len(list(filter(lambda x: x<5 or x>6, map(len, line.split(" | ")[1].split())))) for line in lines)
 def fl(n, list): return filter(lambda x: len(x)==n, list)
-def find_encoding(signals: list[str]):
+def find_encoding(signals):
   return next(
     dict(zip([zero, one, two, three, four, five, six, seven, eight, nine], map(str,range(10))))
     for one in fl(2, signals)
@@ -13,9 +13,6 @@ def find_encoding(signals: list[str]):
     for two, three, five,*_ in permutations(fl(5, signals))
     for zero, six, nine,*_ in permutations(fl(6, signals))
     for up,mid,down,tl,tr,bl,br in permutations("abcdefg") if
-    len(one) == 2 and len(four) == 4 and len(seven) == 3 and len(eight) == 7 and
-    len(zero) == 6 and len(six) == 6 and len(nine) == 6 and
-    len(two) == 5 and len(three) == 5 and len(five) == 5 and
     up not in one and up not in four and
     mid not in zero and mid not in one and mid not in seven and
     down not in one and down not in four and down not in seven and
@@ -25,7 +22,7 @@ def find_encoding(signals: list[str]):
     br not in two and
     True
   )
-result = int()
+result = 0
 for line in lines:
   signals, values, *_ = " ".join(map("".join,map(sorted, line.split()))).split(" | ")
   sl, vl = set(signals.split()), values.split()
