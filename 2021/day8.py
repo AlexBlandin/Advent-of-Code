@@ -5,7 +5,7 @@ n1478 = sum(len(list(filter(lambda x: x<5 or x>6, map(len, line.split(" | ")[1].
 def fl(n, list): return filter(lambda x: len(x)==n, list)
 def find_encoding(signals: list[str]):
   return next(
-    dict(zip(map("".join,map(sorted,[zero, one, two, three, four, five, six, seven, eight, nine])), map(str,range(10))))
+    dict(zip([zero, one, two, three, four, five, six, seven, eight, nine], map(str,range(10))))
     for one in fl(2, signals)
     for four in fl(4, signals)
     for seven in fl(3, signals)
