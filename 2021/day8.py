@@ -13,13 +13,13 @@ def find_encoding(signals):
     for two, three, five,*_ in permutations(fl(5, signals))
     for zero, six, nine,*_ in permutations(fl(6, signals))
     for up,mid,down,tl,tr,bl,br in permutations("abcdefg") if
-    up not in one and up not in four and
     mid not in zero and mid not in one and mid not in seven and
+    up not in one and up not in four and
     down not in one and down not in four and down not in seven and
     tl not in one and tl not in two and tl not in three and tl not in seven and
-    tr not in five and tr not in six and
     bl not in one and bl not in three and bl not in four and bl not in five and bl not in seven and bl not in nine and
     br not in two and
+    tr not in five and tr not in six and
     True
   )
 result = 0
