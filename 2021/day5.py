@@ -28,4 +28,3 @@ for x1, x2, y1, y2 in segments:
 
 cross_with_diag = sum(col >= 2 for row in grid for col in row)
 print(crossings, cross_with_diag)
-# 23460 is too high, so have to check for 45 degrees
