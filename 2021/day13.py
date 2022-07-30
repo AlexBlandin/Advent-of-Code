@@ -42,4 +42,4 @@ for fold, line in folds:
   else: fold_up(line)
 
 for row in paper:
-  print("".join(map(lambda b: "#" if b else ".", row)))
+  print("".join(map(lambda b: "#" if b else " ", row)))
