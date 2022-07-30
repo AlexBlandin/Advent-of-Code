@@ -4,6 +4,7 @@ s,l=set(parent.setdefault("shiny gold",set())),len(parent["shiny gold"])
 while len(s:=s.union(*[parent[i] for i in s if i in parent]))>l: l=len(s)
 def r(c): return 0 if child[c]=={} else sum(v*r(i)+v for i,v in child[c].items())
 print(l,r("shiny gold"))
+
 # print(child["shiny gold"])
 # print(child)
 # def p(c):

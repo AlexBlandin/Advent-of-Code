@@ -10,7 +10,7 @@ A = {} # A[w] = 0-65535    # the value of a wire
 
 def add_input(G, A, w, s):
   if s.isdecimal(): A[s] = int(s)
-  else: G.setdefault(w,set()).add(s)
+  else: G.setdefault(w, set()).add(s)
 
 def op(f, *arg):
   return f(*[A[a] for a in arg]) & 65535
@@ -35,7 +35,8 @@ for line in lines:
   elif p := parse("{}", lhs):
     s0 = p.fixed[0]
     O[w] = int, s0
-  for s in p: add_input(G, A, w, s)
+  for s in p:
+    add_input(G, A, w, s)
 
 order = tuple(topo(G).static_order())
 for e, (o, *s) in zip(order, map(O.get, order)):

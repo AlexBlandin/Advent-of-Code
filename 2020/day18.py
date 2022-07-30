@@ -20,12 +20,14 @@ class Flat:
 
 results1, results2 = [], []
 for line in lines:
-  for i in range(1,10): line = line.replace(f"{i}", f"Flat({i})")
-  line = line.replace("*","-")
+  for i in range(1,10):
+    line = line.replace(f"{i}", f"Flat({i})")
+  line = line.replace("*", "-")
   results1.append(eval(line, globals()).x)
 for line in lines:
-  for i in range(1,10): line = line.replace(f"{i}", f"Moon({i})")
-  line = line.replace("*","-").replace("+","*").replace("-","+")
+  for i in range(1,10):
+    line = line.replace(f"{i}", f"Moon({i})")
+  line = line.replace("*", "-").replace("+", "*").replace("-", "+")
   results2.append(eval(line, globals()).x)
 
 print(sum(results1), sum(results2))

@@ -3,7 +3,7 @@ with open("data/day5.txt") as o:
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 vowels = set("aeiou")
-doubles = set(map("".join, zip(alphabet,alphabet)))
+doubles = set(map("".join, zip(alphabet, alphabet)))
 bad = {"ab", "cd", "pq", "xy"}
 
 def is_oldnice(line, vowels = vowels, doubles = doubles, bad = bad):
@@ -15,9 +15,9 @@ def is_oldnice(line, vowels = vowels, doubles = doubles, bad = bad):
 
 def is_nice(line):
   pairs = list(map("".join, zip(line, line[1:])))
-  bunch = {(p,q) for i,p in enumerate(pairs) for j,q in enumerate(pairs) if p==q and j not in {i, i+1, i-1}}
+  bunch = {(p, q) for i, p in enumerate(pairs) for j, q in enumerate(pairs) if p == q and j not in {i, i + 1, i - 1}}
   good_pairs = len(bunch) >= 1
-  repeats = {(a,b) for i,a in enumerate(line) for j,b in enumerate(line) if a==b and j in {i+2, i-2}}
+  repeats = {(a, b) for i, a in enumerate(line) for j, b in enumerate(line) if a == b and j in {i + 2, i - 2}}
   good_repeats = len(repeats) >= 1
   return good_pairs and good_repeats
 

@@ -3,10 +3,12 @@ from datetime import date
 
 fmt = """from pathlib import Path
 from parse import parse
+
 lines = Path("data/day{day}.txt").read_text().splitlines()
 for line in lines:
   if p := parse("", line):
     p.fixed
+
 """
 
 for year in range(2015, date.today().year + 1):
