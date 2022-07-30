@@ -12,10 +12,14 @@ for line in lines:
 """
 
 for year in range(2015, date.today().year + 1):
+  dir = Path(str(year))
+  dta = dir / "data"
+  if not dir.is_dir(): dir.mkdir()
+  if not dta.is_dir(): dta.mkdir()
   for day in range(1, 26):
-    py = Path(f"{year}/day{day}.py")
-    data = Path(f"{year}/data/day{day}.txt")
+    py = dir / f"day{day}.py"
+    data = dta / f"day{day}.txt"
     py.touch()
     data.touch()
-    if not py.exists(): py.write_text(fmt.format(day = day), encoding="utf8", newline = "")
-    if not data.exists(): data.write_text("", encoding="utf8", newline = "\n")
+    if py.read_text().strip() == "": py.write_text(fmt.format(day = day), encoding = "utf8", newline = "")
+    if data.read_text().strip() == "": data.write_text("", encoding = "utf8", newline = "\n")
