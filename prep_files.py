@@ -1,5 +1,5 @@
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 fmt = """from pathlib import Path
 from parse import parse
