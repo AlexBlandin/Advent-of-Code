@@ -1,7 +1,7 @@
 from operator import inv, or_, and_, lshift, rshift
 from graphlib import TopologicalSorter as topo
 from parse import parse
-with open("data/day7.txt") as o:
+with open("day7.txt") as o:
   lines = [line.strip() for line in o.readlines()]
 
 G = {} # G[w] = {s0,s1?}   # wire sources

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-lines = Path("data/day11.txt").read_text().splitlines()
+lines = Path("day11.txt").read_text().splitlines()
 old = lines[0]
 
 lenc = "abcdefghjkmnpqrstuvwxyz"

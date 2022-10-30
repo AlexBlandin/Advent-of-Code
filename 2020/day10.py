@@ -1,4 +1,4 @@
-a = [0] + sorted([int(l.strip()) for l in open("data/day10.txt").readlines()])
+a = [0] + sorted([int(l.strip()) for l in open("day10.txt").readlines()])
 a += [a[-1] + 3]
 b, G = [y - x for x, y in zip(a, a[1:])], {x: [y for y in range(x + 1, x + 4) if y in a] for x in a}
 
@@ -12,5 +12,5 @@ print(b.count(1) * b.count(3), rec(0))
 
 # # Fear the one-liner
 # from functools import cache
-# _,__,b,G,r = (a:=[0]+sorted([int(l.strip()) for l in open("data/day10.txt").readlines()])),(a:=a + [a[-1]+3]),[y-x for x,y in zip(a,a[1:])], {x:[y for y in range(x+1,x+4) if y in a] for x in a},cache(lambda x: 1 if x==a[-1] else sum(r(y) for y in G[x]))
+# _,__,b,G,r = (a:=[0]+sorted([int(l.strip()) for l in open("day10.txt").readlines()])),(a:=a + [a[-1]+3]),[y-x for x,y in zip(a,a[1:])], {x:[y for y in range(x+1,x+4) if y in a] for x in a},cache(lambda x: 1 if x==a[-1] else sum(r(y) for y in G[x]))
 # print(b.count(1)*b.count(3), r(0))

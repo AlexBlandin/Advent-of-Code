@@ -1,7 +1,7 @@
 from itertools import count
 from pathlib import Path
 
-grid = [list(map(int, line)) for line in Path("data/day11.txt").read_text().splitlines()]
+grid = [list(map(int, line)) for line in Path("day11.txt").read_text().splitlines()]
 
 def neighbours(x, y):
   return [(x + xo, y + yo) for xo in (1, -1, 0) for yo in (1, -1, 0)

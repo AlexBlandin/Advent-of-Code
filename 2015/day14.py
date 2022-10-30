@@ -2,7 +2,7 @@ from operator import itemgetter
 from pathlib import Path
 from parse import parse
 
-lines = Path("data/day14.txt").read_text().splitlines()
+lines = Path("day14.txt").read_text().splitlines()
 R = {}
 for line in lines:
   if p := parse("{} can fly {:d} km/s for {:d} seconds, but then must rest for {:d} seconds.", line):

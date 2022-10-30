@@ -1,7 +1,7 @@
 from itertools import permutations
 from pathlib import Path
 
-lines = Path("data/day8.txt").read_text().splitlines()
+lines = Path("day8.txt").read_text().splitlines()
 n1478 = sum(len(list(filter(lambda x: x < 5 or x > 6, map(len, line.split(" | ")[1].split())))) for line in lines)
 
 def fl(n, list):

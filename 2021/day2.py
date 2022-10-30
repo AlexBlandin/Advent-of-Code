@@ -1,6 +1,6 @@
 from pathlib import Path
 
-lines = Path("data/day2.txt").read_text().splitlines()
+lines = Path("day2.txt").read_text().splitlines()
 h, v = 0, 0
 a, va = 0, 0
 lines = [((l := line.split())[0], int(l[1])) for line in lines]

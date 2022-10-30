@@ -1,7 +1,7 @@
 from parse import findall
 from math import prod
 
-with open("data/day16.txt") as o:
+with open("day16.txt") as o:
   lines = [line.strip() for line in o.readlines()]
 
 mine = [int(n) for n in lines[lines.index("your ticket:") + 1].split(",")]

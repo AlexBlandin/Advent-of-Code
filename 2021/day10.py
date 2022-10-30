@@ -1,6 +1,6 @@
 from pathlib import Path
 
-lines = Path("data/day10.txt").read_text().splitlines()
+lines = Path("day10.txt").read_text().splitlines()
 corruption_score, discarded_score = 0, []
 for line in lines:
   s, n = [], {"(":0,"[":0,"{":0,"<":0}

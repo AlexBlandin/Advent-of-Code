@@ -9,7 +9,7 @@ from functools import reduce
       y if i not in "NSF" else y + v if i == "N" or (i == "F" and d == 3) else y - v
       if i == "S" or (i == "F" and d == 1) else y
     ), (d if i not in "LR" else (d + v // 90) % 4 if i == "R" else (d - v // 90) % 4))
-  )(*o, *t), [(l[0], int(l.strip()[1:])) for l in open("data/day12.txt").readlines()], (0, 0, 0)
+  )(*o, *t), [(l[0], int(l.strip()[1:])) for l in open("day12.txt").readlines()], (0, 0, 0)
 ), reduce(
   lambda o, t: (
     lambda sx, sy, wx, wy, i, v: ((sx if i != "F" else wx * v + sx), (sy if i != "F" else wy * v + sy), (
@@ -21,6 +21,6 @@ from functools import reduce
       if (i == "L" and v != 270) or (i == "R" and v == 270) else (-wy if v == 180 else -wx)
       if (i == "R" and v != 270) or (i == "L" and v == 270) else wy
     ))
-  )(*o, *t), [(l[0], int(l.strip()[1:])) for l in open("data/day12.txt").readlines()], (0, 0, 10, 1)
+  )(*o, *t), [(l[0], int(l.strip()[1:])) for l in open("day12.txt").readlines()], (0, 0, 10, 1)
 )
 print(abs(x) + abs(y), abs(sx) + abs(sy))

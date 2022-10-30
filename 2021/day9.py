@@ -1,7 +1,7 @@
 from math import prod
 from pathlib import Path
 
-heightmap = [list(map(int, line)) for line in Path("data/day9.txt").read_text().splitlines()]
+heightmap = [list(map(int, line)) for line in Path("day9.txt").read_text().splitlines()]
 side = len(heightmap)
 
 def lowest(xy):

@@ -4,7 +4,7 @@ from operator import mul
 from math import prod
 from parse import parse
 
-lines = Path("data/day15.txt").read_text().splitlines()
+lines = Path("day15.txt").read_text().splitlines()
 
 I = {} # ingredient
 C = {} # calories

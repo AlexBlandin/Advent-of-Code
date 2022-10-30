@@ -4,7 +4,7 @@ from operator import itemgetter
 from pathlib import Path
 from parse import parse
 
-lines = Path("data/day9.txt").read_text().splitlines()
+lines = Path("day9.txt").read_text().splitlines()
 kv_sort = lambda d: dict(sorted(sorted(d.items(), key = itemgetter(0)), key = itemgetter(1)))
 D, C = {}, set()
 

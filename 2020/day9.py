@@ -1,6 +1,6 @@
 from itertools import product
 
-with open("data/day9.txt") as o:
+with open("day9.txt") as o:
   n = [int(x) for x in map(str.strip, o.readlines()) if len(x)]
 for i in range(25, len(n)):
   if n[i] not in [x + y for x, y in product(n[i - 25:i], n[i - 25:i])]:

@@ -1,4 +1,4 @@
-with open("data/day5.txt") as o:
+with open("day5.txt") as o:
   print(
     max(
       s := sorted([

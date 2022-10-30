@@ -1,4 +1,4 @@
-with open("data/day3.txt") as o:
+with open("day3.txt") as o:
   move = {"^": (1, 0), "<": (0, -1), ">": (0, 1), "v": (-1, 0)}
   moves = [move[m] for m in o.read().strip()]
 pos = (0, 0)

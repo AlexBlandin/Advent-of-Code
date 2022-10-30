@@ -1,4 +1,4 @@
-with open("data/day8.txt") as o:
+with open("day8.txt") as o:
   b = [tuple(l.strip().split()) for l in o.readlines()]
 h = set()
 a, c = 0, 0

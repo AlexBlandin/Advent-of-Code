@@ -3,7 +3,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-lines = Path("data/day14.txt").read_text().splitlines()
+lines = Path("day14.txt").read_text().splitlines()
 base = lines[0]
 insert, letters, pairs = {}, Counter(base), Counter(zip(base, base[1:]))
 for rule in lines[2:]:

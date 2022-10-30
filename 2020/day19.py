@@ -1,4 +1,4 @@
-with open("data/day19.txt") as o:
+with open("day19.txt") as o:
   rules_, msgs = tuple(map(str.splitlines, o.read().split("\n\n", maxsplit = 1)))
   msgs: list[str]
 

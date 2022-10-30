@@ -1,7 +1,7 @@
 from pathlib import Path
 from json import loads
 
-lines = Path("data/day12.txt").read_text().splitlines()
+lines = Path("day12.txt").read_text().splitlines()
 
 db = loads(lines[0])
 

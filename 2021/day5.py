@@ -1,7 +1,7 @@
 from pathlib import Path
 from parse import parse
 
-lines = Path("data/day5.txt").read_text().splitlines()
+lines = Path("day5.txt").read_text().splitlines()
 segments = []
 for line in lines:
   if p := parse("{:d},{:d} -> {:d},{:d}", line):

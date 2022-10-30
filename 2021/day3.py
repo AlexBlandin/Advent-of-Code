@@ -1,6 +1,6 @@
 from pathlib import Path
 
-lines = Path("data/day3.txt").read_text().splitlines()
+lines = Path("day3.txt").read_text().splitlines()
 lines = [[int(c) for c in l] for l in lines]
 cols = list(zip(*lines))
 

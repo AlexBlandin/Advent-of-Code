@@ -1,7 +1,7 @@
 from itertools import product
 from parse import parse
 
-with open("data/day6.txt") as o:
+with open("day6.txt") as o:
   lines = [line.strip() for line in o.readlines()]
 
 bon, boff, bnot = lambda x: True, lambda x: False, lambda x: not x

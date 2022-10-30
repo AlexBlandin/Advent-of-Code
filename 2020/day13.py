@@ -1,7 +1,7 @@
 from operator import itemgetter
 from math import ceil
 
-e, s = tuple(map(str.strip, open("data/day13.txt").readlines()))
+e, s = tuple(map(str.strip, open("day13.txt").readlines()))
 e, s = int(e), [int(i) if i != "x" else None for i in s.split(",")]
 bus = [(ceil(e / i) * i, i) for i in s if i]
 mes, (mo, mx) = [((b - o) % b, b) for o, b in enumerate(s) if b], max([t for t in enumerate(s) if t[1]],

@@ -1,5 +1,5 @@
 m0, m1, bits, mem1, mem2, lines = -1, 0, [], {}, {}, [
-  tuple(map(str.strip, s.split("="))) for s in open("data/day14.txt").readlines()
+  tuple(map(str.strip, s.split("="))) for s in open("day14.txt").readlines()
 ]
 
 def mask(v, bits):

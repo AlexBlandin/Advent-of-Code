@@ -1,7 +1,7 @@
 from parse import findall, with_pattern
 from operator import add, mul
 
-with open("data/day18.txt") as o:
+with open("day18.txt") as o:
   lines = [line.strip() for line in o]
 
 @with_pattern(r"[\*\+]")

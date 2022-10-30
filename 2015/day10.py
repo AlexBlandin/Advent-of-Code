@@ -1,6 +1,6 @@
 from pathlib import Path
 
-lines = Path("data/day10.txt").read_text().splitlines()
+lines = Path("day10.txt").read_text().splitlines()
 s = lines[0]
 
 def looksay(s, _):

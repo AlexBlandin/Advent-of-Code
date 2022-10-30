@@ -1,7 +1,7 @@
 from collections import deque
 from pathlib import Path
 
-ages = list(map(int, Path("data/day6.txt").read_text().split(",")))
+ages = list(map(int, Path("day6.txt").read_text().split(",")))
 sim = deque(ages.count(i) for i in range(9))
 
 def step(sim: deque):

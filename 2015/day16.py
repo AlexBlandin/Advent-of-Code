@@ -2,7 +2,7 @@ from collections import defaultdict
 from pathlib import Path
 from parse import parse
 
-lines = Path("data/day16.txt").read_text().splitlines()
+lines = Path("day16.txt").read_text().splitlines()
 H, I = {}, defaultdict(lambda: defaultdict(set))
 
 for line in lines:

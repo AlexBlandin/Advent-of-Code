@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import lru_cache
 
-m = [[None if c == "." else False for c in line.strip()] for line in open("data/day11.txt").readlines()]
+m = [[None if c == "." else False for c in line.strip()] for line in open("day11.txt").readlines()]
 mx, my = len(m[0]), len(m)
 
 @lru_cache(maxsize = mx * my)

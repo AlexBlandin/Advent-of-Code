@@ -2,7 +2,7 @@ from operator import itemgetter, or_
 from pathlib import Path
 from parse import parse
 
-lines = Path("data/day13.txt").read_text().splitlines()
+lines = Path("day13.txt").read_text().splitlines()
 dots, folds = [], []
 for line in lines:
   if p := parse("{:d},{:d}", line):

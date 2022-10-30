@@ -1,7 +1,7 @@
 from pathlib import Path
 from operator import gt
 
-lines = Path("data/day1.txt").read_text().splitlines()
+lines = Path("day1.txt").read_text().splitlines()
 lines = [int(line) for line in lines]
 
 print(

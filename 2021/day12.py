@@ -1,7 +1,7 @@
 from collections import defaultdict
 from pathlib import Path
 
-lines = [tuple(line.split("-")) for line in Path("data/day12.txt").read_text().splitlines()]
+lines = [tuple(line.split("-")) for line in Path("day12.txt").read_text().splitlines()]
 C = defaultdict(set)
 small = set()
 for a, b in lines:
