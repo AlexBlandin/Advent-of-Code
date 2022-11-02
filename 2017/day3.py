@@ -5,4 +5,7 @@ from math import ceil, sqrt
 position = int(Path("day3.txt").read_text().strip()) # hi Ulam
 spokes = list(takewhile(lambda n: n <= position, (ceil((n**2 + n + 1) / 4) for n in count())))
 spokes += [ceil(((len(spokes))**2 + (len(spokes)) + 1) / 4)]
+width = ceil((sqrt(position)-1)/2)*2
+m = [[0]*width for _ in range(width)]
+
 print(ceil((sqrt(position)-1)/2) + min(abs(position - spokes[-1]), abs(position - spokes[-2])), )
