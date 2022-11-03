@@ -2,7 +2,7 @@ from operator import add, itemgetter
 from pathlib import Path
 
 banks = list(map(int, Path("day6.txt").read_text().split()))
-lb, sb = len(banks), sum(banks)
+lb = len(banks)
 history = {}
 
 while tuple(banks) not in history:
