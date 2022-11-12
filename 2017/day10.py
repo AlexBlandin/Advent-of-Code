@@ -11,9 +11,7 @@ circle, pos, skip = Circular(range(256)), 0, 0
 
 def knot(lengths, circle = Circular(range(256)), pos = 0, skip = 0):
   for l in lengths:
-    rev = list(reversed(circle[pos:pos + l]))
     circle[pos:pos + l] = circle[pos + l - 1:pos - 1:-1]
-    assert circle[pos:pos + l] == rev
     pos += skip + l
     skip += 1
   return circle, pos, skip
