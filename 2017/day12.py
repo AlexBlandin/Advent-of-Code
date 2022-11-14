@@ -30,4 +30,4 @@ for p in pipes:
     for b in pipes[p]:
       inverse[b] = p
 
-print(len(pipes[0]), groups) # 4 is not the right answer, duh
+print(len(pipes[0]), groups)
