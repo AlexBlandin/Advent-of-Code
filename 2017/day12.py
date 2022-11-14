@@ -13,7 +13,7 @@ for ps in lines:
 for p, bs in pipes.items(): # bs.update loop handles feed-forward/backward, one pass needed!
   for b in bs: # do this first, because that makes these updates way smaller, so way faster!
     pipes[b].update(bs)
-  bs.update(*[pipes[b] for b in pipes[p]]) # set.update accepts multiple sets to union over!
+  bs.update(*[pipes[b] for b in bs]) # set.update accepts multiple sets to union over!
 
 groups = [inverse.update(bs) for p, bs in pipes.items() if p not in inverse]
 print(len(pipes[0]), len(groups))
