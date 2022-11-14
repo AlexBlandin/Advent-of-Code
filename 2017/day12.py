@@ -10,7 +10,7 @@ for p in lines:
       for b in bs:
         pipes[b].update(p)
 
-for p in pipes: # my pipes[b].update loop handles feed- forward/backward, so only 1 pass is needed
+for p in pipes: # the pipes[b].update loop handles feed-forward/backward, so only 1 pass is needed
   pipes[p].update(*[pipes[b] for b in pipes[p]]) # set.update accepts multiple sets to union over!
   for b in pipes[p]:
     pipes[b].update(pipes[p])
