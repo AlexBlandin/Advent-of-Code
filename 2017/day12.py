@@ -1,26 +1,19 @@
 from collections import defaultdict
 from pathlib import Path
 
-lines = Path("day12.txt").read_text().replace(",", "").splitlines()
-pipes: defaultdict[int, set[int]] = defaultdict(set)
+lines = Path("day12.txt").read_text().replace(",", "").replace("<->","").splitlines()
+pipes, inverse = defaultdict(set), set()
 for p in lines:
-  match p.split():
-    case [a, "<->", *bs]:
-      bs = list(map(int, bs+[a]))
-      pipes[int(a)].update(bs)
+  match list(map(int, p.split())):
+    case [a, *bs] as p:
+      pipes[a].update(p)
       for b in bs:
-        pipes[b].update(bs)
+        pipes[b].update(p)
 
-for p in pipes:
-  for b in list(pipes[p]):
-    pipes[p].update(pipes[b])
+for p in pipes: # my pipes[b].update loop handles feed- forward/backward, so only 1 pass is needed
+  pipes[p].update(*[pipes[b] for b in pipes[p]]) # set.update accepts multiple sets to union over!
+  for b in pipes[p]:
     pipes[b].update(pipes[p])
+groups = [inverse.update(bs) for p, bs in pipes.items() if p not in inverse]
 
-inverse, groups = {}, 0
-for p in pipes:
-  if p not in inverse:
-    groups += 1
-    for b in pipes[p]:
-      inverse[b] = p
-
-print(len(pipes[0]), groups)
+print(len(pipes[0]), len(groups))
