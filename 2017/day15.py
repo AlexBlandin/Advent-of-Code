@@ -1,9 +1,23 @@
 from pathlib import Path
 
-a, b, *_ = Path("day15.txt").read_text().splitlines()
-a, b = int(a.split()[-1]), int(b.split()[-1])
-a, b = 65, 8921
+sa, sb, *_ = Path("day15.txt").read_text().splitlines()
+sa, sb = int(sa.split()[-1]), int(sb.split()[-1])
+# sa, sb = 65, 8921
+ma, mb = 16807, 48271
+ca, cb = -4, -8
+divisor = 2147483647
 
-def lower_16_bits(x: int):
-  return x & 2**16 -1
+def g(s: int, m: int, d: int = divisor, cheat: int = 0):
+  if cheat:
+    while True:
+      if s & cheat == s: yield s
+      s = (s * m) % d
+  while True:
+    yield s
+    s = (s * m) % d
 
+def judge(mill: int, ga, gb):
+  return sum(1 for _ in range(mill * 10**6 + 1) if (next(ga) & 2**16 - 1) == (next(gb) & 2**16 - 1))
+
+# use pypy I beg of you
+print(judge(40, g(sa, ma), g(sb, mb)), judge(5, g(sa, ma, cheat = ca), g(sb, mb, cheat = cb)))
