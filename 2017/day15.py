@@ -17,7 +17,6 @@ def g(s: int, m: int, d: int = divisor, cheat: int = 0):
     s = (s * m) % d
 
 def judge(mill: int, ga, gb):
-  return sum(1 for _ in range(mill * 10**6 + 1) if (next(ga) & 2**16 - 1) == (next(gb) & 2**16 - 1))
+  return sum(1 for _ in range(mill * 10**6 + 1) if (next(ga) & 0xFFFF) == (next(gb) & 0xFFFF))
 
-# use pypy I beg of you
 print(judge(40, g(sa, ma), g(sb, mb)), judge(5, g(sa, ma, cheat = ca), g(sb, mb, cheat = cb)))
