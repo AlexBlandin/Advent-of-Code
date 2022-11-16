@@ -29,7 +29,6 @@ def dance(steps: int, moves: list[tuple[int, int, int]], programs: list[int]):
       programs[a], programs[b] = programs[b], programs[a]
     state = (i%len(moves), tuple(programs))
     if state in loop: # use repeating pattern for speedup
-      print(i, loop[state], steps % i, programs)
       return dance(steps % i, moves, list(range(16)))
     loop[state] = i
   return "".join([ascii_lowercase[p] for p in programs])
