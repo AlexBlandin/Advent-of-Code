@@ -1,6 +1,6 @@
-import sys
-from dataclasses import dataclass
 from functools import cache
+from typing import NamedTuple, Union
+import sys
 
 # Why this needed to wait until 3.11 for being part of typing, I'll never know
 if sys.version_info[0] == 3 and sys.version_info[1] < 11:
@@ -8,18 +8,12 @@ if sys.version_info[0] == 3 and sys.version_info[1] < 11:
 else:
   from typing import Self
 
-@dataclass(slots = True, frozen = True)
-class Point:
-  """A point in Cartesian (x,y) space"""
-  x: float
-  y: float
-
-@dataclass(slots = True, frozen = True)
-class Hex:
+# @dataclass(slots = True, frozen = True)
+class Hex(NamedTuple):
   """A Hexagon, defined as a cube analogue in the space (q,r,s) where q + r + s == 0"""
-  q: float
-  r: float
-  s: float
+  q: Union[int, float]
+  r: Union[int, float]
+  s: Union[int, float]
   
   def __post_init__(self):
     assert round(self.q + self.r + self.s) == 0, "q + r + s must equal 0"
@@ -130,11 +124,11 @@ class Hex:
     return Hex(self.q * (1.0 - t) + other.q * t, self.r * (1.0 - t) + other.r * t, self.s * (1.0 - t) + other.s * t)
   
   def linedraw(self, other: Self) -> list[Self]:
-    N = self.distance(other)
+    N = round(self.distance(other))
     a_nudge = Hex(self.q + 1e-06, self.r + 1e-06, self.s - 2e-06)
     b_nudge = Hex(other.q + 1e-06, other.r + 1e-06, other.s - 2e-06)
     step = 1.0 / max(N, 1)
-    return [round(a_nudge.lerp(b_nudge, step * i)) for i in range(N + 1)]
+    return [round(a_nudge.lerp(b_nudge, step * i)) for i in range(N + 1)] # type: ignore
   
   @property
   def reflectQ(self):
@@ -163,7 +157,7 @@ class Hex:
       for hex in fringes[k - 1]:
         for dir in range(6):
           neighbour = hex.neighbour(dir)
-          if neighbour not in visited and not neighbour.blocked:
+          if neighbour not in visited: # and not neighbour.blocked:
             visited.add(neighbour)
             fringes[k].append(neighbour)
     
@@ -193,12 +187,12 @@ def equal_hex(name: str, a: Hex, b: Hex):
   if not (a.q == b.q and a.s == b.s and a.r == b.r):
     complain(name, a, b)
 
-def equal_int(name: str, a: int, b: int):
+def equal_any(name: str, a, b):
   if not (a == b):
     complain(name, a, b)
 
 def equal_hex_array(name: str, a: list[Hex], b: list[Hex]):
-  equal_int(name, len(a), len(b))
+  equal_any(name, len(a), len(b))
   for i in range(0, len(a)):
     equal_hex(name, a[i], b[i])
 
@@ -217,7 +211,7 @@ def test_hex_diagonal():
   equal_hex("hex_diagonal", Hex(-1, -1, 2), Hex(1, -2, 1).diagonal_neighbour(3))
 
 def test_hex_distance():
-  equal_int("hex_distance", 7, Hex(3, -7, 4).distance(Hex(0, 0, 0)))
+  equal_any("hex_distance", 7, Hex(3, -7, 4).distance(Hex(0, 0, 0)))
 
 def test_hex_rotate_right():
   equal_hex("hex_rotate_right", Hex(1, -3, 2).rotate_right, Hex(3, -2, -1))
@@ -229,20 +223,25 @@ def test_hex_rotate_left():
   equal_hex("hex_rotate_left 1", Hex(1, -3, 2) << 1, Hex(-2, -1, 3))
   equal_hex("hex_rotate_left 2", Hex(1, -3, 2) << 2, Hex(-2, -1, 3).rotate_left)
 
-def test_hex_round():
+def test_hex_round(
+): # Pylance is too stupid to recognise when `round(number: SupportsRound[_T@round], ndigits: SupportsIndex) -> _T@round` is satisfied, so thinks it has to produce `int`
   a = Hex(0.0, 0.0, 0.0)
   b = Hex(1.0, -1.0, 0.0)
   c = Hex(0.0, -1.0, 1.0)
-  equal_hex("hex_round 1", Hex(5, -10, 5), round(Hex(0.0, 0.0, 0.0).lerp(Hex(10.0, -20.0, 10.0), 0.5)))
-  equal_hex("hex_round 2", round(a), round(a.lerp(b, 0.499)))
-  equal_hex("hex_round 3", round(b), round(a.lerp(b, 0.501)))
+  equal_hex("hex_round 1", Hex(5, -10, 5), round(Hex(0.0, 0.0, 0.0).lerp(Hex(10.0, -20.0, 10.0), 0.5))) # type: ignore
+  equal_hex("hex_round 2", round(a), round(a.lerp(b, 0.499))) # type: ignore
+  equal_hex("hex_round 3", round(b), round(a.lerp(b, 0.501))) # type: ignore
   equal_hex(
-    "hex_round 4", round(a),
-    round(Hex(a.q * 0.4 + b.q * 0.3 + c.q * 0.3, a.r * 0.4 + b.r * 0.3 + c.r * 0.3, a.s * 0.4 + b.s * 0.3 + c.s * 0.3))
+    "hex_round 4",
+    round(a), # type: ignore
+    round(Hex(a.q * 0.4 + b.q * 0.3 + c.q * 0.3, a.r * 0.4 + b.r * 0.3 + c.r * 0.3,
+              a.s * 0.4 + b.s * 0.3 + c.s * 0.3)) # type: ignore
   )
   equal_hex(
-    "hex_round 5", round(c),
-    round(Hex(a.q * 0.3 + b.q * 0.3 + c.q * 0.4, a.r * 0.3 + b.r * 0.3 + c.r * 0.4, a.s * 0.3 + b.s * 0.3 + c.s * 0.4))
+    "hex_round 5",
+    round(c), # type: ignore
+    round(Hex(a.q * 0.3 + b.q * 0.3 + c.q * 0.4, a.r * 0.3 + b.r * 0.3 + c.r * 0.4,
+              a.s * 0.3 + b.s * 0.3 + c.s * 0.4)) # type: ignore
   )
 
 def test_hex_linedraw():
