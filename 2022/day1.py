@@ -1,8 +1,3 @@
 from pathlib import Path
-from parse import parse
 
-lines = Path("day1.txt").read_text().splitlines()
-for line in lines:
-  if p := parse("", line):
-    p.fixed
-
+print(max(elves := sorted(map(lambda elf: sum(map(int, elf.split())), Path("day1.txt").read_text().split("\n\n")), reverse=True)), sum(elves[:3]))
