@@ -1,4 +1,4 @@
-from itertools import chain, starmap
+from itertools import starmap, chain
 from pathlib import Path
 from string import ascii_uppercase, ascii_lowercase
 
