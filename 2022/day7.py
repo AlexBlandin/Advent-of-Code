@@ -1,13 +1,6 @@
-from dataclasses import dataclass
 from pathlib import Path
 
-@dataclass
-class File:
-  path: Path
-  size: int
-  dir: bool = False
-
-cwd, files = Path(), {Path(): File(Path(), 0, True)}
+cwd, size, dirs = Path(), {Path(): 0}, {Path()}
 for line in Path("day7.txt").read_text().splitlines():
   match line.split():
     case ["$", "cd", "/"]:
@@ -15,17 +8,17 @@ for line in Path("day7.txt").read_text().splitlines():
     case ["$", "cd", ".."]:
       cwd = cwd.parent
     case ["$", "cd", subdir]:
-      cwd = cwd / subdir
+      cwd /= subdir
     case ["dir", subdir]:
       file = cwd / subdir
-      files[file] = File(file, 0, True)
+      size[file] = 0
+      dirs.add(file)
     case [filesize, filename] if filesize.isnumeric():
       file, filesize = cwd / filename, int(filesize)
-      files[file] = File(file, filesize)
-      files[cwd].size += filesize
+      size[file], size[cwd] = filesize, size[cwd] + filesize
 
-for dir in sorted(filter(lambda file: file.dir, files.values()), key=lambda dir: len(dir.path.parents), reverse=True):
-  files[dir.path.parent].size += dir.size
-free_up = sum(file.size for file in files.values() if not file.dir) - 40000000
+for path in sorted([path for path in size if path in dirs], key=lambda path: len(path.parents), reverse=True):
+  size[path.parent] += size[path]
+free_up = sum(filesize for path, filesize in size.items() if path not in dirs) - 40000000
 
-print(sum(file.size for file in files.values() if file.dir and file.size <= 100000), min(file.size for file in files.values() if file.dir and file.size >= free_up))
+print(sum(filesize for path, filesize in size.items() if path in dirs and filesize <= 100000), min(filesize for path, filesize in size.items() if path in dirs and filesize >= free_up))
