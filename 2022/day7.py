@@ -15,8 +15,7 @@ for line in Path("day7.txt").read_text().splitlines():
     case ["$", "cd", ".."]:
       cwd = cwd.parent
     case ["$", "cd", subdir]:
-      cwd = file = cwd / subdir
-      files[file] = File(file, 0, True)
+      cwd = cwd / subdir
     case ["dir", subdir]:
       file = cwd / subdir
       files[file] = File(file, 0, True)
@@ -27,6 +26,6 @@ for line in Path("day7.txt").read_text().splitlines():
 
 for dir in sorted(filter(lambda file: file.dir, files.values()), key=lambda dir: len(dir.path.parents), reverse=True):
   files[dir.path.parent].size += dir.size
-free_up = sum(file.size for file in files.values() if not file.dir) - (70000000 - 30000000)
+free_up = sum(file.size for file in files.values() if not file.dir) - 40000000
 
 print(sum(file.size for file in files.values() if file.dir and file.size <= 100000), min(file.size for file in files.values() if file.dir and file.size >= free_up))
