@@ -1,20 +1,15 @@
 include prelude
 
-var 
-  s1 = 0
-  s2 = 0
+var s1 = 0
+var s2 = 0
 
 for line in "day2.txt".lines:
-  let
-    elf = int(line[0]) - int('A') + 1
-    me = int(line[2]) - int('X') + 1
+  let elf = int(line[0]) - int('A') + 1
+  let me = int(line[2]) - int('X') + 1
   s1 += me
-  if elf mod 3 + 1 == me:
-    s1 += 6
-  elif elf == me:
-    s1 += 3
-  else:
-    s1 += 0
+  if elf mod 3 + 1 == me: s1 += 6
+  elif elf == me: s1 += 3
+  else: s1 += 0
   s2 += me * 3 - 3
   if me == 3: s2 += elf mod 3 + 1
   elif me == 2: s2 += elf
