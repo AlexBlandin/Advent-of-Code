@@ -1,4 +1,5 @@
-import strformat, sugar, sequtils, strutils, math, algorithm
+import sugar, math, algorithm
+include prelude
 
 var elves = collect(newSeq):
   for elf in "day1.txt".readFile.split("\n\n"):
