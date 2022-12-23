@@ -5,6 +5,7 @@ __pycache__/
 tempCodeRunnerFile.py
 
 # C extensions
+*.exe
 *.so
 2020/c/simde
 2020/c/advent
