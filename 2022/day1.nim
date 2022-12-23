@@ -6,4 +6,4 @@ var elves = collect(newSeq):
     sum elf.split.map parseInt
 elves.sort
 
-echo &"{elves[elves.maxIndex]} {elves[elves.maxIndex-2..elves.maxIndex].sum}"
+echo &"{elves[high(elves)]} {elves[high(elves)-2..high(elves)].sum}"
