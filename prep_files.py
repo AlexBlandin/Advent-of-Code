@@ -23,6 +23,6 @@ for year in range(2015, date.today().year + 1):
     py.touch()
     data.touch()
     if py.read_text().strip() == "":
-      py.write_text(fmt.format(day = day), encoding = "utf8", newline = "")
+      py.write_text(fmt.format(day = day), encoding = "utf8", newline = "\n")
     if data.read_text().strip() == "":
       data.write_text("", encoding = "utf8", newline = "\n")
