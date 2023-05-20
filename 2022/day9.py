@@ -54,9 +54,6 @@ class Coord(Enum):
   @classmethod
   def diagonals(cls):
     return Coord.W, Coord.N, Coord.S, Coord.E
-  
-  def __repr__(self) -> str:
-    return self.name
 
 adjacent = {c.value: c for c in Coord}
 
