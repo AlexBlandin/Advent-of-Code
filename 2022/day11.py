@@ -1,43 +1,38 @@
-from operator import itemgetter
+from functools import partial
+from operator import itemgetter, mul, add
 from pathlib import Path
+from typing import Callable, Union
 from math import prod, lcm
 
-lines = Path("day11.txt").read_text().replace(",", "").splitlines()
+def last_word(lines: list[str], target: Union[int, slice] = -1, post: Callable = int):
+  return map(post, map(itemgetter(target), map(str.split, lines)))
 
-OP = {"+": 1, "*": 0}
-START = list(map(lambda xs: list(map(int, xs)), map(itemgetter(slice(2, None)), map(str.split, lines[1::7]))))
-OPS = list(map(lambda op: (0, 0) if op[1] == "old" else (OP[op[0]], int(op[1])), map(itemgetter(-2, -1), map(str.split, lines[2::7]))))
-DIVISORS = list(map(int, map(itemgetter(-1), map(str.split, lines[3::7]))))
-TRUES = list(map(int, map(itemgetter(-1), map(str.split, lines[4::7]))))
-FALSES = list(map(int, map(itemgetter(-1), map(str.split, lines[5::7]))))
+LINES = Path("day11.txt").read_text().replace(",", "").replace("* old", "** 2").splitlines()
+ITEMS = list(last_word(LINES[1::7], slice(2, None), lambda xs: list(map(int, xs))))
+OP = {"+": add, "*": mul, "**": pow}
+OPS = [partial(op, exp = v) if op is pow else partial(op, v) for op, v in zip(last_word(LINES[2::7], -2, post = OP.get), last_word(LINES[2::7]))]
+MODULOS = list(last_word(LINES[3::7]))
+TTHROW = last_word(LINES[4::7])
+FTHROW = last_word(LINES[5::7])
+TEST = map(lambda m, t, f: lambda x: f if x % m else t, MODULOS, TTHROW, FTHROW)
+PACKED = list(zip(OPS, TEST))
+LCM = lcm(*MODULOS)
 
-LCM = lcm(*DIVISORS)
-PACKED = list(zip(OPS, DIVISORS, TRUES, FALSES))
-
-def play(n = 20, relief = False, unpack = PACKED):
-  sn = [0 for _ in START]
-  it = [(i, t) for i, it in enumerate(START) for t in it]
-  for t, v in it:
+def play(n = 20, relief = False, unpack = PACKED, items = ITEMS):
+  seen = [0 for _ in items]
+  item = [(monkey, worry) for monkey, holding in enumerate(items) for worry in holding]
+  for t, v in item:
     g = t
     for _ in range(n):
       while g >= t:
-        t = g
-        sn[t] += 1
-        (op, x), d, tr, fa = unpack[t]
-        if op:
-          v += x
-        elif x:
-          v *= x
-        else:
-          v *= v
+        seen[g] += 1
+        op, th = unpack[g]
+        v = op(v)
         if relief:
           v //= 3
-        v %= LCM # this line here is what defines the performance, almost all else is micro
-        if v % d:
-          g = fa
-        else:
-          g = tr
+        v %= LCM
+        t, g = g, th(v)
       t = g
-  return sn
+  return prod(sorted(seen)[-2:])
 
-print(prod(sorted(play(relief = True))[-2:]), prod(sorted(play(10000))[-2:]))
+print(play(relief = True), play(10000))
