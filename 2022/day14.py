@@ -3,8 +3,7 @@ from operator import itemgetter
 from pathlib import Path
 
 lines, collide = Path("day14.txt").read_text().splitlines(), set()
-for a, b in chain.from_iterable(map(lambda lst: list(zip(lst, lst[1:])), map(lambda s: s.split(" -> "), lines))):
-  (ax, ay), (bx, by) = map(int, a.split(",", maxsplit = 1)), map(int, b.split(",", maxsplit = 1))
+for (ax, ay), (bx, by) in chain.from_iterable(map(lambda lst: zip(lst, lst[1:]), map(lambda a: list(map(lambda b: list(map(int, b.split(","))), a)), map(lambda s: s.split(" -> "), lines)))):
   collide |= {(ax, y) for y in range(min(ay, by), max(ay, by) + 1)} if ax == bx else {(x, ay) for x in range(min(ax, bx), max(ax, bx) + 1)}
 ORIGIN, BELOW = (500, 0), max(collide, key = itemgetter(1))[1]
 for i, (x, y) in zip(count(), repeat(ORIGIN)):
