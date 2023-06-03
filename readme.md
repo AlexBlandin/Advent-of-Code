@@ -2,4 +2,4 @@
 
 > Read it and weep.
 
-Just a variety of languages. Mostly Python, but some Elixir and Nim are in there too.
+Probably the opposite of [pytudes](https://github.com/norvig/pytudes), though sometimes I do just solve it elegantly, often I just want to make 1-line horrors because they're fun.
