@@ -5,14 +5,14 @@ description = "Mixture of good and terrible solutions, often one-liners and obtu
 authors = ["AlexBlandin"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
-pylint = "^2.14.5"
+ruff = "^0.1.2"
 yapf = "^0.32.0"
-isort = "^5.10.1"
-pyupgrade = "^2.37.3"
-ruff = "^0.0.236"
+pylint = "^3.0.0"
+# isort = "^5.12.0" # deprecated, ruff has (mostly) replaced these
+# pyupgrade = "^3.15.0" # deprecated, ruff has (mostly) replaced these
 
 [build-system]
 requires = ["poetry-core"]
@@ -23,7 +23,28 @@ select = ["E", "F"]
 # ignore = ["E501"] # E501 (line length  violations)
 unfixable = ["B", "SIM", "TRY", "RUF"]
 line-length = 160
-target-version = "py39"
+target-version = "py310"
+
+[tool.ruff.lint] # they're being moved into here?
+select = ["E", "F"]
+# ignore = ["E501"] # E501 (line length  violations)
+unfixable = ["B", "SIM", "TRY", "RUF"]
+line-length = 160
+target-version = "py310"
+
+[tool.ruff.isort]
+ensure_newline_before_comments = true
+include_trailing_comma = true
+lines_after_imports = 1
+use_parentheses = true
+comment_prefix = " #"
+multi_line_output = 3
+force_grid_wrap = 0
+reverse_sort = true
+length_sort = true
+line_length = 160
+from_first = true
+indent = "  "
 
 [tool.yapf]
 based_on_style = "pep8"
@@ -54,66 +75,3 @@ length_sort = true
 line_length = 160
 from_first = true
 indent = "  "
-
-
-# [build-system]
-# requires = ["hatchling"]
-# build-backend = "hatchling.build"
-
-# [project]
-# name = "template"
-# description = ''
-# readme = "README.md"
-# requires-python = ">=3.7"
-# license = "MIT"
-# keywords = []
-# authors = [
-#   { name = "Alex Blandin", email = "20842735+AlexBlandin@users.noreply.github.com" },
-# ]
-# classifiers = [
-#   "Development Status :: 4 - Beta",
-#   "Programming Language :: Python",
-#   "Programming Language :: Python :: 3.7",
-#   "Programming Language :: Python :: 3.8",
-#   "Programming Language :: Python :: 3.9",
-#   "Programming Language :: Python :: 3.10",
-#   "Programming Language :: Python :: 3.11",
-#   "Programming Language :: Python :: Implementation :: CPython",
-#   "Programming Language :: Python :: Implementation :: PyPy",
-# ]
-# dependencies = []
-# dynamic = ["version"]
-
-# [project.urls]
-# Documentation = "https://github.com/unknown/template#readme"
-# Issues = "https://github.com/unknown/template/issues"
-# Source = "https://github.com/unknown/template"
-
-# [tool.hatch.version]
-# path = "template/__about__.py"
-
-# [tool.hatch.envs.default]
-# dependencies = [
-#   "pytest",
-#   "pytest-cov",
-# ]
-# [tool.hatch.envs.default.scripts]
-# cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=template --cov=tests {args}"
-# no-cov = "cov --no-cov {args}"
-
-# [[tool.hatch.envs.test.matrix]]
-# python = ["37", "38", "39", "310", "311"]
-
-# [tool.coverage.run]
-# branch = true
-# parallel = true
-# omit = [
-#   "template/__about__.py",
-# ]
-
-# [tool.coverage.report]
-# exclude_lines = [
-#   "no cov",
-#   "if __name__ == .__main__.:",
-#   "if TYPE_CHECKING:",
-# ]
