@@ -1,6 +1,7 @@
-with open("day3.txt") as o:
-  move = {"^": (1, 0), "<": (0, -1), ">": (0, 1), "v": (-1, 0)}
-  moves = [move[m] for m in o.read().strip()]
+from pathlib import Path
+
+move = {"^": (1, 0), "<": (0, -1), ">": (0, 1), "v": (-1, 0)}
+moves = [move[m] for m in Path("day3.txt").read_text().strip()]
 pos = (0, 0)
 visited = {pos}
 for m in moves:

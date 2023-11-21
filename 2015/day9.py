@@ -1,31 +1,25 @@
+from collections import defaultdict, Counter
 from itertools import combinations, chain
-from collections import Counter
 from operator import itemgetter
 from pathlib import Path
-from parse import parse
 
-lines = Path("day9.txt").read_text().splitlines()
-kv_sort = lambda d: dict(sorted(sorted(d.items(), key = itemgetter(0)), key = itemgetter(1)))
-D, C = {}, set()
+distances = defaultdict(int)
+connected = set()
+for line in Path("day9.txt").read_text().splitlines():
+  match line.split():
+    case [a, "to", b, "=", d]:
+      a, b = min(a, b), max(a, b)
+      distances[(a, b)] = int(d)
+      connected |= {a, b}
 
-for line in lines:
-  if p := parse("{} to {} = {:d}", line):
-    a, b, d = p.fixed
-    a, b = min(a, b), max(a, b)
-    D[(a, b)] = d
-    C |= {a, b}
-D = kv_sort(D)
+def distance(c: tuple[tuple[str, str], ...]) -> int:
+  return sum(filter(None, map(distances.get, c)))
 
-def distance(c: tuple):
-  return sum(map(D.get, c))
+def hamiltonian(connection: tuple[str, str]):
+  dists = list(Counter(chain(map(itemgetter(0), connection), map(itemgetter(1), connection))).values())
+  return dists.count(1) + dists.count(2) == len(dists) and {a for b in connection for a in b} == connected
 
-def hamiltonian(c):
-  d, s = list(Counter(chain(map(itemgetter(0), c), map(itemgetter(1), c))).values()), set(c)
-  return d.count(1) + d.count(2) == len(d) and {a for b in c for a in b} == C
-
-mn = min(filter(hamiltonian, combinations(iter(D), len(C) - 1)), key = distance)
-mx = max(filter(hamiltonian, combinations(iter(D), len(C) - 1)), key = distance)
+ham = tuple(filter(hamiltonian, combinations(iter(distances), len(connected) - 1))) # type: ignore
+mn = min(ham, key = distance)
+mx = max(ham, key = distance)
 print(distance(mn), distance(mx))
-# print({*map(" -> ".join, mn)})
-# print({*map(" -> ".join, mx)})
-# print(C)

@@ -1,7 +1,5 @@
+from functools import reduce
 from pathlib import Path
-
-lines = Path("day10.txt").read_text().splitlines()
-s = lines[0]
 
 def looksay(s, _):
   p, c = s[0], 1
@@ -15,8 +13,7 @@ def looksay(s, _):
   o.append(f"{c}{p}")
   return "".join(o)
 
-from functools import reduce
-
+s = Path("day10.txt").read_text()
 r40 = reduce(looksay, range(40), s)
 r50 = reduce(looksay, range(50), s)
 print(len(r40), len(r50))

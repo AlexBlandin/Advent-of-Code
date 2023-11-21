@@ -1,28 +1,25 @@
-from itertools import product
-from parse import parse
+from pathlib import Path
 
-with open("day6.txt") as o:
-  lines = [line.strip() for line in o.readlines()]
+import numpy as np
 
-bon, boff, bnot = lambda x: True, lambda x: False, lambda x: not x
-don, doff, dnot = lambda x: x + 1, lambda x: max(0, x - 1), lambda x: x + 2
-bgrid = [[False for _ in range(1000)] for __ in range(1000)]
-dgrid = [[0 for _ in range(1000)] for __ in range(1000)]
-for line in lines:
-  offset = 0
-  bop, dop = boff, doff
-  if line[6] == "n": # turn on
-    offset = 7
-    bop, dop = bon, don
-  elif line[6] == "f": # turn off
-    offset = 8
-    bop, dop = boff, doff
-  elif line[6] == " ": # toggle
-    offset = 6
-    bop, dop = bnot, dnot
-  a, b, c, d = parse("{:d},{:d} through {:d},{:d}", line[offset:]).fixed
-  for x, y in product(range(a, c + 1), range(b, d + 1)):
-    bgrid[x][y] = bop(bgrid[x][y])
-    dgrid[x][y] = dop(dgrid[x][y])
+def square(a, b, c, d):
+  return slice(int(a), int(c) + 1), slice(int(b), int(d) + 1)
 
-print(sum(map(sum, bgrid)), sum(map(sum, dgrid)))
+bools = np.zeros((1000, 1000), bool)
+ints = np.zeros((1000, 1000), np.int32)
+for line in Path("day6.txt").read_text().replace(",", " ").splitlines():
+  match line.split():
+    case ["turn", "on", a, b, "through", c, d]:
+      x, y = square(a, b, c, d)
+      bools[x, y] = True
+      ints[x, y] += 1
+    case ["turn", "off", a, b, "through", c, d]:
+      x, y = square(a, b, c, d)
+      bools[x, y] = False
+      ints[x, y] = np.maximum(0, ints[x, y] - 1)
+    case ["toggle", a, b, "through", c, d]:
+      x, y = square(a, b, c, d)
+      bools[x, y] = ~bools[x, y]
+      ints[x, y] += 2
+
+print(bools.sum(), ints.sum())

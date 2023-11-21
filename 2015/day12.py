@@ -1,29 +1,29 @@
 from pathlib import Path
 from json import loads
 
-lines = Path("day12.txt").read_text().splitlines()
-
-db = loads(lines[0])
-
 def rsum(x):
-  if isinstance(x, int):
-    return x
-  elif isinstance(x, dict):
-    return sum(map(rsum, x.keys())) + sum(map(rsum, x.values()))
-  elif isinstance(x, list):
-    return sum(map(rsum, x))
-  else:
-    return 0
+  match x:
+    case int(x):
+      return x
+    case dict(x):
+      return sum(map(rsum, x.keys())) + sum(map(rsum, x.values()))
+    case list(x):
+      return sum(map(rsum, x))
+    case _:
+      return 0
 
 def redsum(x):
-  if isinstance(x, int):
-    return x
-  elif isinstance(x, dict):
-    if "red" in x.values(): return 0 # that's literally it
-    return sum(map(redsum, x.keys())) + sum(map(redsum, x.values()))
-  elif isinstance(x, list):
-    return sum(map(redsum, x))
-  else:
-    return 0
+  match x:
+    case int(x):
+      return x
+    case dict(x):
+      if "red" in x.values():
+        return 0 # that's literally it
+      return sum(map(redsum, x.keys())) + sum(map(redsum, x.values()))
+    case list(x):
+      return sum(map(redsum, x))
+    case _:
+      return 0
 
+db = loads(Path("day12.txt").read_text())
 print(rsum(db), redsum(db))

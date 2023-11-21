@@ -1,51 +1,52 @@
-from operator import inv, or_, and_, lshift, rshift
-from graphlib import TopologicalSorter as topo
-from parse import parse
-with open("day7.txt") as o:
-  lines = [line.strip() for line in o.readlines()]
+from collections import defaultdict
+from operator import rshift, lshift, and_, or_, inv
+from graphlib import TopologicalSorter
+from pathlib import Path
 
-G = {} # G[w] = {s0,s1?}   # wire sources
-O = {} # O[w] = op(s0,s1?) # will lazily perform lookups for "current" value
-A = {} # A[w] = 0-65535    # the value of a wire
+wire_sources = defaultdict(set) # wire_sources[wire]: {s0,s1?}
+wire_op = {} # wire_op[wire]: (op, (s0,s1?)) # will lazily perform lookups for "current" value
+wire_val = {} # wire_val[wire]: 0-65535
 
-def add_input(G, A, w, s):
-  if s.isdecimal(): A[s] = int(s)
-  else: G.setdefault(w, set()).add(s)
+def add_input(wire, source, g = wire_sources, a = wire_val):
+  if source.isdecimal():
+    a[source] = int(source)
+  else:
+    g[wire].add(source)
 
-def op(f, *arg):
-  return f(*[A[a] for a in arg]) & 65535
+def do_op(f, *arg):
+  return f(*[wire_val[a] for a in arg]) & 65535
 
-for line in lines:
-  lhs, w = line.split(" -> ")
-  if p := parse("NOT {}", lhs):
-    s0 = p.fixed[0]
-    O[w] = inv, s0
-  elif p := parse("{} AND {}", lhs):
-    s0, s1 = p.fixed
-    O[w] = and_, s0, s1
-  elif p := parse("{} OR {}", lhs):
-    s0, s1 = p.fixed
-    O[w] = or_, s0, s1
-  elif p := parse("{} LSHIFT {}", lhs):
-    s0, s1 = p.fixed
-    O[w] = lshift, s0, s1
-  elif p := parse("{} RSHIFT {}", lhs):
-    s0, s1 = p.fixed
-    O[w] = rshift, s0, s1
-  elif p := parse("{}", lhs):
-    s0 = p.fixed[0]
-    O[w] = int, s0
-  for s in p:
-    add_input(G, A, w, s)
+for line in Path("day7.txt").read_text().splitlines():
+  lhs, wire = line.split(" -> ")
+  match lhs.split():
+    case ["NOT", source0]:
+      wire_op[wire] = inv, source0
+    case [source0, "AND", source1]:
+      wire_op[wire] = and_, source0, source1
+    case [source0, "OR", source1]:
+      wire_op[wire] = or_, source0, source1
+    case [source0, "LSHIFT", source1]:
+      wire_op[wire] = lshift, source0, source1
+    case [source0, "RSHIFT", source1]:
+      wire_op[wire] = rshift, source0, source1
+    case [source0]:
+      wire_op[wire] = int, source0
+  match lhs.split():
+    case [source0] | [_, source0]:
+      add_input(wire, source0)
+    case [source0, _, source1]:
+      add_input(wire, source0)
+      add_input(wire, source1)
 
-order = tuple(topo(G).static_order())
-for e, (o, *s) in zip(order, map(O.get, order)):
-  A[e] = op(o, *s)
+order = tuple(TopologicalSorter(wire_sources).static_order())
 
-old_a = A["a"] # previous output
-O["b"], A[old_a] = (int, old_a), old_a
+for wire in order:
+  wire_val[wire] = do_op(*wire_op[wire])
 
-for e, (o, *s) in zip(order, map(O.get, order)):
-  A[e] = op(o, *s)
+old_val_a = wire_val["a"] # previous output
+wire_op["b"], wire_val[old_val_a] = (int, old_val_a), old_val_a
 
-print(old_a, A["a"])
+for wire in order:
+  wire_val[wire] = do_op(*wire_op[wire])
+
+print(old_val_a, wire_val["a"])

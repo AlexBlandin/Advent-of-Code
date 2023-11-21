@@ -4,11 +4,11 @@ from operator import itemgetter
 from pathlib import Path
 from parse import parse
 
-lines = Path("day13.txt").read_text().splitlines()
-kv_sort = lambda d: dict(sorted(sorted(d.items(), key = itemgetter(0)), key = itemgetter(1)))
-D, C = defaultdict(int), set()
+def kv_sort(d):
+  return dict(sorted(sorted(d.items(), key = itemgetter(0)), key = itemgetter(1)))
 
-for line in lines:
+D, C = defaultdict(int), set()
+for line in Path("day13.txt").read_text().splitlines():
   if p := parse("{} would {} {:d} happiness units by sitting next to {}.", line):
     a, gain, d, b = p.fixed
     a, b = min(a, b), max(a, b)
