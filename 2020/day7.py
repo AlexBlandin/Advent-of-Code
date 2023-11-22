@@ -1,9 +1,27 @@
-parent={}
-child={outer:dict(inner + [parent.setdefault(i,set()).add(outer) for i,c in inner]*0) for outer, inner in [(outer,list(map(lambda i:(i[0],int(i[1])),map(lambda i: tuple(reversed(i.strip().split(" ",1))), inner.replace("bags","").replace("bag","").replace(".","").split(",")))) if "other" not in inner else []) for outer,inner in [tuple(rule.split(" bags contain ",1)) for rule in open("day7.txt").readlines()]]}
-s,l=set(parent.setdefault("shiny gold",set())),len(parent["shiny gold"])
-while len(s:=s.union(*[parent[i] for i in s if i in parent]))>l: l=len(s)
-def r(c): return 0 if child[c]=={} else sum(v*r(i)+v for i,v in child[c].items())
-print(l,r("shiny gold"))
+from pathlib import Path
+
+parent = {}
+child = {
+  outer: dict(inner + [parent.setdefault(i, set()).add(outer) for i, c in inner] * 0)
+  for outer, inner in [(
+    outer,
+    list(
+      map(
+        lambda i:
+        (i[0], int(i[1])), map(lambda i: tuple(reversed(i.strip().split(" ", 1))),
+                               inner.replace("bags", "").replace("bag", "").replace(".", "").split(","))
+      )
+    ) if "other" not in inner else []
+  ) for outer, inner in [tuple(rule.split(" bags contain ", 1)) for rule in Path("day7.txt").read_text().splitlines()]]
+}
+s, ln = set(parent.setdefault("shiny gold", set())), len(parent["shiny gold"])
+while len(s := s.union(*[parent[i] for i in s if i in parent])) > ln:
+  ln = len(s)
+
+def r(c):
+  return 0 if child[c] == {} else sum(v * r(i) + v for i, v in child[c].items())
+
+print(ln, r("shiny gold"))
 
 # print(child["shiny gold"])
 # print(child)

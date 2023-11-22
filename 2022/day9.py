@@ -1,3 +1,4 @@
+from itertools import pairwise
 from pathlib import Path
 from typing import NamedTuple
 from enum import Enum
@@ -61,7 +62,7 @@ moves = [(Coord[d], int(n)) for d, n in map(str.split, Path("day9.txt").read_tex
 
 def step(move: Coord, knots: list[XY], seen: set[XY]):
   knots[0] = knots[0] + move.value
-  for i, (node, head) in enumerate(zip(knots[1:], knots), 1):
+  for i, (head, node) in enumerate(pairwise(knots), 1):
     if head - node in adjacent:
       break
     knots[i] = node >> head

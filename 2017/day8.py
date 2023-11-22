@@ -20,7 +20,9 @@ for line in lines:
     case ">=":
       do_op = regs[creg] >= cval
   match op:
-    case "inc" if do_op: regs[reg] += n
-    case "dec" if do_op: regs[reg] -= n
+    case "inc" if do_op:
+      regs[reg] += n
+    case "dec" if do_op:
+      regs[reg] -= n
   peak = max(regs[reg], peak)
 print(max(regs.values()), peak)

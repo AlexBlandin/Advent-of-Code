@@ -8,7 +8,7 @@ for line in lines:
   # this currently inserts it "dumbly"
   
   result = []
-  for nex, val, prev in zip(line.split()[1:] + [None], line.split(), [None] + line.split()):
+  for nex, val, prev in zip([*line.split()[1:], None], line.split(), [None, *line.split()], strict = False):
     if val[0].isdigit() and nex in ["+", "*"] and prev in ["+", "*"]:
       result.append(f"{val})")
     elif val[0].isdigit() and nex in ["+", "*"]:

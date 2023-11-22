@@ -1,9 +1,9 @@
 from functools import cache
 from pathlib import Path
 from typing import NamedTuple, Self
-from string import ascii_uppercase as UPPER
+from string import ascii_uppercase
 
-TILES = UPPER + "-|+ "
+TILES = ascii_uppercase + "-|+ "
 encode, decode = cache(TILES.index), TILES.__getitem__
 GRID = [[encode(c) for c in row] for row in Path("day19.txt").read_text().splitlines()]
 GRID = [[encode(c) for c in row] for row in """     |          
@@ -12,7 +12,7 @@ GRID = [[encode(c) for c in row] for row in """     |
  F---|----E|--+ 
      |  |  |  D 
      +B-+  +--+ 
-""".splitlines()]
+""".splitlines()] # noqa: W291
 WIDTH, HEIGHT = len(GRID[0]), len(GRID)
 SEEN: list[str] = []
 
@@ -34,15 +34,15 @@ def isapipe(x: int):
 
 @cache
 def islettr(x: int):
-  return x in range(len(UPPER))
+  return x in range(len(ascii_uppercase))
 
 @cache
 def isatile(x: int):
-  return x in range(len(UPPER), len(TILES))
+  return x in range(len(ascii_uppercase), len(TILES))
 
 @cache
 def notblank(x: int):
-  return x in range(len(TILES)-1)
+  return x in range(len(TILES) - 1)
 
 @cache
 def switchpipe(x: int):
@@ -83,7 +83,11 @@ class Point(NamedTuple):
     return {k: p for k, p in self()._asdict().items() if 0 <= p.x < WIDTH and 0 <= p.y < HEIGHT and notblank(p.c)}
 
 class Cardinal(NamedTuple):
-  """The cardinal directions from a point (default `Point(0, 0)`), including "+1" points so we can see past pipes that overlap (as there are no `||` we need to worry about, only `|-|`, etc.)"""
+  """
+  The cardinal directions from a point (default `Point(0, 0)`),
+  including "+1" points so we can see past pipes that overlap
+  (as there are no `||` we need to worry about, only `|-|`, etc.)
+  """
   up: Point = Point(0, -1)
   down: Point = Point(0, 1)
   left: Point = Point(-1, 0)
@@ -96,11 +100,11 @@ class Cardinal(NamedTuple):
   @staticmethod
   def neighbours(p: Point):
     c = Cardinal()
-    return Cardinal(p + c[0], p + c[1], p + c[2], p + c[3])#, p + c[4], p + c[5], p + c[6], p + c[7])
+    return Cardinal(p + c[0], p + c[1], p + c[2], p + c[3]) #, p + c[4], p + c[5], p + c[6], p + c[7])
 
 @cache
 def pipefrom(p: Point):
-  return encode("-") if p in {Point(1, 0), Point(-1,0)} else encode("|")
+  return encode("-") if p in {Point(1, 0), Point(-1, 0)} else encode("|")
 
 start = Point(GRID[0].index(encode("|")))
 curr, prev = start + Cardinal().down, start
@@ -118,8 +122,13 @@ while len(
       break
   else:
     # 2. "forward", we are continuing along a pipe in the same direction (the next section can be the same as curr/prev, a letter, or connector)
-    # 3. "overlap", we are going to continue in the same direction (sometimes curr is a letter, which we treat as equal to prev if prev is a - or |, print if not so I fix), however the next is the wrong direction, so peek one ahead to get the next section (the prev or +), from what I gather there is no connector that does this so we only have to worry about this case when curr is a letter or -/| but we'll print and halt if there's something unusal so that we can fix anything
-    if islettr(curr.c): SEEN.append(decode(curr.c))
+    # 3. "overlap", we are going to continue in the same direction
+    # (sometimes curr is a letter, which we treat as equal to prev if prev is a - or |, print if not so I fix)
+    # however the next is the wrong direction, so peek one ahead to get the next section (the prev or +),
+    # from what I gather there is no connector that does this so we only have to worry about this case when curr is a letter or -/|
+    # but we'll print and halt if there's something unusal so that we can fix anything
+    if islettr(curr.c):
+      SEEN.append(decode(curr.c))
     direction = (curr - prev).norm # our current direction, normalised in case we skipped a bunch
     nextpoint = curr + direction
     frompipe = curr.c if isapipe(curr.c) else prev.c if isapipe(prev.c) else pipefrom(direction)

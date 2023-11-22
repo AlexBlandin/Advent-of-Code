@@ -10,7 +10,8 @@ divisor = 2147483647
 def g(s: int, m: int, d: int = divisor, cheat: int = 0):
   if cheat:
     while True:
-      if s & cheat == s: yield s
+      if s & cheat == s:
+        yield s
       s = (s * m) % d
   while True:
     yield s

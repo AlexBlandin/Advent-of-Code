@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from collections import deque
 from pathlib import Path
-from typing import Callable
+from collections.abc import Callable
 
 lines = Path("day18.txt").read_text().splitlines()
 
@@ -12,10 +12,11 @@ lines = Path("day18.txt").read_text().splitlines()
 LIVE, PC, SNDS = -1, -2, -3 # so we can address them
 
 REGS = [0, 0, 0, 0, 0, 0] # the base registers, each progam later gets their own copy
-RLUT = dict(zip("abfip0", range(len(REGS))))
+RLUT = dict(zip("abfip0", range(len(REGS)), strict = True))
 
 def convert(s: str):
-  if s in RLUT: return RLUT[s]
+  if s in RLUT:
+    return RLUT[s]
   else:
     i = len(REGS)
     RLUT[s] = i
@@ -53,7 +54,8 @@ class OP:
   
   def rcv(self, regs: list[int], sndq: deque[int], rcvq: deque[int]):
     if sndq is rcvq: # just a trick for part 1, so we can exit early
-      if regs[self.reg]: regs[SNDS], regs[LIVE] = rcvq.popleft(), False
+      if regs[self.reg]:
+        regs[SNDS], regs[LIVE] = rcvq.popleft(), False
     elif len(rcvq):
       regs[self.reg], regs[LIVE] = rcvq.popleft(), True
     else:
@@ -62,7 +64,7 @@ class OP:
 
 ops = [OP(*line.split()) for line in lines]
 REGS += [0, 0, True]
-a, b, c, qa, qb, qc = REGS[:], REGS[:], REGS[:], deque(maxlen=1), deque(), deque()
+a, b, c, qa, qb, qc = REGS[:], REGS[:], REGS[:], deque(maxlen = 1), deque(), deque()
 c[convert("p")] = 1
 
 while a[LIVE]:

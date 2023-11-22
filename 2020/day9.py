@@ -1,7 +1,7 @@
 from itertools import product
+from pathlib import Path
 
-with open("day9.txt") as o:
-  n = [int(x) for x in map(str.strip, o.readlines()) if len(x)]
+n = [int(x) for x in Path("day9.txt").read_text().splitlines() if len(x)]
 for i in range(25, len(n)):
   if n[i] not in [x + y for x, y in product(n[i - 25:i], n[i - 25:i])]:
     a, s = 0, 0

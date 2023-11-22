@@ -9,10 +9,10 @@ with open("day17.txt") as o:
         H.add((x, y, 0, 0))
 
 def neighbours(p, dim):
-  return [tuple(a + b for a, b in zip(p, c)) for c in product((0, -1, 1), repeat = dim)][1:]
+  return [tuple(a + b for a, b in zip(p, c, strict = True)) for c in product((0, -1, 1), repeat = dim)][1:]
 
 timesteps = 6
-for t in range(timesteps):
+for _ in range(timesteps):
   d, h = {}, {} # all adjacenct points from D/H, and the value is the number it's adjacent to
   for p in D:
     for n in neighbours(p, 3):

@@ -1,5 +1,6 @@
-with open("day8.txt") as o:
-  b = [tuple(l.strip().split()) for l in o.readlines()]
+from pathlib import Path
+
+b = list(map(tuple, map(str.split, Path("day8.txt").read_text().splitlines())))
 h = set()
 a, c = 0, 0
 while c not in h and c < len(b):

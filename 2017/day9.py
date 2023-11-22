@@ -4,7 +4,7 @@ stream = Path("day9.txt").read_text().strip()
 cancel, garbage = False, False
 depth, score, removed = 0, 0, 0
 
-for i, c in enumerate(stream):
+for c in stream:
   if cancel:
     cancel = False
     continue

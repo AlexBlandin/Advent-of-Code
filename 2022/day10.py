@@ -5,7 +5,8 @@ x, c, s, screen = 1, 0, 0, [[False for _ in range(40)] for _ in range(6)]
 
 def step(c, x):
   j, i = divmod(c, 40)
-  if x - 1 <= i <= x + 1: screen[j][i] = True
+  if x - 1 <= i <= x + 1:
+    screen[j][i] = True
   return 0 if (c - 19) % 40 else (c + 1) * x
 
 for op in ops:

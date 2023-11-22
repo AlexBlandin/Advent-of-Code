@@ -6,10 +6,7 @@ side = len(heightmap)
 
 def lowest(xy):
   x, y = xy
-  return all(
-    heightmap[x][y] < heightmap[a][b] for a, b in [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)]
-    if 0 <= a < side and 0 <= b < side
-  )
+  return all(heightmap[x][y] < heightmap[a][b] for a, b in [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)] if 0 <= a < side and 0 <= b < side)
 
 lows = list(filter(lowest, [(x, y) for x in range(side) for y in range(side)]))
 risk = len(lows) + sum(heightmap[x][y] for x, y in lows)
@@ -31,7 +28,8 @@ def basin(xy: tuple):
                  if 0 <= a < side and 0 <= b < side and heightmap[a][b] != 9 and (a, b) in a_basin]:
         if a_basin[ab] != xy:
           for cd in inbasin[a_basin[ab]]:
-            if cd != ab: a_basin[cd] = a_basin[xy]
+            if cd != ab:
+              a_basin[cd] = a_basin[xy]
           inbasin[a_basin[xy]] += inbasin[a_basin[ab]]
           del inbasin[a_basin[ab]]
           a_basin[ab] = a_basin[xy]

@@ -6,9 +6,9 @@ lines = Path("day13.txt").read_text().splitlines()
 dots, folds = [], []
 for line in lines:
   if p := parse("{:d},{:d}", line):
-    dots.append(p.fixed)
+    dots.append(p.fixed) # type: ignore
   elif p := parse("fold along {}={:d}", line):
-    folds.append(p.fixed)
+    folds.append(p.fixed) # type: ignore
 
 w, h = max(map(itemgetter(0), dots)) + 1, max(map(itemgetter(1), dots)) + 1
 paper = [[False] * w for _ in range(h)]
@@ -30,16 +30,20 @@ def fold_up(line: int):
     a += [[False] * w for _ in range(len(a) - len(b))]
   else:
     b += [[False] * w for _ in range(len(b) - len(a))]
-  paper[:] = [list(map(or_, ra, rb)) for ra,rb in zip(a, reversed(b))]
+  paper[:] = [list(map(or_, ra, rb)) for ra, rb in zip(a, reversed(b), strict = True)]
 
 first_fold, first_line = folds.pop(0)
-if first_fold == "x": fold_over(first_line)
-else: fold_up(first_line)
+if first_fold == "x":
+  fold_over(first_line)
+else:
+  fold_up(first_line)
 print(sum(map(sum, paper)))
 
 for fold, line in folds:
-  if fold == "x": fold_over(line)
-  else: fold_up(line)
+  if fold == "x":
+    fold_over(line)
+  else:
+    fold_up(line)
 
 for row in paper:
   print("".join(map(lambda b: "#" if b else " ", row)))

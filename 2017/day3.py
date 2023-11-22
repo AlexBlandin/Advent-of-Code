@@ -23,4 +23,7 @@ while acc < position:
   elif m[y - 1][x] and not m[y][x - 1]:
     x -= 1
 
-print(ceil((sqrt(position) - 1) / 2) + min(abs(position - spokes[-1]), abs(position - spokes[-2])), acc)
+print(
+  ceil((sqrt(position) - 1) / 2) + min(abs(position - spokes[-1]), abs(position - spokes[-2])),
+  acc,
+)

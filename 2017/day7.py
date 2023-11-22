@@ -23,7 +23,8 @@ for line in lines:
       for kid in kids:
         up[kid] = name
 root = next(iter(up))
-while up[root]: root = up[root]
+while up[root]:
+  root = up[root]
 
 @cache
 def weight(node: str) -> int: # shhh I know that's not right, but shhh
@@ -32,19 +33,21 @@ def weight(node: str) -> int: # shhh I know that's not right, but shhh
   else:
     return masses[node]
 
-def balance(node: str) -> int:
+def balance(node: str) -> int | None:
   kids = down[node]
   if kids:
     ws = list(map(weight, kids))
     correct = mode(ws)
+    index = 0
     for i, w in enumerate(ws):
       if w != correct:
+        index = i
         break
     else:
       return 0
-    if (b := balance(kids[i])):
+    if (b := balance(kids[index])):
       return b
     else:
-      return correct - ws[i] + masses[kids[i]]
+      return correct - ws[index] + masses[kids[index]]
 
 print(root, balance(root))

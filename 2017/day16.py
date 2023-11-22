@@ -20,17 +20,17 @@ def repeat(moves: list[tuple[int, int, int]]):
 
 def dance(steps: int, moves: list[tuple[int, int, int]], programs: list[int]):
   loop = {}
-  for i, (t, a, b) in zip(range(steps), repeat(moves)):
+  for i, (t, a, b) in zip(range(steps), repeat(moves), strict = False):
     if t == 0:
       programs = programs[-a:] + programs[:-a]
     else:
       if t == 2:
         a, b = programs.index(a), programs.index(b)
       programs[a], programs[b] = programs[b], programs[a]
-    state = (i%len(moves), tuple(programs))
+    state = (i % len(moves), tuple(programs))
     if state in loop: # use repeating pattern for speedup
       return dance(steps % i, moves, list(range(16)))
     loop[state] = i
   return "".join([ascii_lowercase[p] for p in programs])
 
-print(dance(len(moves), moves, list(range(16))), dance(1000000000*len(moves), moves, list(range(16))))
+print(dance(len(moves), moves, list(range(16))), dance(1000000000 * len(moves), moves, list(range(16))))

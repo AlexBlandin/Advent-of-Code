@@ -5,13 +5,13 @@ from math import prod
 
 from circular import Circular
 
-lengths = list(Path("day10.txt").read_bytes().strip()) + [17, 31, 73, 47, 23]
+lengths = [*list(Path("day10.txt").read_bytes().strip()), 17, 31, 73, 47, 23]
 circle, pos, skip = Circular(range(256)), 0, 0
 
-def knot(lengths, circle = Circular(range(256)), pos = 0, skip = 0):
-  for l in lengths:
-    circle[pos:pos + l] = circle[pos + l - 1:pos - 1:-1]
-    pos += skip + l
+def knot(lengths, circle, pos = 0, skip = 0):
+  for r in lengths:
+    circle[pos:pos + r] = circle[pos + r - 1:pos - 1:-1]
+    pos += skip + r
     skip += 1
   return circle, pos, skip
 
@@ -22,4 +22,8 @@ def knot_a_hash(lengths):
   return bytes(reduce(xor, circle[i * 16:(i + 1) * 16]) for i in range(16)).hex()
 
 if __name__ == "__main__":
-  print(prod(knot(list(map(int, Path("day10.txt").read_text().strip().split(","))))[0][:2]), knot_a_hash(lengths))
+  print(
+    prod(knot(list(map(int,
+                       Path("day10.txt").read_text().strip().split(","))), Circular(range(256)))[0][:2]),
+    knot_a_hash(lengths),
+  )
