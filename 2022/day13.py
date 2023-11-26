@@ -41,4 +41,7 @@ def ordered_cmp(left, right):
       return 0
 
 packets.sort(key = cmp_to_key(ordered_cmp))
-print(sum(map(itemgetter(0), filter(itemgetter(1), enumerate(map(ordered, lefts, rights), 1)))), (packets.index([[2]]) + 1) * (packets.index([[6]]) + 1))
+print(
+  sum(map(itemgetter(0), filter(itemgetter(1), enumerate(map(ordered, lefts, rights), 1)))),
+  (packets.index([[2]]) + 1) * (packets.index([[6]]) + 1),
+)

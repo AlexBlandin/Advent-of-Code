@@ -21,10 +21,10 @@ class XY(NamedTuple):
     delta = target - self
     if delta in adjacent:
       return self
-    for point in [c.value for c in Coord.cardinals()]:
+    for point in (c.value for c in Coord.cardinals()):
       if delta == point * 2:
         return self + point
-    for point in [c.value for c in Coord.diagonals()]:
+    for point in (c.value for c in Coord.diagonals()):
       if delta - point in adjacent:
         return self + point
     return self
@@ -58,7 +58,7 @@ class Coord(Enum):
 
 adjacent = {c.value: c for c in Coord}
 
-moves = [(Coord[d], int(n)) for d, n in map(str.split, Path("day9.txt").read_text().splitlines())]
+moves = [(Coord[d], int(n)) for d, n, *_ in map(str.split, Path("day9.txt").read_text().splitlines())]
 
 def step(move: Coord, knots: list[XY], seen: set[XY]):
   knots[0] = knots[0] + move.value

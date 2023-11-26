@@ -17,4 +17,8 @@ for op in ops:
     c += 1
     x += int(op[1])
 
-print(s, "\n".join("".join("#" if c else "." for c in row) for row in screen), sep = "\n")
+print(
+  s,
+  "\n".join("".join("#" if c else "." for c in row) for row in screen),
+  sep = "\n",
+)

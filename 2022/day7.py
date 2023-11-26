@@ -17,7 +17,11 @@ for line in Path("day7.txt").read_text().splitlines():
       file, filesize = cwd / filename, int(filesize)
       size[file], size[cwd] = filesize, size[cwd] + filesize
 
-for path in sorted([path for path in size if path in dirs], key = lambda path: len(path.parents), reverse = True):
+for path in sorted(
+  [path for path in size if path in dirs],
+  key = lambda path: len(path.parents),
+  reverse = True,
+):
   size[path.parent] += size[path]
 free_up = sum(filesize for path, filesize in size.items() if path not in dirs) - 40000000
 

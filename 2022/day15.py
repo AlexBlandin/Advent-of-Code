@@ -17,8 +17,16 @@ lines = [
   tuple(map(int, line[12:].replace(" y=", "").replace(" closest beacon is at x=", "").replace(":", ",").split(",")))
   for line in Path("day15.txt").read_text().splitlines()
 ]
-sensors = list(map(Point, map(itemgetter(0), lines), map(itemgetter(1), lines)))
-beacons = list(map(Point, map(itemgetter(2), lines), map(itemgetter(3), lines)))
+sensors = list(map(
+  Point,
+  map(itemgetter(0), lines),
+  map(itemgetter(1), lines),
+))
+beacons = list(map(
+  Point,
+  map(itemgetter(2), lines),
+  map(itemgetter(3), lines),
+))
 
 def manhatten(sensor: Point, beacon: Point) -> int:
   return abs(sensor.x - beacon.x) + abs(sensor.y - beacon.y)
@@ -41,7 +49,13 @@ def ranges_at(y, sensors = sensors, beacons = beacons):
       return range(square.x.start + offset, square.x.stop - offset)
   
   ranges = sorted(filter(None, map(intersect, map(coverage, sensors, beacons))), key = disjoint)
-  while len(ranges) != len(r := list(map(simplify, map(itemgetter(1), groupby(ranges, key = disjoint))))):
+  while len(ranges) != len(r := list(map(
+    simplify,
+    map(
+      itemgetter(1),
+      groupby(ranges, key = disjoint),
+    ),
+  ))):
     ranges = r
   return ranges
 
