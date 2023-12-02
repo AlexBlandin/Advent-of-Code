@@ -9,7 +9,8 @@ for a, b in lines:
   C[b].add(a)
   small |= {c for c in (a, b) if c == c.lower()}
 
-def search(n, v = None, c = C):
+
+def search(n, v=None, c=C):
   if v is None:
     v = set()
   if n == "end":
@@ -20,7 +21,8 @@ def search(n, v = None, c = C):
     return sum(search(m, v) for m in c[n])
   return 0
 
-def research(n, v = None, t = None, a = None, c = C):
+
+def research(n, v=None, t=None, a=None, c=C):
   if a is None:
     a = []
   if v is None:
@@ -34,5 +36,6 @@ def research(n, v = None, t = None, a = None, c = C):
   elif t is None and n != "start":
     return {r for m in c[n] for r in research(m, v, n, [*a, n]) if r}
   return set()
+
 
 print(search("start"), len(research("start")))

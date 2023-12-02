@@ -2,8 +2,10 @@ from pathlib import Path
 
 import numpy as np
 
+
 def square(a, b, c, d):
   return slice(int(a), int(c) + 1), slice(int(b), int(d) + 1)
+
 
 bools = np.zeros((1000, 1000), bool)
 ints = np.zeros((1000, 1000), np.int32)

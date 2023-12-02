@@ -8,7 +8,7 @@ n, history = len(banks), {}
 
 while tuple(banks) not in history:
   history[tuple(banks)] = len(history)
-  i, mx = max(enumerate(banks), key = itemgetter(1))
+  i, mx = max(enumerate(banks), key=itemgetter(1))
   banks[:] = map(add, banks.repeat(), [0] * (i + 1) + [1] * mx)
   banks[i] = 0
 

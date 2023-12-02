@@ -26,12 +26,14 @@ root = next(iter(up))
 while up[root]:
   root = up[root]
 
+
 @cache
-def weight(node: str) -> int: # shhh I know that's not right, but shhh
+def weight(node: str) -> int:  # shhh I know that's not right, but shhh
   if down[node]:
     return masses[node] + sum(weight(kid) for kid in down[node])
   else:
     return masses[node]
+
 
 def balance(node: str) -> int | None:
   kids = down[node]
@@ -45,9 +47,10 @@ def balance(node: str) -> int | None:
         break
     else:
       return 0
-    if (b := balance(kids[index])):
+    if b := balance(kids[index]):
       return b
     else:
       return correct - ws[index] + masses[kids[index]]
+
 
 print(root, balance(root))

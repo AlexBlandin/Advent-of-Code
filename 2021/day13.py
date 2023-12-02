@@ -6,14 +6,15 @@ lines = Path("day13.txt").read_text().splitlines()
 dots, folds = [], []
 for line in lines:
   if p := parse("{:d},{:d}", line):
-    dots.append(p.fixed) # type: ignore
+    dots.append(p.fixed)  # type: ignore
   elif p := parse("fold along {}={:d}", line):
-    folds.append(p.fixed) # type: ignore
+    folds.append(p.fixed)  # type: ignore
 
 w, h = max(map(itemgetter(0), dots)) + 1, max(map(itemgetter(1), dots)) + 1
 paper = [[False] * w for _ in range(h)]
 for x, y in dots:
   paper[y][x] = True
+
 
 def fold_over(line: int):
   for row in paper:
@@ -24,13 +25,15 @@ def fold_over(line: int):
       b += [False] * (len(b) - len(a))
     row[:] = list(map(or_, a, reversed(b)))
 
+
 def fold_up(line: int):
   a, b = paper[:line], paper[line + 1:]
   if len(a) < len(b):
     a += [[False] * w for _ in range(len(a) - len(b))]
   else:
     b += [[False] * w for _ in range(len(b) - len(a))]
-  paper[:] = [list(map(or_, ra, rb)) for ra, rb in zip(a, reversed(b), strict = True)]
+  paper[:] = [list(map(or_, ra, rb)) for ra, rb in zip(a, reversed(b), strict=True)]
+
 
 first_fold, first_line = folds.pop(0)
 if first_fold == "x":

@@ -3,18 +3,21 @@ from operator import rshift, lshift, and_, or_, inv
 from graphlib import TopologicalSorter
 from pathlib import Path
 
-wire_sources = defaultdict(set) # wire_sources[wire]: {s0,s1?}
-wire_op = {} # wire_op[wire]: (op, (s0,s1?)) # will lazily perform lookups for "current" value
-wire_val = {} # wire_val[wire]: 0-65535
+wire_sources = defaultdict(set)  # wire_sources[wire]: {s0,s1?}
+wire_op = {}  # wire_op[wire]: (op, (s0,s1?)) # will lazily perform lookups for "current" value
+wire_val = {}  # wire_val[wire]: 0-65535
 
-def add_input(wire, source, g = wire_sources, a = wire_val):
+
+def add_input(wire, source, g=wire_sources, a=wire_val):
   if source.isdecimal():
     a[source] = int(source)
   else:
     g[wire].add(source)
 
+
 def do_op(f, *arg):
   return f(*[wire_val[a] for a in arg]) & 65535
+
 
 for line in Path("day7.txt").read_text().splitlines():
   lhs, wire = line.split(" -> ")
@@ -43,7 +46,7 @@ order = tuple(TopologicalSorter(wire_sources).static_order())
 for wire in order:
   wire_val[wire] = do_op(*wire_op[wire])
 
-old_val_a = wire_val["a"] # previous output
+old_val_a = wire_val["a"]  # previous output
 wire_op["b"], wire_val[old_val_a] = (int, old_val_a), old_val_a
 
 for wire in order:

@@ -4,60 +4,77 @@ from operator import itemgetter
 from pathlib import Path
 from typing import NamedTuple
 
+
 class Point(NamedTuple):
   x: int
   y: int
+
 
 class Square(NamedTuple):
   mid: Point
   x: range
   y: range
 
+
 lines = [
   tuple(map(int, line[12:].replace(" y=", "").replace(" closest beacon is at x=", "").replace(":", ",").split(",")))
   for line in Path("day15.txt").read_text().splitlines()
 ]
-sensors = list(map(
-  Point,
-  map(itemgetter(0), lines),
-  map(itemgetter(1), lines),
-))
-beacons = list(map(
-  Point,
-  map(itemgetter(2), lines),
-  map(itemgetter(3), lines),
-))
+sensors = list(
+  map(
+    Point,
+    map(itemgetter(0), lines),
+    map(itemgetter(1), lines),
+  )
+)
+beacons = list(
+  map(
+    Point,
+    map(itemgetter(2), lines),
+    map(itemgetter(3), lines),
+  )
+)
+
 
 def manhatten(sensor: Point, beacon: Point) -> int:
   return abs(sensor.x - beacon.x) + abs(sensor.y - beacon.y)
+
 
 def coverage(sensor: Point, beacon: Point):
   r = manhatten(sensor, beacon)
   return Square(sensor, range(sensor.x - r, sensor.x + r + 1), range(sensor.y - r, sensor.y + r + 1))
 
+
 @cmp_to_key
 def disjoint(a: range, b: range):
   return a.stop < b.start
 
+
 def simplify(ranges: list[range]):
   return reduce(lambda a, b: range(min(a.start, b.start), max(a.stop, b.stop)), ranges)
 
-def ranges_at(y, sensors = sensors, beacons = beacons):
-  def intersect(square: Square, y = y):
+
+def ranges_at(y, sensors=sensors, beacons=beacons):
+  def intersect(square: Square, y=y):
     if y in square.y:
       offset = abs(square.mid.y - y)
       return range(square.x.start + offset, square.x.stop - offset)
-  
-  ranges = sorted(filter(None, map(intersect, map(coverage, sensors, beacons))), key = disjoint)
-  while len(ranges) != len(r := list(map(
-    simplify,
-    map(
-      itemgetter(1),
-      groupby(ranges, key = disjoint),
-    ),
-  ))):
+
+  ranges = sorted(filter(None, map(intersect, map(coverage, sensors, beacons))), key=disjoint)
+  while len(ranges) != len(
+    r := list(
+      map(
+        simplify,
+        map(
+          itemgetter(1),
+          groupby(ranges, key=disjoint),
+        ),
+      )
+    )
+  ):
     ranges = r
   return ranges
+
 
 where_it_isnt, y = [], 0
 search_space, Y = (20, 10) if len(lines) == 14 else (4000000, 2000000)

@@ -2,10 +2,12 @@ from pathlib import Path
 
 lines = Path("day3.txt").read_text().splitlines()
 lines = [[int(c) for c in ln] for ln in lines]
-cols = list(zip(*lines, strict = True))
+cols = list(zip(*lines, strict=True))
+
 
 def avg(x):
   return sum(x) / max(len(x), 1)
+
 
 gb = [int(0.5 + avg(c)) for c in cols]
 eb = [0 if b else 1 for b in gb]
@@ -13,8 +15,10 @@ g = int("".join(map(str, gb)), 2)
 e = int("".join(map(str, eb)), 2)
 ox, co = set(range(len(lines))), set(range(len(lines)))
 
+
 def at(ln, ls):
   return [ln[i] for i in ls]
+
 
 oxy, co2 = 0, 0
 for c in cols:

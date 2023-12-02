@@ -5,7 +5,7 @@ from math import ceil
 e, s = tuple(Path("day13.txt").read_text().splitlines())
 e, s = int(e), [int(i) if i != "x" else None for i in s.split(",")]
 bus = [(ceil(e / i) * i, i) for i in s if i]
-mes, (mo, mx) = [((b - o) % b, b) for o, b in enumerate(s) if b and b], max(filter(itemgetter(1), enumerate(s)), key = itemgetter(1))
+mes, (mo, mx) = [((b - o) % b, b) for o, b in enumerate(s) if b and b], max(filter(itemgetter(1), enumerate(s)), key=itemgetter(1))
 contest = next(T for T in range(999999999999222, 10**14, -mx) if all(T % b == o for o, b in mes))
 print((min(bus)[0] - e) * min(bus)[1], contest)
 

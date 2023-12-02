@@ -6,8 +6,9 @@ lines = Path("day14.txt").read_text().splitlines()
 base = lines[0]
 insert, letters, pairs = {}, Counter(base), Counter(pairwise(base))
 for rule in lines[2:]:
-  pair, mid = rule.split(" -> ", maxsplit = 1)
+  pair, mid = rule.split(" -> ", maxsplit=1)
   insert[tuple(pair)] = mid
+
 
 def ex(insert: dict, letters: Counter, pairs: Counter):
   for p, n in list(pairs.items()):
@@ -17,6 +18,7 @@ def ex(insert: dict, letters: Counter, pairs: Counter):
     letters[ln] += n
     pairs[(p0, ln)] += n
     pairs[(ln, p1)] += n
+
 
 c = 0
 for i in range(40):

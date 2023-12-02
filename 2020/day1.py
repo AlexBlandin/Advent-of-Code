@@ -7,10 +7,8 @@ from math import prod
 print(
   *[
     next(
-      map(
-        itemgetter(1), filter(lambda x: x[0] == 2020, map(lambda x: (sum(x), prod(x)), combinations(map(int,
-                                                                                                        Path("day1.txt").read_text().splitlines()), n)))
-      )
-    ) for n in (2, 3)
+      map(itemgetter(1), filter(lambda x: x[0] == 2020, map(lambda x: (sum(x), prod(x)), combinations(map(int, Path("day1.txt").read_text().splitlines()), n))))
+    )
+    for n in (2, 3)
   ]
-) # what an amazing auto formatting job
+)  # what an amazing auto formatting job

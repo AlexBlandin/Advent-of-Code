@@ -6,10 +6,10 @@ n, history = len(banks), {}
 
 while tuple(banks) not in history:
   history[tuple(banks)] = len(history)
-  i, mx = max(enumerate(banks), key = itemgetter(1))
+  i, mx = max(enumerate(banks), key=itemgetter(1))
   banks[i] = 0
   for j in range(i + 1, i + 1 + mx):
-    banks[j % len(banks)] += 1 # mx ended up being small, so this is fine
+    banks[j % len(banks)] += 1  # mx ended up being small, so this is fine
 
 print(
   len(history),

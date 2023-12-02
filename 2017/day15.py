@@ -7,6 +7,7 @@ ma, mb = 16807, 48271
 ca, cb = -4, -8
 divisor = 2147483647
 
+
 def g(s: int, m: int, d: int = divisor, cheat: int = 0):
   if cheat:
     while True:
@@ -17,7 +18,9 @@ def g(s: int, m: int, d: int = divisor, cheat: int = 0):
     yield s
     s = (s * m) % d
 
+
 def judge(mill: int, ga, gb):
   return sum(1 for _ in range(mill * 10**6 + 1) if (next(ga) & 0xFFFF) == (next(gb) & 0xFFFF))
 
-print(judge(40, g(sa, ma), g(sb, mb)), judge(5, g(sa, ma, cheat = ca), g(sb, mb, cheat = cb)))
+
+print(judge(40, g(sa, ma), g(sb, mb)), judge(5, g(sa, ma, cheat=ca), g(sb, mb, cheat=cb)))

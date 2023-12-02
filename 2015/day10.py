@@ -1,6 +1,7 @@
 from functools import reduce
 from pathlib import Path
 
+
 def looksay(s, _):
   p, c = s[0], 1
   o = []
@@ -12,6 +13,7 @@ def looksay(s, _):
       p, c = n, 1
   o.append(f"{c}{p}")
   return "".join(o)
+
 
 s = Path("day10.txt").read_text()
 r40 = reduce(looksay, range(40), s)

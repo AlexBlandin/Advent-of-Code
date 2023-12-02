@@ -12,24 +12,13 @@ for line in lines:
     for t, v in H[i].items():
       I[t][v].add(i)
 
-mfcsam = {
-  "children": 3,
-  "cats": 7,
-  "samoyeds": 2,
-  "pomeranians": 3,
-  "akitas": 0,
-  "vizslas": 0,
-  "goldfish": 5,
-  "trees": 3,
-  "cars": 2,
-  "perfumes": 1
-}
+mfcsam = {"children": 3, "cats": 7, "samoyeds": 2, "pomeranians": 3, "akitas": 0, "vizslas": 0, "goldfish": 5, "trees": 3, "cars": 2, "perfumes": 1}
 outdated = {"cats", "trees", "pomeranians", "goldfish"}
 comp = {"cats": +1, "trees": +1, "pomeranians": -1, "goldfish": -1, **{k: 0 for k in mfcsam if k not in outdated}}
 comparator = lambda a, b: -1 if a < b else 1 if a > b else 0
 
 S = {i: sum(1 for t, v in mfcsam.items() if i in I[t][v]) for i in range(1, 501)}
 U = {i: sum(1 for t, v in mfcsam.items() if i in I[t][v] and comparator(H[i][t], v) == comp[t]) for i in range(1, 501)}
-g = max(S, key = S.get)
-r = max(U, key = U.get)
+g = max(S, key=S.get)
+r = max(U, key=U.get)
 print(g, r)

@@ -4,9 +4,11 @@ from pathlib import Path
 ages = list(map(int, Path("day6.txt").read_text().split(",")))
 sim = deque(ages.count(i) for i in range(9))
 
+
 def step(sim: deque):
   sim.append(sim.popleft())
   sim[-3] += sim[-1]
+
 
 for _ in range(80):
   step(sim)
