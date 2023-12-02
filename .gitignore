@@ -13,6 +13,7 @@ tempCodeRunnerFile.py
 2020/c/advent
 
 # Distribution / packaging
+.ruff_cache/
 .Python
 build/
 develop-eggs/
