@@ -1,8 +1,6 @@
 from operator import itemgetter
 from pathlib import Path
 
-from rich import print
-
 
 def join(s: list):
   return "".join(map(str, s))
