@@ -38,6 +38,6 @@ for x, y in symbols:
         nums.add(num)
 
 print(
-  sum(starting[xy] for xy in keep),  # 537832
+  sum(starting[xy] for xy in keep),
   sum(prod(starting[xy] for xy in nums) for nums in maybe_gear.values() if len(nums) == 2),
 )
