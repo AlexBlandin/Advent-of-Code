@@ -33,27 +33,28 @@ def download(year: int, day: int):
   return md("\n".join(RE_DESC.findall(text.text)), heading_style="ATX", bullets="-").replace("\n\n\n", "\n\n"), inpt.text.rstrip()
 
 
-for year in trange(2015, date.today().year + 1, desc="year"):
+today = date.today()
+for year in trange(2015, today.year + 1, desc="year"):
   dir = Path(str(year))
   dir.mkdir(exist_ok=True)
-  for day in trange(1, 26, desc="day", leave=False):
-    py = dir / f"day{day}.py"
+  for day in trange(1, (25 if (year, today.month) != (today.year, 12) else today.day) + 1, desc="day", leave=False):
+    code = dir / f"day{day}.py"
     data = dir / f"day{day}.txt"
     desc = dir / f"day{day}.md"
-    if not py.is_file():
-      py.touch()
+    if not code.is_file():
+      code.touch()
     if not data.is_file():
       data.touch()
     if not desc.is_file():
       desc.touch()
 
-    if py.read_text().strip() == "":
-      py.write_text(fmt.format(day=day), encoding="utf8", newline="\n")
-    if data.read_text().strip() == "":
+    if not code.read_text().strip():
+      code.write_text(fmt.format(day=day), encoding="utf8", newline="\n")
+    if not data.read_text().strip():
       _, input_data = download(year, day)
       data.write_text(input_data, encoding="utf8", newline="\n")
       sleep(0.5)
-    if desc.read_text().strip() == "":
+    if not desc.read_text().strip():
       description, _ = download(year, day)
       desc.write_text(description, encoding="utf8", newline="\n")
       sleep(0.5)
