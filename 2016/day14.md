@@ -2,12 +2,12 @@
 
 In order to communicate securely with Santa while you're on this mission, you've been using a [one-time pad](https://en.wikipedia.org/wiki/One-time_pad) that you [generate](https://en.wikipedia.org/wiki/Security_through_obscurity) using a pre-agreed algorithm. Unfortunately, you've run out of keys in your one-time pad, and so you need to generate some more.
 
-To generate keys, you first get a stream of random data by taking the [MD5](https://en.wikipedia.org/wiki/MD5) of a pre-arranged [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) (your puzzle input) and an increasing integer index (starting with `0`, and represented in decimal); the resulting MD5 hash should be represented as a string of *lowercase* hexadecimal digits.
+To generate keys, you first get a stream of random data by taking the [MD5](https://en.wikipedia.org/wiki/MD5) of a pre-arranged [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) (your puzzle input) and an increasing integer index (starting with `0`, and represented in decimal); the resulting MD5 hash should be represented as a string of **lowercase** hexadecimal digits.
 
-However, not all of these MD5 hashes are *keys*, and you need `64` new keys for your one-time pad. A hash is a key *only if*:
+However, not all of these MD5 hashes are **keys**, and you need `64` new keys for your one-time pad. A hash is a key **only if**:
 
-- It contains *three* of the same character in a row, like `777`. Only consider the first such triplet in a hash.
-- One of the next `1000` hashes in the stream contains that same character *five* times in a row, like `77777`.
+- It contains **three** of the same character in a row, like `777`. Only consider the first such triplet in a hash.
+- One of the next `1000` hashes in the stream contains that same character **five** times in a row, like `77777`.
 
 Considering future hashes for five-of-a-kind sequences does not cause those hashes to be skipped; instead, regardless of whether the current hash is a key, always resume testing for keys starting with the very next hash.
 
@@ -20,5 +20,5 @@ For example, if the pre-arranged salt is `abc`:
 
 So, using our example salt of `abc`, index `22728` produces the `64`th key.
 
-Given the actual salt in your puzzle input, *what index* produces your `64`th one-time pad key?
+Given the actual salt in your puzzle input, **what index** produces your `64`th one-time pad key?
 

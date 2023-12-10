@@ -2,11 +2,11 @@
 
 A debugger program here is having an issue: it is trying to repair a memory reallocation routine, but it keeps getting stuck in an infinite loop.
 
-In this area, there are sixteen memory banks; each memory bank can hold any number of *blocks*. The goal of the reallocation routine is to balance the blocks between the memory banks.
+In this area, there are sixteen memory banks; each memory bank can hold any number of **blocks**. The goal of the reallocation routine is to balance the blocks between the memory banks.
 
 The reallocation routine operates in cycles. In each cycle, it finds the memory bank with the most blocks (ties won by the lowest-numbered memory bank) and redistributes those blocks among the banks. To do this, it removes all of the blocks from the selected bank, then moves to the next (by index) memory bank and inserts one of the blocks. It continues doing this until it runs out of blocks; if it reaches the last memory bank, it wraps around to the first one.
 
-The debugger would like to know how many redistributions can be done before a blocks-in-banks configuration is produced that *has been seen before*.
+The debugger would like to know how many redistributions can be done before a blocks-in-banks configuration is produced that **has been seen before**.
 
 For example, imagine a scenario with only four memory banks:
 
@@ -19,7 +19,7 @@ For example, imagine a scenario with only four memory banks:
 
 At this point, we've reached a state we've seen before: `2 4 1 2` was already seen. The infinite loop is detected after the fifth block redistribution cycle, and so the answer in this example is `5`.
 
-Given the initial block counts in your puzzle input, *how many redistribution cycles* must be completed before a configuration is produced that has been seen before?
+Given the initial block counts in your puzzle input, **how many redistribution cycles** must be completed before a configuration is produced that has been seen before?
 
 ## --- Part Two ---
 
@@ -27,5 +27,5 @@ Out of curiosity, the debugger would also like to know the size of the loop: sta
 
 In the example above, `2 4 1 2` is seen again after four cycles, and so the answer in that example would be `4`.
 
-*How many cycles* are in the infinite loop that arises from the configuration in your puzzle input?
+**How many cycles** are in the infinite loop that arises from the configuration in your puzzle input?
 

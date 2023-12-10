@@ -2,9 +2,9 @@
 
 You are faced with a security door designed by Easter Bunny engineers that seem to have acquired most of their security knowledge by watching [hacking](https://en.wikipedia.org/wiki/Hackers_(film)) [movies](https://en.wikipedia.org/wiki/WarGames).
 
-The *eight-character password* for the door is generated one character at a time by finding the [MD5](https://en.wikipedia.org/wiki/MD5) hash of some Door ID (your puzzle input) and an increasing integer index (starting with `0`).
+The **eight-character password** for the door is generated one character at a time by finding the [MD5](https://en.wikipedia.org/wiki/MD5) hash of some Door ID (your puzzle input) and an increasing integer index (starting with `0`).
 
-A hash indicates the *next character* in the password if its [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) representation starts with *five zeroes*. If it does, the sixth character in the hash is the next character of the password.
+A hash indicates the **next character** in the password if its [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) representation starts with **five zeroes**. If it does, the sixth character in the hash is the next character of the password.
 
 For example, if the Door ID is `abc`:
 
@@ -14,5 +14,5 @@ For example, if the Door ID is `abc`:
 
 In this example, after continuing this search a total of eight times, the password is `18f47a30`.
 
-Given the actual Door ID, *what is the password*?
+Given the actual Door ID, **what is the password**?
 

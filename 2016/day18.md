@@ -8,19 +8,17 @@ The type of tile (trapped or safe) in each row is based on the types of the tile
 
 For example, suppose you know the first row (with tiles marked by letters) and want to determine the next row (with tiles marked by numbers):
 
-
 ```
 ABCDE
 12345
-
 ```
 
-The type of tile `2` is based on the types of tiles `A`, `B`, and `C`; the type of tile `5` is based on tiles `D`, `E`, and an imaginary "safe" tile. Let's call these three tiles from the previous row the *left*, *center*, and *right* tiles, respectively. Then, a new tile is a *trap* only in one of the following situations:
+The type of tile `2` is based on the types of tiles `A`, `B`, and `C`; the type of tile `5` is based on tiles `D`, `E`, and an imaginary "safe" tile. Let's call these three tiles from the previous row the **left**, **center**, and **right** tiles, respectively. Then, a new tile is a **trap** only in one of the following situations:
 
-- Its *left* and *center* tiles are traps, but its *right* tile is not.
-- Its *center* and *right* tiles are traps, but its *left* tile is not.
-- Only its *left* tile is a trap.
-- Only its *right* tile is a trap.
+- Its **left** and **center** tiles are traps, but its **right** tile is not.
+- Its **center** and **right** tiles are traps, but its **left** tile is not.
+- Only its **left** tile is a trap.
+- Only its **right** tile is a trap.
 
 In any other situation, the new tile is safe.
 
@@ -33,16 +31,13 @@ Then, starting with the row `..^^.`, you can determine the next row by applying 
 
 After these steps, we now know the next row of tiles in the room: `.^^^^`. Then, we continue on to the next row, using the same rules, and get `^^..^`. After determining two new rows, our map looks like this:
 
-
 ```
 ..^^.
 .^^^^
 ^^..^
-
 ```
 
 Here's a larger example with ten tiles per row and ten rows:
-
 
 ```
 .^^.^.^^^^
@@ -55,10 +50,9 @@ Here's a larger example with ten tiles per row and ten rows:
 ^..^^^^.^^
 .^^^..^.^^
 ^^.^^^..^^
-
 ```
 
 In ten rows, this larger example has `38` safe tiles.
 
-Starting with the map in your puzzle input, in a total of `40` rows (including the starting row), *how many safe tiles* are there?
+Starting with the map in your puzzle input, in a total of `40` rows (including the starting row), **how many safe tiles** are there?
 

@@ -4,7 +4,7 @@ You've managed to sneak in to the prototype suit manufacturing lab. The Elves ar
 
 While the very latest in 1518 alchemical technology might have solved their problem eventually, you can do better. You scan the chemical composition of the suit's material and discover that it is formed by extremely long [polymers](https://en.wikipedia.org/wiki/Polymer) (one of which is available as your puzzle input).
 
-The polymer is formed by smaller *units* which, when triggered, react with each other such that two adjacent units of the same type and opposite polarity are destroyed. Units' types are represented by letters; units' polarity is represented by capitalization. For instance, `r` and `R` are units with the same type but opposite polarity, whereas `r` and `s` are entirely different types and do not react.
+The polymer is formed by smaller **units** which, when triggered, react with each other such that two adjacent units of the same type and opposite polarity are destroyed. Units' types are represented by letters; units' polarity is represented by capitalization. For instance, `r` and `R` are units with the same type but opposite polarity, whereas `r` and `s` are entirely different types and do not react.
 
 For example:
 
@@ -15,16 +15,14 @@ For example:
 
 Now, consider a larger example, `dabAcCaCBAcCcaDA`:
 
-
 ```
-dabA*cC*aCBAcCcaDA  The first 'cC' is removed.
-dab*Aa*CBAcCcaDA    This creates 'Aa', which is removed.
-dabCBA*cCc*aDA      Either 'cC' or 'Cc' are removed (the result is the same).
+dabA**cC**aCBAcCcaDA  The first 'cC' is removed.
+dab**Aa**CBAcCcaDA    This creates 'Aa', which is removed.
+dabCBA**cCc**aDA      Either 'cC' or 'Cc' are removed (the result is the same).
 dabCBAcaDA        No further actions can be taken.
-
 ```
 
-After all possible reactions, the resulting polymer contains *10 units*.
+After all possible reactions, the resulting polymer contains **10 units**.
 
-*How many units remain after fully reacting the polymer you scanned?* (Note: in this puzzle and others, the input is large; if you copy/paste your input, make sure you get the whole thing.)
+**How many units remain after fully reacting the polymer you scanned?** (Note: in this puzzle and others, the input is large; if you copy/paste your input, make sure you get the whole thing.)
 

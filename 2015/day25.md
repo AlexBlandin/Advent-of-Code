@@ -10,10 +10,9 @@ You look up the support number for the manufacturer and give them a call. Good t
 
 "Oh, that machine is quite old!", they tell you. "That model went out of support six minutes ago, and we just finished shredding all of the manuals. I bet we can find you the code generation algorithm, though."
 
-After putting you on hold for twenty minutes (your call is *very* important to them, it reminded you repeatedly), they finally find an engineer that remembers how the code system works.
+After putting you on hold for twenty minutes (your call is **very** important to them, it reminded you repeatedly), they finally find an engineer that remembers how the code system works.
 
 The codes are printed on an infinite sheet of paper, starting in the top-left corner. The codes are filled in by diagonals: starting with the first row with an empty first box, the codes are filled in diagonally up and to the right. This process repeats until the [infinite paper is covered](https://en.wikipedia.org/wiki/Cantor's_diagonal_argument). So, the first few codes are filled in in this order:
-
 
 ```
    | 1   2   3   4   5   6  
@@ -24,7 +23,6 @@ The codes are printed on an infinite sheet of paper, starting in the top-left co
  4 |  7  12  18
  5 | 11  17
  6 | 16
-
 ```
 
 For example, the 12th code would be written to row `4`, column `2`; the 15th code would be written to row `1`, column `5`.
@@ -35,7 +33,6 @@ So, to find the second code (which ends up in row `2`, column `1`), start with t
 
 "Oh!", says the voice. "It looks like we missed a scrap from one of the manuals. Let me read it to you." You write down his numbers:
 
-
 ```
    |    1         2         3         4         5         6
 ---+---------+---------+---------+---------+---------+---------+
@@ -45,10 +42,9 @@ So, to find the second code (which ends up in row `2`, column `1`), start with t
  4 | 24592653  32451966  21345942   9380097  10600672  31527494
  5 |    77061  17552253  28094349   6899651   9250759  31663883
  6 | 33071741   6796745  25397450  24659492   1534922  27995004
-
 ```
 
 "Now remember", the voice continues, "that's not even all of the first few numbers; for example, you're missing the one at 7,1 that would come before 6,2. But, it should be enough to let your-- oh, it's time for lunch! Bye!" The call disconnects.
 
-Santa looks nervous. Your puzzle input contains the message on the machine's console. *What code do you give the machine?*
+Santa looks nervous. Your puzzle input contains the message on the machine's console. **What code do you give the machine?**
 

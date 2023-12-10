@@ -6,9 +6,9 @@ If you're ever going to return to your own time, you need to understand how this
 
 According to the manual, the device has four [registers](https://en.wikipedia.org/wiki/Hardware_register) (numbered `0` through `3`) that can be manipulated by [instructions](https://en.wikipedia.org/wiki/Instruction_set_architecture#Instructions) containing one of 16 opcodes. The registers start with the value `0`.
 
-Every instruction consists of four values: an *opcode*, two *inputs* (named `A` and `B`), and an *output* (named `C`), in that order. The opcode specifies the behavior of the instruction and how the inputs are interpreted. The output, `C`, is always treated as a register.
+Every instruction consists of four values: an **opcode**, two **inputs** (named `A` and `B`), and an **output** (named `C`), in that order. The opcode specifies the behavior of the instruction and how the inputs are interpreted. The output, `C`, is always treated as a register.
 
-In the opcode descriptions below, if something says "*value `A`*", it means to take the number given as `A` *literally*. (This is also called an "immediate" value.) If something says "*register `A`*", it means to use the number given as `A` to read from (or write to) the *register with that number*. So, if the opcode `addi` adds register `A` and value `B`, storing the result in register `C`, and the instruction `addi 0 7 3` is encountered, it would add `7` to the value contained by register `0` and store the sum in register `3`, never modifying registers `0`, `1`, or `2` in the process.
+In the opcode descriptions below, if something says "**value `A`**", it means to take the number given as `A` **literally**. (This is also called an "immediate" value.) If something says "**register `A`**", it means to use the number given as `A` to read from (or write to) the **register with that number**. So, if the opcode `addi` adds register `A` and value `B`, storing the result in register `C`, and the instruction `addi 0 7 3` is encountered, it would add `7` to the value contained by register `0` and store the sum in register `3`, never modifying registers `0`, `1`, or `2` in the process.
 
 Many opcodes are similar except for how they interpret their arguments. The opcodes fall into seven general categories:
 
@@ -49,14 +49,12 @@ Equality testing:
 - `eqri` (equal register/immediate) sets register `C` to `1` if register `A` is equal to value `B`. Otherwise, register `C` is set to `0`.
 - `eqrr` (equal register/register) sets register `C` to `1` if register `A` is equal to register `B`. Otherwise, register `C` is set to `0`.
 
-Unfortunately, while the manual gives the *name* of each opcode, it doesn't seem to indicate the *number*. However, you can monitor the CPU to see the contents of the registers before and after instructions are executed to try to work them out. Each opcode has a number from `0` through `15`, but the manual doesn't say which is which. For example, suppose you capture the following sample:
-
+Unfortunately, while the manual gives the **name** of each opcode, it doesn't seem to indicate the **number**. However, you can monitor the CPU to see the contents of the registers before and after instructions are executed to try to work them out. Each opcode has a number from `0` through `15`, but the manual doesn't say which is which. For example, suppose you capture the following sample:
 
 ```
 Before: [3, 2, 1, 1]
 9 2 1 2
 After:  [3, 2, 2, 1]
-
 ```
 
 This sample shows the effect of the instruction `9 2 1 2` on the registers. Before the instruction is executed, register `0` has value `3`, register `1` has value `2`, and registers `2` and `3` have value `1`. After the instruction is executed, register `2`'s value becomes `2`.
@@ -67,9 +65,9 @@ The instruction itself, `9 2 1 2`, means that opcode `9` was executed with `A=2`
 - Opcode `9` could be `addi`: register `2` (which has a value of `1`) plus value `1` produces `2`, which matches the value stored in the output register, register `2`.
 - Opcode `9` could be `seti`: value `2` matches the value stored in the output register, register `2`; the number given for `B` is irrelevant.
 
-None of the other opcodes produce the result captured in the sample. Because of this, the sample above *behaves like three opcodes*.
+None of the other opcodes produce the result captured in the sample. Because of this, the sample above **behaves like three opcodes**.
 
-You collect many of these samples (the first section of your puzzle input). The manual also includes a small test program (the second section of your puzzle input) - you can *ignore it for now*.
+You collect many of these samples (the first section of your puzzle input). The manual also includes a small test program (the second section of your puzzle input) - you can **ignore it for now**.
 
-Ignoring the opcode numbers, *how many samples in your puzzle input behave like three or more opcodes?*
+Ignoring the opcode numbers, **how many samples in your puzzle input behave like three or more opcodes?**
 

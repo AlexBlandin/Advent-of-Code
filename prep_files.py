@@ -17,6 +17,10 @@ r"/.+?(?=abc)/"
 
 CONFIG = "config.toml"
 RE_DESC = re.compile(r"<article class=\"day-desc\">(.+?)</article>", re.DOTALL)
+RE_EMPH = re.compile(r"<em>(.+?)</em>")
+RE_BOLD = r"<strong>\1</strong>"
+RE_CDEM = re.compile(r"<code><em>(.+?)</em></code>")
+RE_EMCD = r"<em><code>\1</code></em>"
 
 
 @cache
@@ -30,7 +34,13 @@ def download(year: int, day: int):
       if response.status_code == 404:
         raise FileNotFoundError(response.text)
       raise RuntimeError(response.status_code, response.content)
-  return md("\n".join(RE_DESC.findall(text.text)), heading_style="ATX", bullets="-").replace("\n\n\n", "\n\n"), inpt.text.rstrip()
+  desc = text.text
+  desc = RE_CDEM.sub(RE_EMCD, desc)
+  desc = RE_EMPH.sub(RE_BOLD, desc)
+  desc = md("\n".join(RE_DESC.findall(desc)), heading_style="ATX", bullets="-")
+  desc = desc.replace("\n\n\n", "\n\n")
+  desc = desc.replace("\n\n```", "\n```")
+  return desc, inpt.text.rstrip()
 
 
 today = date.today()

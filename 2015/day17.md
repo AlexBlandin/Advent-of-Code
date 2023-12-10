@@ -9,5 +9,5 @@ For example, suppose you have containers of size `20`, `15`, `10`, `5`, and `5` 
 - `20` and `5` (the second `5`)
 - `15`, `5`, and `5`
 
-Filling all containers entirely, how many different *combinations of containers* can exactly fit all `150` liters of eggnog?
+Filling all containers entirely, how many different **combinations of containers** can exactly fit all `150` liters of eggnog?
 
