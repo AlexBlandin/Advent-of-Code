@@ -31,11 +31,7 @@ class Kind(IntEnum):
   HighCard = 6
 
 
-Hand = tuple[Card, ...]
-first, second, third, hand_cmp = itemgetter(0), itemgetter(1), itemgetter(2), itemgetter(0, 1)
-
-
-def which(hand: Hand) -> Kind:
+def which(hand: tuple[Card, ...]) -> Kind:
   "Which kind of hand is this?"
   match Counter(sorted(hand)).most_common():
     case [(_, 4), (Card.Joker, 1)] | [(Card.Joker, 4), (_, 1)] | [(_, 3), (Card.Joker, 2)] | [(Card.Joker, 3), (_, 2)] | [(_, 5)]:
@@ -54,26 +50,25 @@ def which(hand: Hand) -> Kind:
       return Kind.HighCard
 
 
-def cards_from(cards: str):
-  return {k: Card(i) for i, k in enumerate(cards)}.__getitem__
+def hand_with_jacks(hand: str) -> tuple[Card, ...]:
+  return tuple(map({k: Card(i) for i, k in enumerate("AKQJT98765432")}.__getitem__, hand))
 
 
-def hand_with_jacks(hand: str) -> Hand:
-  return tuple(map(cards_from("AKQJT98765432"), hand))
+def hand_with_jokers(hand: str) -> tuple[Card, ...]:
+  return tuple(map({k: Card(i) for i, k in enumerate("AKQ_T98765432J")}.__getitem__, hand))
 
 
-def hand_with_jokers(hand: str) -> Hand:
-  return tuple(map(cards_from("AKQ_T98765432J"), hand))
+def rank(hands: list[tuple[Card, ...]], bets: list[int]):
+  return sorted(zip(map(which, hands), hands, bets, strict=True), key=itemgetter(0, 1))
 
 
-def rank(hands: list[Hand]):
-  return sorted(zip(map(which, hands), hands, bets, strict=True), key=hand_cmp)
+def score(ranks: list[tuple[Kind, tuple[Card, ...], int]]):
+  return sum(map(mul, map(itemgetter(2), reversed(ranks)), range(1, len(ranks) + 1)))
 
 
-def score(ranks: list[tuple[Kind, Hand, int]]):
-  return sum(map(mul, map(third, reversed(ranks)), range(1, len(bets) + 1)))
-
-
-lines = Path("day7.txt").read_text().splitlines()
-hands, bets = list(map(first, map(str.split, lines))), list(map(int, map(second, map(str.split, lines))))
-print(score(rank(list(map(hand_with_jacks, hands)))), score(rank(list(map(hand_with_jokers, hands)))))
+lines = list(map(str.split, Path("day7.txt").read_text().splitlines()))
+hands, bets = list(map(itemgetter(0), lines)), list(map(int, map(itemgetter(1), lines)))
+print(
+  score(rank(list(map(hand_with_jacks, hands)), bets)),
+  score(rank(list(map(hand_with_jokers, hands)), bets)),
+)
