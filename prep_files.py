@@ -1,5 +1,5 @@
 from functools import cache
-from datetime import date
+from datetime import datetime
 from pathlib import Path
 from time import sleep
 import tomllib
@@ -43,11 +43,11 @@ def download(year: int, day: int):
   return desc, inpt.text.rstrip()
 
 
-today = date.today()
-for year in trange(2015, today.year + 1, desc="year"):
+now = datetime.now()
+for year in trange(2015, now.year + 1, desc="year"):
   dir = Path(str(year))
   dir.mkdir(exist_ok=True)
-  for day in trange(1, (25 if (year, today.month) != (today.year, 12) else today.day) + 1, desc="day", leave=False):
+  for day in trange(1, (25 if (year, now.month) != (now.year, 12) else now.day if now.hour >= 5 else now.day - 1) + 1, desc="day", leave=False):
     code = dir / f"day{day}.py"
     data = dir / f"day{day}.txt"
     desc = dir / f"day{day}.md"
