@@ -1,7 +1,5 @@
-from collections import Counter
 from enum import Enum
 from itertools import combinations
-from operator import itemgetter
 from pathlib import Path
 
 grid = Path("day10.txt").read_text().splitlines()
@@ -84,8 +82,29 @@ while True:
   if pos == S:
     break
 
-xs, ys = Counter(map(itemgetter(0), loop)), Counter(map(itemgetter(1), loop))
-print(xs.most_common())
-print(ys.most_common())
+"""
+first, classic "shape" pass, identifies all islands
+second, "gap connection" pass, consolidate islands across gaps in pipes (can just get a list of candidate gaps in first)
+third, "inside outside" pass, everything outside the loop should be outside and ubiquitous, so we can group all that together
+(basically, all adjacent shapes except loop, which breaks it up)
+leaving then the shape of the loop itself, a shape for the outside (starts at ``(0,0)``?), and then all the shapes of the interior (sum their lens)
+can simplify, if first pass presupposes loop as a shape then we just combine any adjacent points that aren't in the loop,
+which means we just get inside/outside in one go, and then just have to add the connections
+"""
 
-print(len(loop) // 2)
+# identify all "islands"
+# with island defined as contiguous tiles not in the loop
+
+...
+
+# connect all "pipes"
+# all || etc shapes (basically turns some insides to outsides, and ensure all "outside" are connected, meaning all others are inside shapes)
+
+...
+
+# et voila, sum up the lengths of shapes that aren't "outside" (connected/starting `(0,0)`) and aren't the loop itself, that's part 2
+
+print(
+  len(loop) // 2,
+  ...,
+)

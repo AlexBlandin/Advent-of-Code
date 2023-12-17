@@ -12,6 +12,11 @@ import requests
 fmt = """from pathlib import Path
 
 lines = Path("day{day}.txt").read_text().splitlines()
+
+print(
+  ...,
+  ...,
+)
 """
 r"/.+?(?=abc)/"
 
@@ -44,7 +49,7 @@ def download(year: int, day: int):
 
 
 now = datetime.now()
-for year in trange(2015, now.year + 1, desc="year"):
+for year in trange(2015, now.year + 1, desc="year", ncols=120):
   dir = Path(str(year))
   dir.mkdir(exist_ok=True)
   for day in trange(1, (25 if (year, now.month) != (now.year, 12) else now.day if now.hour >= 5 else now.day - 1) + 1, desc="day", leave=False):
@@ -58,13 +63,13 @@ for year in trange(2015, now.year + 1, desc="year"):
     if not desc.is_file():
       desc.touch()
 
-    if not code.read_text().strip():
+    if not code.read_text().strip() or code.read_text().strip().endswith(".read_text().splitlines()"):
       code.write_text(fmt.format(day=day), encoding="utf8", newline="\n")
     if not data.read_text().strip():
       _, input_data = download(year, day)
       data.write_text(input_data, encoding="utf8", newline="\n")
       sleep(0.5)
-    if not desc.read_text().strip():
+    if not desc.read_text().strip() or ("--- Part Two ---" not in desc.read_text() and "print(\n  ...," not in code.read_text().strip()):
       description, _ = download(year, day)
       desc.write_text(description, encoding="utf8", newline="\n")
       sleep(0.5)
