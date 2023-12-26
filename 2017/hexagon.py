@@ -1,15 +1,7 @@
 from functools import cache
-from typing import NamedTuple
-import sys
-
-# Why this needed to wait until 3.11 for being part of typing, I'll never know
-if sys.version_info[0] == 3 and sys.version_info[1] < 11:
-  from typing_extensions import Self
-else:
-  from typing import Self
+from typing import NamedTuple, Self
 
 
-# @dataclass(slots = True, frozen = True)
 class Hex(NamedTuple):  # noqa: PLR0904
   """A Hexagon, defined as a cube analogue in the space (q,r,s) where q + r + s == 0"""
 
