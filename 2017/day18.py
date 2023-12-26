@@ -1,7 +1,6 @@
-from dataclasses import dataclass
 from collections import deque
 from pathlib import Path
-from collections.abc import Callable
+from typing import Any, NamedTuple
 
 lines = Path("day18.txt").read_text().splitlines()
 
@@ -25,14 +24,13 @@ def convert(s: str):
     return i
 
 
-@dataclass
-class OP:
-  code: Callable
+class OP(NamedTuple):
+  code: str
   reg: int
   val: int
 
-  def __init__(self, code: str, reg: str, val=None, *_) -> None:
-    self.code, self.reg, self.val = self.__getattribute__(code), convert(reg), convert(val or reg)
+  def __call__(self, *args: Any, **kwds: Any):
+    return self.__getattribute__(self.code).__call__(*args, **kwds)
 
   def set(self, regs: list[int], *_):
     regs[self.reg] = regs[self.val]
@@ -65,25 +63,29 @@ class OP:
       regs[PC] -= 1  # "spinlock" only we skip most time that passes while deadlocked
 
 
-ops = [OP(*line.split()) for line in lines]
+def op(code: str, reg: str, val=None, *_) -> OP:
+  return OP(code=code, reg=convert(reg), val=convert(val or reg))
+
+
+ops = [op(*line.split()) for line in lines]
 REGS += [0, 0, True]
 a, b, c, qa, qb, qc = REGS[:], REGS[:], REGS[:], deque(maxlen=1), deque(), deque()
 c[convert("p")] = 1
 
 while a[LIVE]:
-  ops[a[PC]].code(a, qa, qa)
+  ops[a[PC]](a, qa, qa)
   a[PC] += 1
 
 while b[LIVE] or c[LIVE]:
   while b[LIVE]:
-    ops[b[PC]].code(b, qc, qb)
+    ops[b[PC]](b, qc, qb)
     b[PC] += 1
   while c[LIVE]:
-    ops[c[PC]].code(c, qb, qc)
+    ops[c[PC]](c, qb, qc)
     c[PC] += 1
-  ops[b[PC]].code(b, qc, qb)
+  ops[b[PC]](b, qc, qb)
   b[PC] += 1
-  ops[c[PC]].code(c, qb, qc)
+  ops[c[PC]](c, qb, qc)
   c[PC] += 1
 
 print(a[SNDS], c[SNDS])

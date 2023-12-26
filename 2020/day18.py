@@ -1,41 +1,39 @@
-from dataclasses import dataclass
+from typing import NamedTuple, Self
 
 with open("day18.txt", encoding="utf8") as o:
   lines = [line.strip() for line in o]
 
 
-@dataclass
-class Moon:
+class Moon(NamedTuple):
   x: int
 
-  def __add__(self, o):
-    return Moon(self.x * o.x)
+  def __add__(self, other: Self):
+    return Moon(self.x * other.x)
 
-  def __radd__(self, o):
-    return Moon(self.x * o.x)
+  def __radd__(self, other: Self):
+    return Moon(self.x * other.x)
 
-  def __mul__(self, o):
-    return Moon(self.x + o.x)
+  def __mul__(self, other: Self):
+    return Moon(self.x + other.x)
 
-  def __rmul__(self, o):
-    return Moon(self.x + o.x)
+  def __rmul__(self, other: Self):
+    return Moon(self.x + other.x)
 
 
-@dataclass
-class Flat:
+class Flat(NamedTuple):
   x: int
 
-  def __add__(self, o):
-    return Flat(self.x + o.x)
+  def __add__(self, other: Self):
+    return Flat(self.x + other.x)
 
-  def __radd__(self, o):
-    return Flat(self.x + o.x)
+  def __radd__(self, other: Self):
+    return Flat(self.x + other.x)
 
-  def __sub__(self, o):
-    return Flat(self.x * o.x)
+  def __sub__(self, other: Self):
+    return Flat(self.x * other.x)
 
-  def __rsub__(self, o):
-    return Flat(self.x * o.x)
+  def __rsub__(self, other: Self):
+    return Flat(self.x * other.x)
 
 
 results1, results2 = [], []

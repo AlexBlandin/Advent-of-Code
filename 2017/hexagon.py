@@ -230,22 +230,21 @@ def test_hex_rotate_left():
 
 
 def test_hex_round():
-  # Pylance doesn't recognise when `round(number: SupportsRound[_T@round], ndigits: SupportsIndex) -> _T@round` is satisfied, so thinks it has to produce `int`
   a = Hex(0.0, 0.0, 0.0)
   b = Hex(1.0, -1.0, 0.0)
   c = Hex(0.0, -1.0, 1.0)
-  equal_hex("hex_round 1", Hex(5, -10, 5), round(Hex(0.0, 0.0, 0.0).lerp(Hex(10.0, -20.0, 10.0), 0.5)))  # type: ignore
-  equal_hex("hex_round 2", round(a), round(a.lerp(b, 0.499)))  # type: ignore
-  equal_hex("hex_round 3", round(b), round(a.lerp(b, 0.501)))  # type: ignore
+  equal_hex("hex_round 1", Hex(5, -10, 5), round(Hex(0.0, 0.0, 0.0).lerp(Hex(10.0, -20.0, 10.0), 0.5)))
+  equal_hex("hex_round 2", round(a), round(a.lerp(b, 0.499)))
+  equal_hex("hex_round 3", round(b), round(a.lerp(b, 0.501)))
   equal_hex(
     "hex_round 4",
-    round(a),  # type: ignore
-    round(Hex(a.q * 0.4 + b.q * 0.3 + c.q * 0.3, a.r * 0.4 + b.r * 0.3 + c.r * 0.3, a.s * 0.4 + b.s * 0.3 + c.s * 0.3)),  # type: ignore
+    round(a),
+    round(Hex(a.q * 0.4 + b.q * 0.3 + c.q * 0.3, a.r * 0.4 + b.r * 0.3 + c.r * 0.3, a.s * 0.4 + b.s * 0.3 + c.s * 0.3)),
   )
   equal_hex(
     "hex_round 5",
-    round(c),  # type: ignore
-    round(Hex(a.q * 0.3 + b.q * 0.3 + c.q * 0.4, a.r * 0.3 + b.r * 0.3 + c.r * 0.4, a.s * 0.3 + b.s * 0.3 + c.s * 0.4)),  # type: ignore
+    round(c),
+    round(Hex(a.q * 0.3 + b.q * 0.3 + c.q * 0.4, a.r * 0.3 + b.r * 0.3 + c.r * 0.4, a.s * 0.3 + b.s * 0.3 + c.s * 0.4)),
   )
 
 
