@@ -12,7 +12,7 @@ def all_ordered(left, right):
   return next(filter(lambda x: x is not None, map(ordered, left, right)), None)
 
 
-def ordered(left, right) -> bool | None:  # noqa: PLR0911
+def ordered(left, right) -> bool | None:
   match left, right:
     case int(left), int(right) if left < right:
       return True

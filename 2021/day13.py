@@ -18,7 +18,7 @@ for x, y in dots:
 
 def fold_over(line: int):
   for row in paper:
-    a, b = row[:line], row[line + 1:]
+    a, b = row[:line], row[line + 1 :]
     if len(a) < len(b):
       a += [False] * (len(a) - len(b))
     else:
@@ -27,7 +27,7 @@ def fold_over(line: int):
 
 
 def fold_up(line: int):
-  a, b = paper[:line], paper[line + 1:]
+  a, b = paper[:line], paper[line + 1 :]
   if len(a) < len(b):
     a += [[False] * w for _ in range(len(a) - len(b))]
   else:

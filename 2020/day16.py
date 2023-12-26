@@ -5,7 +5,7 @@ from math import prod
 
 lines = Path("day16.txt").read_text().splitlines()
 mine = [int(n) for n in lines[lines.index("your ticket:") + 1].split(",")]
-scanned = [[int(n) for n in line.split(",")] for line in lines[lines.index("nearby tickets:") + 1:]]
+scanned = [[int(n) for n in line.split(",")] for line in lines[lines.index("nearby tickets:") + 1 :]]
 inverse: defaultdict[int, set[str]] = defaultdict(set)
 rules = {}
 for rule in findall("{}: {:d}-{:d} or {:d}-{:d}", "\n".join(lines[: lines.index("your ticket:") - 1])):

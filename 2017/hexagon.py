@@ -1,5 +1,5 @@
 from functools import cache
-from typing import NamedTuple, Union
+from typing import NamedTuple
 import sys
 
 # Why this needed to wait until 3.11 for being part of typing, I'll never know
@@ -10,12 +10,12 @@ else:
 
 
 # @dataclass(slots = True, frozen = True)
-class Hex(NamedTuple):
+class Hex(NamedTuple):  # noqa: PLR0904
   """A Hexagon, defined as a cube analogue in the space (q,r,s) where q + r + s == 0"""
 
-  q: Union[int, float]
-  r: Union[int, float]
-  s: Union[int, float]
+  q: int | float
+  r: int | float
+  s: int | float
 
   def __post_init__(self):
     assert round(self.q + self.r + self.s) == 0, "q + r + s must equal 0"
@@ -45,21 +45,21 @@ class Hex(NamedTuple):
 
   @staticmethod
   @cache
-  def DIRECTIONS():
+  def directions():
     return (Hex(1, 0, -1), Hex(1, -1, 0), Hex(0, -1, 1), Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1))
 
   @staticmethod
   @cache
-  def DIAGONALS():
+  def diagonals():
     return (Hex(2, -1, -1), Hex(1, -2, 1), Hex(-1, -1, 2), Hex(-2, 1, 1), Hex(-1, 2, -1), Hex(1, 1, -2))
 
   @staticmethod
   @cache
   def direction(direction: int):
-    return Hex.DIRECTIONS()[direction]
+    return Hex.directions()[direction]
 
   def neighbour(self, direction: int):
-    return self + Hex.DIRECTIONS()[direction]
+    return self + Hex.directions()[direction]
 
   @property
   def nn(self):
@@ -93,15 +93,15 @@ class Hex(NamedTuple):
 
   @property
   def neighbours(self):
-    d = Hex.DIRECTIONS()
+    d = Hex.directions()
     return (self + d[0], self + d[1], self + d[2], self + d[3], self + d[4], self + d[5])
 
   def diagonal_neighbour(self, diagonal: int):
-    return self + Hex.DIAGONALS()[diagonal]
+    return self + Hex.diagonals()[diagonal]
 
   @property
   def diagonal_neighbours(self):
-    d = Hex.DIAGONALS()
+    d = Hex.diagonals()
     return (self + d[0], self + d[1], self + d[2], self + d[3], self + d[4], self + d[5])
 
   def __abs__(self):
@@ -133,15 +133,15 @@ class Hex(NamedTuple):
     return [round(a_nudge.lerp(b_nudge, step * i)) for i in range(N + 1)]  # type: ignore
 
   @property
-  def reflectQ(self):
+  def reflect_q(self):
     return Hex(self.q, self.s, self.r)
 
   @property
-  def reflectR(self):
+  def reflect_r(self):
     return Hex(self.s, self.r, self.q)
 
   @property
-  def reflectS(self):
+  def reflect_s(self):
     return Hex(self.r, self.q, self.s)
 
   def range(self, N: int):
@@ -237,7 +237,8 @@ def test_hex_rotate_left():
   equal_hex("hex_rotate_left 2", Hex(1, -3, 2) << 2, Hex(-2, -1, 3).rotate_left)
 
 
-def test_hex_round():  # Pylance is too stupid to recognise when `round(number: SupportsRound[_T@round], ndigits: SupportsIndex) -> _T@round` is satisfied, so thinks it has to produce `int`
+def test_hex_round():
+  # Pylance doesn't recognise when `round(number: SupportsRound[_T@round], ndigits: SupportsIndex) -> _T@round` is satisfied, so thinks it has to produce `int`
   a = Hex(0.0, 0.0, 0.0)
   b = Hex(1.0, -1.0, 0.0)
   c = Hex(0.0, -1.0, 1.0)

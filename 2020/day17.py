@@ -1,7 +1,7 @@
 from itertools import product
 
 D, H = set(), set()  # our sets of tuples representing "on" points
-with open("day17.txt") as o:
+with open("day17.txt", encoding="utf8") as o:
   for x, line in enumerate(o):
     for y, v in enumerate(line.strip()):
       if v == "#":

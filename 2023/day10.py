@@ -123,7 +123,7 @@ for y, row in enumerate(grid):
       case [a] if a not in loopshape:
         coord2island[pos] = a
         island2shape[a].add(pos)
-    for (a, b), d in adjs:
+    for (a, b), _d in adjs:
       match grid[b][a]:  # channel candidates... for some reason grid[b][a] is returning a list???
         case e:  # use d D.WHATEV and so on and should just be able to do "L" | ...
           pass

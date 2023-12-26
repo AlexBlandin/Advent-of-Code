@@ -32,7 +32,7 @@ for y, line in enumerate(lines):
 
 for x, y in symbols:
   for xy in [(x + i, y + j) for i in (1, 0, -1) for j in (1, 0, -1)]:
-    if num := num_starts.get(xy, None):
+    if num := num_starts.get(xy):
       keep.add(num)
       if (nums := maybe_gear.get((x, y), None)) is not None:
         nums.add(num)

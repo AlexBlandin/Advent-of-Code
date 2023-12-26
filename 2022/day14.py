@@ -5,7 +5,7 @@ from pathlib import Path
 lines, collide = Path("day14.txt").read_text().splitlines(), set()
 for (ax, ay), (bx, by) in chain.from_iterable(
   map(
-    lambda lst: pairwise(lst),
+    pairwise,
     map(
       lambda a: list(
         map(

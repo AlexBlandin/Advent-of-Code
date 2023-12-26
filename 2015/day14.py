@@ -19,7 +19,7 @@ def distance(r, T=2503):
 def points(T=2503):
   P = {r: 0 for r in R}
   for s in range(1, T + 1):
-    D = dict(sorted(zip(iter(R), map(lambda r: distance(r, s), R.keys())), key=itemgetter(1), reverse=True))
+    D = dict(sorted(zip(iter(R), map(lambda r: distance(r, s), R.keys()), strict=False), key=itemgetter(1), reverse=True))
     m = max(D.values())
     for r, d in D.items():
       if d == m:

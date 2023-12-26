@@ -9,7 +9,7 @@ print(
           None,
           map(
             {c: n for c, n in zip(ascii_letters, range(1, 53), strict=True)}.get,
-            set(rucksack[: len(rucksack) // 2]) & set(rucksack[len(rucksack) // 2:]),
+            set(rucksack[: len(rucksack) // 2]) & set(rucksack[len(rucksack) // 2 :]),
           ),
         )
       ),
