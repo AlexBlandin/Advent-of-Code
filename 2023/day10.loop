@@ -1,0 +1,140 @@
+
+
+
+
+
+                                                                              7FF
+                                                                             FFF|      |-
+                                                                          |7 -L7J    .F7J                     F.-
+                                                      .L                |-7FF7LL-  F7F|||                   -LJ-7|L
+                                                    J|FF   J| 7-    J.  |.LFLJLL F-J|FJL7L              -L ||- 7F|J
+                            --  ||                 LF7F--7L7|||7L -F77  |FF J|.L L7FJ|F-J7              7J|F7.L-FJL
+                            F7 FJ|                 FJ|L7FJF|||L7. FJL7  |FJ|  7F7FJ|FJL7F7      ||      7J|LJ-7L||F
+                         FJLJ|FJFJFJ               L7|FJ|F7| |FJF7L-7| J||FJ 7|||L7||F-J||   L7 JL--   -77LF.FF-7-
+                    -7   |F--JL7L7L7|    JL    L7FJF |L7||LJLJL7||F-J|L7||L7FJLJL-JL |F7|||L FJ 7F-- ---JFF77F-77  F|
+                    7|L7|||F-7FJFJFJL  L7F--JF7J||JL7L-J|L---7F || F-JFJLJFJL---7F---J|LJLJF7|F-JL-7LF7|LFJL7|FJF7F--   LF
+            .F. |FF7||FJLJLJFJL7L7L-7 J||L-7FJL7| F7|F--JLF7FJL7|LJ|F7  F7|F----JL--7FJF---JLJL-7F-JFJL7FJF-J7LL|||F-J--FF7
+            77- --JLJLJF7F--JF7L7L7FJL7FJF-J|F7|||| J|-F7FJ||F-JL7FJ|L7LJ||L---7F7F7|L7L-7F7F7F7|L7FJF-J FJF77.FJ|||F77LJ|L
+       JL|   7- -------J||LF7|L7|FJL7FJL7L-7||LJ||L-7L7|| 7LJL7-FJL7|FJF7||F--7LJ||LJ|L-7||||LJ||FJ|FJF7|L7 |7FL7LJLJ|77LL
+       F7L   -7F-7F-----JL-JL FJ||F ||F7L7FJ|L77||F7|FJ||-L-7FJFJF-J| 7|LJLJF7|F-JL7-F7FJLJ||F7||L-J|J||L7||L7FFJF--7| 77FL
+       L7||  7FL7|L---- 7F-7F-J||LJ||||L7|L7|FJFJLJLJL7|L--7|L7L7L-7|FJ|F--7|LJL- FJ J||F--J||LJ|F--JFJ|FJ|L7|FJFJF7LJJL--7
+    L7 --7-FJF-7|L----  LJ-||FF7 7FJ|||FJL7LJL7L-----7||F--J|FJFJF-J|L7LJF7|L7F-7||.L7|||F-7 |F7|L7F7L7|L7L7| L7||||F7..J.F
+   |L7J.F|.|7L7LJF7F-- L7F-JL7||F||FJLJ|F-JF7FJFF-7F-JLJL7F7|L7L L-7L7|F7|LJFJL7||L7FJLJLJFJ|||||FJ|L7|L7|FJ||FJL-JLJ| F.FF7-
+   JJJ.F7.J7-LL--JLJJLL7|L-7FJ|L-J|L7F-JL7FJLJF7|FJL-7F7FJ|LJ JFJF7|FJ|||L7FJF7||L7|L---7 JFJ|||||FJFJL7L L7|||F-----JF777 LLL-
+    L.L--7.|-LF---7J.F-JL-7| 7L--7|-|L-7L|L-7FJ||L7F7LJ L7|F-JFJFJLJ|FJ||FJL7||||FJL7 -7|L7L7||||LJFJF-JF-7LJLJL7F 7JFJL7J.7FF-7
+    L7LF7LF|7-L--7|F7L---7LJFJF7FJL-JF-JFJF7|L7||FJ||F7L7|||LFJFJ7 FJ|FJ|L-7|||||L-7|L7|L7|FJLJ||F-J.L--J-L-7F--J|FJFJF-J7FL|JF|
+      F|---LF----J|||F7F-JF7L7||L-7F7L-7|FJL 7||||FJLJL-JLJ|FJFJF7FJFJL7|F7||| JL7FJ|FJ|F |L-7FJ|L 7F--7F7F-JL-7F L7|FJFF77J|FF||
+    .LFJJ|-F|F--- LJ J||F7|| J||F7LJ|F-J|L--7FJ|||L -7F--7FJ|FJFJ||FJJFJLJ|||L--7|L7|L7|L7L7FJL7|F-JL7FJ||L-7 -JL7FJ||F7||JFF7F7J
+    7-|.|F7FLJF7FJF--7|LJLJ|L-J||L--J F7|F--JL7LJL-7-LJF-J|FJL7|FJ |F7L-7FJ||F77|L7||FJ|FJFJ|F7LJL7F7|L7||FFJL-7FJ|FJLJLJ|F7|LJ
+    7F-L-LF---J|L-JF-J|FF7-L7F-J ---7LJLJ|F7F-JF --JF LL-7LJF-J||FJ|||-FJ| ||||FJ J|||FJ| J|||L---J||L7|||FJ --JL7||F----J|||F
+     F7|J|L-7F7L-7.L 7|FJL--J||F-7F-JF--- ||L-7L7|F7|L-7FJF- 7FJ|L7|||FJFJFJLJ||FJFJLJL7||.FJL- -7FJL7|||||FJF7F7||||F7F-7|LJL-
+     J|J -L LJL-7|F--JLJF-7F7 7L7|L-7L--7FJL7FJFJFJ||F-JL7L--7L7L-JLJ|L7L7L -7 |L7|F-- ||L7L7F---J F-J|LJLJ|F|LJLJLJLJLJFJL7F---J
+      .. J.F---7|LJ -7F7|FJ|L7L7|L7F F--JL-7|L7|.L7|| -7L|F--J|L--7F-JJ|FJ --J||FJLJF7|LJFJF L-7F7|L7FJF---JFJF7F7F7F7 -JF7||F---
+        7-FJF-7|L-7|- J||L-J.L7LJFJ JL-7F7F |FJL-7|||F-JFJL- -F7 FJL7F7||FL-7FJ||LF-J|L7FJJ|F--J|||FJ|FJF-7FJFJLJ|||||L--JLJ  F7F7
+        L.L-JFJL--J|F--J|F---7|F7L7L7F-J||L7|L7F-J||||F7L--7L7||FJF-J|||L7F7| 7|L7|F7L7|L7FJL7F7|LJ|FJL7|FJ|FJ-F7LJ|||F7F-7FJ||LJ||| JJ
+        .FJJFJF-7F-JL7F7||F-7|||L7L7||F7||-||J||F7|||||||F7|FJ|||FJF7| |FJ||L7|L7 ||L-J|FJL7FJ||L7FJ|F-J|L-JL--JL-7LJLJLJ7LJFJL7FLJ-F7.
+       7-F7FL7L7LJFF7LJ JLJFJ|L FL7LJ||LJL7|L-J||LJ||LJ|FJ|||FJ|||FJ||||L7||FJ|FJ||L-7FJL7FJ|FJ|FJ|FJL7FJF--------J.F---7F7FJF7L-7J..7J
+       J.|J7LL-JF--JL--7F-7L7L7JF7L7 LJF77|L--7|L7FJL7FJL7LJ|| J|||7|| L7LJ||-||FJ|F7||7.|L7|L7LJFJ| 7|| JF7F--7F7F7|F--J|LJFJL--J.-JJ-
+       FJJ.-7.|LL-----7|L7|-L7L-JL-JF-7|L-JF7FJL-J|F7|L7FJF-J|L7||L7||L7L-7LJFJ||FJ|LJL7FJFJL7L-7L7||LJ|L-JLJF7| ||||L7F-JF7L--7F7-L||F
+       -.LF-|7FF7F7F--JL7||F7L------JFJL7F7||L---7||||FJL7L7FJFJ||F |L7L7FJF-JFJLJFJF7FJ|FJJFJ 7| J|L7FJ|F7F-J J|||||FJ|F-JL7F7LJL JLJ7
+         FLFJ-F LJ|L---7||||L--------JF7LJ|||F7F-JLJ||L7FJFJL7L7||||L7L7LJJL7FJF--JFJ|L7|L-7|FJ||L7|FJ|F JLJF7F7|||||L-JL77FJ|L7F7|.7.
+       |-F.L-FL--7L---- LJ|L-------7F7||F7|||||L7F--JL7|L7|F7L7LJ||F-JFJ7F--JL7L--7|-L7| --J|L7LJFJ|L-JL----JLJLJLJLJF7F7L7L-JFJ|LJJJF
+       |F|.L-F---JF------7|F7JF7F--J |||||||LJL7|L-7F7||FJ|||FJF J| -7|F7|F7F7L-7FJL7FJL---7L7L-7  JF--7F----7F-7F-7FJ||L7L--7L-JJ.|-
+         L-7-L---7|F-----JLJL7||L- -JLJLJ|LJF--JL-7||||||FJ|||7L-7L-7|||L |||L7FJL7FJL7F-7FJJ|F7|7F7L-7|L---7|L7||L|L7|L7 F- JF7LLL
+         -J|F|F--J|L---7F-7F7|||-F--7F7F7L-7L--7F-JLJ||LJL7||L-7FJF7|LJ|F-J||FJ|F7||F7||||L-7| ||FJL--JL----JL7||L7L-J|FJ|L7F-J|LL-|
+         J.L|-L7F-JF7F7LJFLJ|LJL-JF7LJLJL7FJF-7|L--77LJF--J||F7|L7||L-7|L7-LJL7|| |||LJL7L7FJ||||L---------7F7LJL7L--7LJ7L7LJF7 7.F.
+         -||L-FJ|F-JLJL-- --JF7F-- L---7FJL-JFJ|F7FJF7.L F7|||||FJ||F-JL7|F---J||LJ|L7F-JFJL7||||F7F-------J||F7|L---JF--7|F  |L--777F
+           -|FL-JL-7F-7F--7F7|LJF-----7||F7F-J |||L-JL 7LJ||LJ||L7||L--7LJL---7|L-7L7|L-7L7FJLJLJ||L--7F---7|LJL---77FJF7||L 7|F7FJLF|.F
+           LFF --- JL ||F-J|LJF7L--7F7LJ|||L--7|||F-7F-J7FJL7FJL7||L7F7 7F7F--J|F-JF |F-J JL-7F--JL---J|F--J|F-7 -7L-JFJLJ|F-JLJLJJL|L|7
+           |LL-----7FJLJL--J-FJ F--J||F7LJL---J|||L7LJJF7L7FJL7FJ||FJ||FJ||L---J 7FJF|L-7|F7FJL--------JL---JL7|L7|F--JF7|LJF7| 7-LF J.
+           ||F7-F--J|F7F----7 7|L---JLJL-----7FJ|L |7F-JL7||F-JL ||L7||L JL---7F-JL7FJF7|| LJF7F7-F---7F--7F7FJL-JLJF FJL-7J|L-J|7
+           |7| 7L---J||L---7L-JL-7F----7F----JL-J.|L-JF--JLJ 7F7|LJFJ||F7F-7F-JL7F7|L7|||||F-JL |FJF-7LJF7LJ JFF--7FJLJF--JFJF--J|
+           -7L7|FF---JL7F7FL7F7F7|L---7|L----7F7F7L--7L-----7LJ||-FJ JLJ||FJL--7LJ|L7||||LJL---7|L7|FJF7||F---7L7FJ|F--JF--J JJF7
+          JFJJ|L7L----7|||F LJLJ|L----JL--7F LJLJ 7F7L-7F---J7-LJFJFJF--J|L7 7FJF-JFJLJ||F-----JL-J|L-JLJLJF--JFJ|FJL---JF-7L--J -7
+          7|F7L7|F-7F-JLJLJ|-F7-L------7F7LJ|F-7F7LJL-7|L----7F--JFJLL--7L7||LJFL-7L--7|||F F7F7F -JF---7F J-F7L7||F-----JJL7F7F7FJL7
+          JLJL-J L7|L7F---7L J|F7F--7F7LJL-7| FL L-7F-JL-----JL--7L-7-F-JFJ|L-7F7F F--J JLJLJLJ||F 7L--7|L-7FJ|FJ|||F7F---7|LJ||LJJFJ
+          7F-7F7L-JL7LJ-F7L7F7LJ|L-7LJL7F--JLJF7F7FJL-7F----7.F--JF7|FL7FJJ|F-J||L-JF7|F-7-F7F LJL7L---JL--J|FJL7LJLJLJF-7L-7|LJ.|.
+          LJFJ|L---7|F7FJL-J||F L- L-7FJL-7F7|| J|L7F7||F--7L7L--7|||7F JLFJ|F-JL--7||FJFJFJLJL---JF7F7F--7L||7FJF7F-7FJFL7FJ7F-77-F--7
+          F7L-J 7L JLJLJF-7FJLJL-7L--JL---J|L-JF7L7||LJ|L-7|FJF--J||L77LLJL7||F7F 7LJ|L7L7L-7F-7F7FJLJ||F-JFJL7|FJLJ-LJF-7LJF7L7L7F7-|-
+       ||F| ---JL-JF7F--JFJL7F---JF7F7F----JF7FJL7|LJF7|F-JLJJL7F7|L7 ..FF-J|||||FJF7L7L7L-7LJJLJ||.F7LJL--JF7LJL--7F--JFJF-J -JFJF--
+      ---FJF----7F7|||F--JF-JL----JLJ|L7F---JLJF7LJF7|LJL--7| L|| J-LJ7.- 7FJ| LJ|FJL7L-JF7L--7F7LJFJL-77F-7|L7F7F-J 7F JFL7F---JFJF-
+      -JFL7||F--J|||||L- 7|F7-F7-F--7L-JL------JL7-||L7F-7F   FL  J|.L77        7LJF7|F7FJL7F7LJL--JF--JFJFJL7LJ| F7FJL-7F7|L7F7FJFJ..
+         |LJFJF-7|||LJ7F7LJ|| JL L-7L-----7F7F--7L-J -J 7L        .J.7L7        L--JLJ|||F7LJL-7F7F7L--7L7L-- |FJLJLJF--J|LJFJ|LJFJL-7L     
+         F--JFJFJ|||F--JL--JLJF L--JJF7F-7 J|L-7|F7F F-7L--       L7.|J|7        -7F7FJLJ|L---- |||L7F7L7L--7F7L-7F-7L---JF-JFJF7L-7.|.
+           F7|LL- LJL--7F-7F--JL-7F7FJLJFJF7L--JLJ|||L7L--7FJ         FJ7          |LJ-F7L-----7|LJL||L7L---J||JFJL7L7F--7L--JFJ|F-JJJ
+            LJF-7F7F7-FJ|FJ|F--7 LJ||F--JJ|L----7JLJL7L--7LJJ         |L           JF7FJL-7F7F7||-F7LJ.|F----JL7L-7L7| -7L----JFJ|J
+            F7L7LJLJ|FJF L-JL-7|F-7LJL----JF----JF7 7L--7L77                    ----J|L--7LJLJ|||FJL-- LJF7F7F-JFFJFJL--JF----7L-J
+           7||LL---7LJFJ F7-F7||L7L-7F-7F-7L7F7F7|LJL--7L-JF                    7F7F7L--7L-7F7LJ|L 7F7L--JLJLJF-7L7L----- F- 7L-77
+          |LJL-----JF7|F7||FJLJL-JF7 JJ JLL-J|LJLJF-7F7L---                     || |L-7FJF7|||F L7FJ|L--------JFJ-L--7F---JF7 --J7
+          JF7F7F----JLJ|LJ|L---7F7|L7F7F7F7F7|F---JJL L-7F--                  -FJ|LJFFJL-JLJ|||L7|L-JF--------7L7F--7|L----JL  -----
+           JLJLJF7JF-7FJF7 F--7LJLJFJ|||||||||L-------   ||F                  -|FJF--JF7F- FJ||FLJ.F-JF------7L7LJF- |F-7F-7F7F-----
+       .. LFLF7J|L7L7|L-J|LJ 7L -7J|||||LJLJLJF-7F-----J                       LJ7L7F7|||FJL7LJF7F7L--JF----7L7| 7||FJ||LJFLJ|L----
+       F-FFFFJ|FL7|FJL7F7L--JL--7|FJFJLJF7F-7FJFLJF----77                    || L-7L || |L-7|F-JLJ|F 7FL---7L7||||L7L7|F7JF7LL7F7F-7
+       .F--7L7L-7|||F7LJL7F-----J|L-JF-- LJFJL--7J|F--7L-                   FL-7FF77FJ|LJF7LJL--- |L7L-----JJLJLJL-JFJ||L-JL-7|||L7L
+           L7L-7||||||F-7|L--7F- L7F7L---7FL-7F7|FJL-7L-  JF                -JFFFF--JFJFFJL7F7F--JL7L -7F-7F F7 -- 7|FJ|F-7F-JLJL-J7
+          L7L--JLJ|LJLJFJ|F7 LJFL7LJ|F7 7L-7 J||LJF-7L7 ---7J                -L--L--7|F7L 7| |L-7F7L---J|FJ|||||F--JLJFJ|.LJF7F7F---7
+          |L-7F7F7L7F-7L7|||F7-F-JF7LJLJL--JL7|L-7L7L7||F--J|                 |L L|LLJ|L--J JL 7||L7F--- L7|||LJL7F-7-L7L 7FJ||LJF-7|
+           -|LJ||L7|L7|FJLJ|||FJF-JL---7F---7|L7FJFJ||LJL--7                  |F7F77F7L-7F7F-7FJLJLLJF--7FJ||L F-J|FJF7|F-J|FJ|F-J
+           FF7FJ|FJL-J|L--7LJ|L-JJF- -7LJF--JL-JL7L7FJF----J-|J              F7|LJL-JL--J|||FJ|F7 7F7L-7||.|L-JL--JL-JLJ|F7||FJL7|
+           -J|L-JL---7L-7|L-7|FF-7L--7|F7L-7F7F-7|FJL7L---7|-L-  7.          ||L-----7F--JLJL7LJLJLJL--JLJFJF7F7F F--7F7LJLJLJF7L
+           -7|F7F-7F-JF7L-- |L7L7|F--JLJL--J|LJFJLJF7 -7F7L7F|JF|LF |L7     J|L7F 7F7LJF7F7F7|F-7F7F7F7F-7|FJLJLJ|L-7|||F-----JL7L7
+           FJ|||L7|L--JL--7|L7|FJ|L---7F7F-7L7FJFF-JL-7||L-JF77|-F--JFJ     FJFJL7|||.FJLJLJLJ|JLJLJLJLJ.||L---7|L--JLJ||F ----7L-JF-
+         F7L7||L-J|LF7F7F7||L||L |7F7FJ|LJFJ|||F7L7F7FJLJJF7|L7JJL--7L   L- |FJ7FJLJL7L-7F-7F-JF--77F7-F7LJF7F7L---7F77LJ|F----JF-7L7|L7
+         |L-JLJF-7L-JLJLJLJL-JL-JL-JLJFJF7L--JLJL-J|LJJF7FJ||FJ-FF7|L7L  F- ||F-JF---JF7LJ|LJ 7|F7L-JL-JL--JLJ|F--7LJL7-FJL7F7F7|FJFJL7J
+        FJF7F-7|FJF- F7F--7F7F-----7F7|FJL------7F-JF-7||L7||L7F-J|F7L-- L-  |L-7L7F7FJ|F7F--J|LJL-----------7||F7L7F7L-JF LJLJLJ -JF-J7
+        L-JLJLLJL7 JLJLJF-J|||F---7LJLJL -7F7F7F JF7|FJ|L7|LJFJ|F-J| F77L-7|||F7|FJ||L7LJ|L--7L------7F------JLJ|L7|||F7FJL-7F--7F-7 -7
+         -------7 JF7F7|L-7|||L7F7L--7F7F7LJLJL---JLJL7L7||F-JFJL-7||||F--JLJ||| L7|L-JF-JF7FJF-7F--7|L---------JFJLJ||||F7FJL-7LJLL--
+       L7F-7F7F7L--JLJL7F-J|LJ-LJL--7||||L7F7F7F7F7F--J JLJL-7L F7||LJ|L----7|||L7||F-7|F7|LJFJFJ|F-JL--7F--7F---JF-7|||LJ|L-7FJF--7F-
+       -JL7LJLJL---7F-7LJF-JF------- LJLJFJ|||||||LJF7-|F7F7FJFJ|LJL-7||F F-J|||FJLJL7LJ||| 7|FL7||F---7|L-7||7F7L|FJLJL-7L7 JL JF ||
+         7|F-------JL7L7FJF7L----7F- 7F7FL- LJLJ||F-JL-J|||||FJFJF7F-JL7||L7FJ|LJF---JF7||LJLJF7LJLJF7FJL-7||L-JL-JL----7L7|L-7F
+        FL L-------7FJ|||J||.F7F7LJF7LJL--7F7F7JLJ|F7F--JLJLJL7L7||L--7|||7|L7L-7L---7|LJL-7F7||F7FFJLJF-7LJL-7F7F--7F--J-|L7-|L-
+        -|  JF-----J|F-J|FJL- LJ --JL7F-7FJ|LJL-7L||LJF F7F7F7|FJ||F7||||L7L7L--JF --JL---7LJLJLJL-JF7FJ7L7F7LLJLJF7LJ --7|FJFJF7
+     -77L|FLFL7F7F7FJL-7|L-7 7F-----7| 7LJFJF7F-JFJL7||LJLJ||LJ|FJ|||FJ||FJFL---7L7F7F7JF7|F-7F-----J||.F-J|L-----JL--JF-JLJFL7||F
+     7-J--F7L|LJ||||FF7LJF7LJLJ|F---JL7L7F FJLJF7L7FJFJF7F-JL-7||FJ|||FJ|||F----JFJ|LJ|FJ|LJ  JF-----JL7L7-|F---- -----JF --7JLJ||FJL
+      .L7JL-F---J|||FJ|F-JL----7L--7F7L7LJFJF-7||FJL-JFJLJF---JLJL7|LJL7|L7L7F-7FJ.|F-JL7L-7-F7L-7F--7FJ-L-JL---7|F7F---7|F-JF-7L L--
+         77LL----JLJL7LJF7F7F-7L---J||JL--J|L7|||L-7F-JJF7 -----7FJL7F7LJFJ-LJFJL-7|L7F |F-JFJL- LJF-J|F---7F---JFJLJF7FJ|L-7|FJ|F7F-7
+         777.|F7F7F-7L7FJLJ||LL7F---JL-----7FJ||L7F|L7F7||F7F7LFJL7.L |F7L7F7FJF FJ|FJ||||F7L--7|F7L--JL--7|L7F--JF--JLJFJF-J|L7FJ||FJ
+          |F--JLJ||FJFJL7F-JL-7LJF--7F-7F-7|L7|L7|FJFJ|LJ|||||FJF7|F--J|L7LJ|L7|LJFJL7||||||F7||||L-7|F7F- L7||F-7L---7JL7L--JFJL7LJ        
+          FL----7LJL7L--JL7F--JF-JF7LJLLJ. JFJL-J JFJLL7FJ||||L7 LJL---J.L7FJ-||F7L-7|||||||||FJ|L-7 7||L--7LJ|L7L-7F-JF7|F---JF-J
+          |.F--7L--7L-7F7LLJF7||F-JL7F7F7FF7L----7FJF7L||FJLJ|FJL7FF7 7F-7|| 7||||F7|LJ|| ||||L7L-7L7LJ|.F7L--JFJF7LJF-J|||F- -J
+         JL-L-7L---JF7|||F--JL7LJF7FJ|||L-J|F7F7FJL7||FJ|L 7FJL 7|FJ|||L7LJ|||||| |||F-J||||||FJF-J |F7|FJL- --JFJ|F-JF-J|||F-
+         F.FJ7 F7F--J||| L---7L7FJLJ||||F--J||||L-7|||L7|F7|L7F-J||FJ||.L-7||LJ|||||||F7|||LJ||FJ-F7L || -------JFJL7FJF-JLJL---
+          FJ.FJ|LJ 7FJLJL----JFJL--7FJLJL7F7||||F7|||L7|||||FJL7FJ||FJ|F7|||L-7||||||LJ|||L-7||| 7||LFJ|7F7F7F7F7L--JL-JF-------
+          F.FL-JF-JLJF7F---7F7L---7LJF7F-J|||||||||||FJ||||||F7| ||||FJ |FJ|F-J|| ||L7FJ|L7FJ|||||||FJFJFJLJ|||||F---7F7L--7F7F7 -7
+          LFF7 7L--7FJ||F-7LJL---7L--JLJF7|||||||LJ||L7|LJ||LJ|||FJ||L-J||FJL-7|||||FJ|FJFJ 7LJ|||||L7| L7F7LJLJ|L7F7LJ|F-7LJLJ  FJ
+            || |-F7|L7LJL7L------JF7|F 7||||||||L7FJL7||F-J F-J||L7||F--J||JF7|| ||||FJ|FJ 7L 7||| |- |F7LJL7-F7L-J| F7LJ7|F7F7F7L-J
+              JL-JLJFJ|F L-------7|L7|L7|||||||L7|L7FJ|||F-JL7FJ|FJLJ|F7FJ|FJ||||||||L7|L7|L7FJLJ||L7|LJ|F-7L-JL---JLJL7F7LJLJ|||F-7
+             7F7F-7FJF-JL-- -----JL7|L7||||||LJFJ|FJ|JLJ|L--7||FJL7F-J||L7|L7 |||||||FJ|FJL7 L-7J||FJL-7LJ |F---7F-7F7FJ|L--7LLJLJF|
+             LJ||J||FJF-7F7F-7F--7FJ|FJLJLJ||F7L7|L7L--7 F7FJ||L-7|L-7||FJ|FJ|||||||||FJ|F7||F7L7||L7F7L--7|L7F7LJLLJ|L-JF-7L- --7
+              7|L7||L7L7LJLJJL F-JL7||F----JLJ|FJ|FL7 7||||L7LJF-JL-7||| -|L7||||||||||FJ|||LJ|FJ||||||F7FJL-J||F--7F|F7FJFL-   -J
+                  LJL|FJF7FF---JF7FJLJL7F7F7F7|L7|F-J|LJ|||FJFFJF7F7|LJ|L7|FJLJ||LJ||LJL-J L-7|L7LJFJ|LJ L-7F-JLJF7L7|||L-7F-7L
+                   -7||FJL7L7F-7| L--7F||LJ|||L7LJ F7L-7 ||L- L7|||LJF-JFJ||.F-JL-7||F- --JF7|L7L-7L7|F-JF7LJF--7| FJLJL7FJ|FJF-J
+                FJL7LJ||F7L-J|FJ|L7F-JFJL-7|||FJF-J||F-J|||F7L7 ||L-7L-7|-LJFJF-7FJLJL---7FJ|L7L-7L7||L7FJ|F7L-7LJ|L--7FJL-JL7|F-JFJ
+              J|L-7L--J||L7F7|L7|FJL7|L--7||| |7L-7||L-7LJ||L7||| F7L7L|L7F-JFJF L7F-----JL7L7|F7|FJLJFJL7|||F7L7.L7F7|L7F-7FJ L7LJJ
+              FJF-JF F7LJ|LJ|L7|||F7|F---J||||L-7FJ||F7L-7LJ7LJ||LJ FJFJFJ|F7|.L-7|L--- 7F7|| LJ|LJF--JF-J||||L7 7.LJLJ7|L7|L-JFJF
+              L-JF7||||7F7F7L7|LJ||||L7F7F ||L7FJL-J|||F7L----7|L7FJ|FJFJ-LJ|L7F-J|F----J|||FJF7L-7L-7FJF-J ||FL7 ---7F7|FJ|F-7L-7
+              ---JLJLJL-J||L-JL7FJ| L7||||FJ|FJ|F---J|||L7F-7FJL7|L7|L L7F-7|FJL7FJL7F7F7|LJL7||F7|F-JL7L-7|||F7L7F--J||LJ|LJ-L7FJ
+              --7F7F7F7 7LJF7F7||FJ|FJ||||L7|L |L-7F-J|L7 JL|L-7|L7LJ|L-JL7LJL-7LJF7LJ|||L7F-J|LJLJ|F--J|FJ| LJ|FJL---JL-----7FJL-
+              LFJ|LJLJ|||F7|||LJ||FJ|FJ||L7LJFJL7-LJF7|FJF-7|F-JL7L--7F---J -7FJF-JL--J||FJ|F7L---7||F---JFJL7FJL7F---7F7F7F |L-7F
+                      LJLJ|||L7JLJL7|L7||FJF-JF7|F--JLJL-JFJ|L-7LL-7FJL---7L7|L7| 7F7F7|||7|||F-7FJLJL7F7FJF-JL7FJL--7||LJ||||F-JL
+                      7F- J|L7L-7F-J|FJ||L7|F7|||L7F7F7F7FJ.|F7L-7FJ|F ---JFJL-JLJ |||||||FJ||L7 L---7|||L7L7F7|L F-7||L-7LJL L-7F
+                       JF-7L7|F-JL-7||FJ|FJ| ||LJFJ||||| L-7|||F-JL7||F7F7FJF-----J|||||LJ|F L7|L7F-7|||L7L7||LJFJL7||L--JJ|LJJFJ|
+                         FJFJ|L7F- J||L7LJ|||LJF L7|||LJ|F7 LJ|L-7F||LJ J| -|F7F-7FJ|||L7 J|FFJL7|L7|||| JFJ|L-7L7FJ|L---7-|FLFL-J
+                           JFJFJ|F--JL7 --7||F-JL-J|| F-J|||F-JF7L7||F --JL7LJ||L||7|||FJL7L7|F7|L7|LJLJL7L7 7FJFJL |F-7   L7J L7|
+                           7L7L7LJF7F-JF--JLJL--7 -J|| -7|||L-7|L-J||L----7L-7||FJL7LJLJF7|FJ|||L7|L7F---JFJFJL7L7FJLJFJ   77. LJ7
+                          FJFJFJLFJLJF7|F7LF7JFFJL7-||F-J|LJF-JL-7.LJF- --JF7||||F7L--77|LJ 7||L-JL7|L7F-7L7L7FJFJL-7FL-        L-
+                          L7L7L7FL--7||LJL-J||FJF7L7LJL  JFFJF7F7L7|-L7F7F-J|||||||F-7L7L F7 |L--7JLJFJ|FJ J-|L7L7F JF7L
+                          FJ.L-JF7F-J||F7F7FJFJF |F F--JL7FJFJ||L7L7LFJ||L-7||||||||FJFJFJ||||F-7L7LFJFJ|FJLFL-JJ|L--JL7
+                          |J7JF-J|L-7|||LJLJL|FJ7|L7L--7FJL7|FJL7L7|FJFJ|F7||||||||||FJ.L7||||L7|FJ-L-JL||F7|LF--JF-7F7L--
+                             LL-7L -J||L7F   JL-7|FJJF- L-7||L7FJFJ||FJFJ|||||LJ||LJ|L-7-LJ||L |||7|7|7J|LJL7-L7F7L7|||F7F
+                              |LL7F-7|L7|    -7F    FJF  7||L7|L7L  |L7L7|LJL JFJL7LL--JJ|JLJ.||LJJ-FJF-JF--JJL|  -JLJLJLJ
+                             -J.L|L   F||    FJ     L7    ||FJ|F    |FJFJL-7   L-7L-- 7..|FJF-JL7L|FLFL-7L  L-      L7LJ
+                            |FL|                          ||L LJ    LJLL- 7|L   FJF--7L7-7.F|F7FJ-   7JLL-JFL7F     JL
+                            F|7                           JL        LJ7J| LJ7   L7L7-|FJJ|FFLJ||.L- JJ|FJLJ7||7
+                                                          JL           .F       -L7L7LJJLF7J..LJ-LF -FJ-JJ.F
+                                                                                  JFJ-|7 ||            .J.F|-
+                                                                                      |-               J.FJL|
+                                                                                                       -LF7F
+
+
+

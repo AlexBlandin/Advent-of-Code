@@ -52,7 +52,7 @@ now = datetime.now()
 for year in trange(2023, now.year + 1, desc="year", ncols=120):
   dir = Path(str(year))
   dir.mkdir(exist_ok=True)
-  for day in trange(1, (25 if (year, now.month) != (now.year, 12) else now.day if now.hour >= 5 else now.day - 1) + 1, desc="day", leave=False):
+  for day in trange(1, (25 if (year, now.month) != (now.year, 12) or now.day > 25 else now.day if now.hour >= 5 else now.day - 1) + 1, desc="day", leave=False):
     code = dir / f"day{day}.py"
     data = dir / f"day{day}.txt"
     desc = dir / f"day{day}.md"
