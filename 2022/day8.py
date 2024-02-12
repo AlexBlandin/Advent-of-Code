@@ -1,5 +1,5 @@
-from pathlib import Path
 from math import log2, prod
+from pathlib import Path
 
 
 def peaks(row: list[int]):
@@ -22,14 +22,9 @@ W, H, transpose, backwards = (
     map(
       list,
       zip(*t, strict=True),
-    )
+    ),
   ),
-  lambda t: list(
-    map(
-      lambda line: list(reversed(line)),
-      t,
-    )
-  ),
+  lambda t: [list(reversed(line)) for line in t],
 )
 forest = [[peaks(row) for row in trees] for trees in [trees, backwards(trees), transpose(trees), backwards(transpose(trees))]]
 sightlines = [

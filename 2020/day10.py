@@ -1,5 +1,5 @@
-from itertools import pairwise
 from functools import cache
+from itertools import pairwise
 from pathlib import Path
 
 a = [0, *sorted(map(int, Path("day10.txt").read_text().splitlines()))]

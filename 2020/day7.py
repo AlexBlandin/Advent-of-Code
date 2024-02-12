@@ -6,12 +6,7 @@ child = {
   for outer, inner in [
     (
       outer,
-      list(
-        map(
-          lambda i: (i[0], int(i[1])),
-          map(lambda i: tuple(reversed(i.strip().split(" ", 1))), inner.replace("bags", "").replace("bag", "").replace(".", "").split(",")),
-        )
-      )
+      [(i[0], int(i[1])) for i in (tuple(reversed(i.strip().split(" ", 1))) for i in inner.replace("bags", "").replace("bag", "").replace(".", "").split(","))]
       if "other" not in inner
       else [],
     )

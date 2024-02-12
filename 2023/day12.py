@@ -1,6 +1,7 @@
 from enum import Enum
 from itertools import product
 from pathlib import Path
+from typing import Any, Generator
 
 
 class Status(Enum):
@@ -8,14 +9,13 @@ class Status(Enum):
   Operational = "."
   Unknown = "?"
 
-  def __repr__(self):
+  def __repr__(self) -> str:
     return self.value
 
 
 def solve(row: list[Status], acc: list[int]):
-  """
-  the idea here is to take the `O(n^2)` masks of damaged runs (in order) and match those
-  rather than the direct `O(2^n)` backtracking over `n` variables/unknowns
+  """The idea here is to take the `O(n^2)` masks of damaged runs (in order) and match those
+  rather than the direct `O(2^n)` backtracking over `n` variables/unknowns.
 
   we can then explore every unknown `?` by placing masks in order (skipping any adjacent/covered unknown), for example:
 
@@ -81,24 +81,23 @@ def solve(row: list[Status], acc: list[int]):
             yield from recursion(i + 2, next_mask + 1, cand | m)
           elif m & damaged == m:  # skip mask if it's fully accounted for already
             yield from recursion(i, next_mask + 1, cand)
-    else:
-      ...
-      # print(
-      #   bits(cand),
-      #   bits(cand | damaged),
-      #   frm,
-      #   next_mask,
-      #   "(invalid)",
-      #   "".join(bitmasks2enums(cand | damaged, 0)),
-      #   account(bitmasks2enums(cand | damaged, 0), acc),
-      #   sep="\t",
-      # )
+    else: ...
+    # print(
+    #   bits(cand),
+    #   bits(cand | damaged),
+    #   frm,
+    #   next_mask,
+    #   "(invalid)",
+    #   "".join(bitmasks2enums(cand | damaged, 0)),
+    #   account(bitmasks2enums(cand | damaged, 0), acc),
+    #   sep="\t",
+    # )
 
   # print("".join(row), acc, *map(bits, masks))
   yield from recursion(0, 0, 0)
 
 
-def solve_old(row: list[Status], acc: list[int]):
+def solve_old(row: list[Status], acc: list[int]) -> Generator[list[Status], Any, None]:
   # the performance issue is that we don't eliminate things that can't fit early, so we're just exploring 2*N for N variables on each line
   # so the way we do subst doesn't really work?
   # I need to go "well, this part of subst just can't work, so don't explore deeper"
@@ -110,7 +109,7 @@ def solve_old(row: list[Status], acc: list[int]):
       yield cand
 
 
-def account(cand: list[Status], acc: list[int]):
+def account(cand: list[Status], acc: list[int]) -> list[int]:  # noqa: ARG001
   run: list[int] = [0]
   for spring in cand:
     if spring is Status.Damaged:
@@ -123,10 +122,10 @@ def account(cand: list[Status], acc: list[int]):
 
 
 def to_status(rows: list[str]) -> list[list[Status]]:
-  return [list(map(Status, row)) for row in rows]  # type: ignore
+  return [list(map(Status, row)) for row in rows]
 
 
-def to_accounts(accs: list[str]):
+def to_accounts(accs: list[str]) -> list[list[int]]:
   return [list(map(int, acc.split(","))) for acc in accs]
 
 

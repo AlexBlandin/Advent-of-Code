@@ -1,7 +1,7 @@
 from functools import cmp_to_key
+from json import loads
 from operator import itemgetter
 from pathlib import Path
-from json import loads
 
 lines = Path("day13.txt").read_text().splitlines()
 lefts, rights = list(map(loads, lines[::3])), list(map(loads, lines[1::3]))

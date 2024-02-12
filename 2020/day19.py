@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 rules_, msgs = tuple(map(str.splitlines, Path("day19.txt").read_text(encoding="utf8").split("\n\n", maxsplit=1)))
 
 rules = {}  # { num : [[num]] } # except 86:"a" and 52:"b" which are special cases

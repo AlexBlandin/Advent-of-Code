@@ -1,7 +1,8 @@
 from collections import defaultdict
-from pathlib import Path
-from parse import findall
 from math import prod
+from pathlib import Path
+
+from parse import findall
 
 lines = Path("day16.txt").read_text().splitlines()
 mine = [int(n) for n in lines[lines.index("your ticket:") + 1].split(",")]

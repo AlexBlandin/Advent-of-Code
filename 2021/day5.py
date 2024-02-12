@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from parse import parse
 
 lines = Path("day5.txt").read_text().splitlines()

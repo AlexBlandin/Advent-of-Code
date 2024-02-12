@@ -1,5 +1,5 @@
-from pathlib import Path
 from itertools import pairwise
+from pathlib import Path
 from string import ascii_lowercase as alphabet
 
 vowels = set("aeiou")

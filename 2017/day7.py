@@ -1,6 +1,6 @@
-from statistics import mode
 from functools import cache
 from pathlib import Path
+from statistics import mode
 
 lines = Path("day7.txt").read_text().splitlines()
 up, down, masses = {}, {}, {}
@@ -18,7 +18,7 @@ for line in lines:
         up[name] = None
       if name not in down:
         down[name] = None
-      kids = list(map(lambda s: s.removesuffix(","), kids))
+      kids = [s.removesuffix(",") for s in kids]
       down[name] = kids
       for kid in kids:
         up[kid] = name
@@ -51,6 +51,7 @@ def balance(node: str) -> int | None:
       return b
     else:
       return correct - ws[index] + masses[kids[index]]
+  return None
 
 
 print(root, balance(root))

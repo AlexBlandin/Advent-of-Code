@@ -1,6 +1,6 @@
-from itertools import takewhile, count
+from itertools import count, takewhile
+from math import ceil, sqrt
 from pathlib import Path
-from math import sqrt, ceil
 
 position = int(Path("day3.txt").read_text().strip())  # hi Ulam
 spokes = list(takewhile(lambda n: n <= position, (ceil((n**2 + n + 1) / 4) for n in count())))

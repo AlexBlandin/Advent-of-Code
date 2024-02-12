@@ -32,7 +32,7 @@ class Kind(IntEnum):
 
 
 def which(hand: tuple[Card, ...]) -> Kind:
-  "Which kind of hand is this?"
+  """Which kind of hand is this?"""
   match Counter(sorted(hand)).most_common():
     case [(_, 4), (Card.Joker, 1)] | [(Card.Joker, 4), (_, 1)] | [(_, 3), (Card.Joker, 2)] | [(Card.Joker, 3), (_, 2)] | [(_, 5)]:
       return Kind.FiveOfAKind

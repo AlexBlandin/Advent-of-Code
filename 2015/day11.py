@@ -1,4 +1,4 @@
-from itertools import pairwise, count
+from itertools import count, pairwise
 from pathlib import Path
 
 old = Path("day11.txt").read_text()

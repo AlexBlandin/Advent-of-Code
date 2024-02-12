@@ -1,6 +1,6 @@
 from collections import defaultdict
-from operator import rshift, lshift, and_, or_, inv
 from graphlib import TopologicalSorter
+from operator import and_, inv, lshift, or_, rshift
 from pathlib import Path
 
 wire_sources = defaultdict(set)  # wire_sources[wire]: {s0,s1?}

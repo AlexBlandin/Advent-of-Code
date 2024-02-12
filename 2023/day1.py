@@ -23,7 +23,7 @@ def solve(s: str):
       ],
       list(map(str, range(1, 9 + 1))) * 2,
       strict=True,
-    )
+    ),
   )
   n_min, _ = min(filter(lambda n: n[1] > -1, ((n, s.find(n)) for n in nums)), key=itemgetter(1))
   n_max, _ = max(filter(lambda n: n[1] > -1, ((n, s.rfind(n)) for n in nums)), key=itemgetter(1))

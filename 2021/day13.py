@@ -1,5 +1,6 @@
 from operator import itemgetter, or_
 from pathlib import Path
+
 from parse import parse
 
 lines = Path("day13.txt").read_text().splitlines()
@@ -49,4 +50,4 @@ for fold, line in folds:
     fold_up(line)
 
 for row in paper:
-  print("".join(map(lambda b: "#" if b else " ", row)))
+  print("".join("#" if b else " " for b in row))

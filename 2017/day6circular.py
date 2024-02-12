@@ -1,4 +1,4 @@
-from operator import itemgetter, add
+from operator import add, itemgetter
 from pathlib import Path
 
 from circular import Circular

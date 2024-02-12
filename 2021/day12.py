@@ -28,7 +28,7 @@ def research(n, v=None, t=None, a=None, c=C):
   if v is None:
     v = set()
   if n == "end":
-    return {tuple([*a, "end"])}
+    return {(*a, "end")}
   if n not in v:
     if n in small:
       v = v | {n}

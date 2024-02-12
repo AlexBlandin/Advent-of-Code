@@ -6,27 +6,27 @@ inpt = Path("day5.txt").read_text().split("\n\n", maxsplit=1)
 crane1 = list(
   filter(
     None,
-    map(
-      lambda s: list(filter(str.isalpha, s)),
-      map(
+    (
+      list(filter(str.isalpha, s))
+      for s in map(
         reversed,
         zip(*inpt[0].splitlines()[:-1], strict=True),
-      ),
+      )
     ),
-  )
+  ),
 )
 crane2 = list(map(list, crane1))
 moves = list(
   starmap(
     lambda n, a, b: (n, a - 1, b - 1),
-    map(
-      lambda m: map(
+    (
+      map(
         int,
         filter(str.isnumeric, m),
-      ),
-      map(str.split, inpt[1].splitlines()),
+      )
+      for m in map(str.split, inpt[1].splitlines())
     ),
-  )
+  ),
 )
 for n, a, b in moves:
   for _ in range(n):
@@ -52,16 +52,16 @@ print(
           crane2 := list(
             filter(
               None,
-              map(
-                lambda s: list(filter(str.isalpha, s)),
-                map(
+              (
+                list(filter(str.isalpha, s))
+                for s in map(
                   reversed,
                   zip(*(inpt := Path("day5.txt").read_text().split("\n\n", maxsplit=1))[0].splitlines()[:-1], strict=True),
-                ),
+                )
               ),
-            )
+            ),
           ),
-        )
+        ),
       ),
       list(
         starmap(
@@ -69,13 +69,10 @@ print(
           moves := list(
             starmap(
               lambda n, a, b: (n, a - 1, b - 1),
-              map(
-                lambda m: map(int, filter(str.isnumeric, m)),
-                map(str.split, inpt[1].splitlines()),
-              ),
-            )
+              (map(int, filter(str.isnumeric, m)) for m in map(str.split, inpt[1].splitlines())),
+            ),
           ),
-        )
+        ),
       ),
       list(
         starmap(
@@ -84,7 +81,7 @@ print(
             [crane2[a].pop() for _ in range(n)],
           ),
           moves,
-        )
+        ),
       ),
     )
     else 0

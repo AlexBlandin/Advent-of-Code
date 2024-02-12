@@ -1,7 +1,8 @@
 from collections import Counter, defaultdict
-from itertools import combinations, chain
+from itertools import chain, combinations
 from operator import itemgetter
 from pathlib import Path
+
 from parse import parse
 
 

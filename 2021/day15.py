@@ -1,7 +1,7 @@
 from functools import partial
+from math import inf
 from operator import itemgetter
 from pathlib import Path
-from math import inf
 
 path = list(map(list, map(partial(map, int), Path("day15.txt").read_text().splitlines())))
 path = [
@@ -45,3 +45,4 @@ def depth(x: int, y: int, path: list[list[int]] = path, visited: set[tuple[int, 
   if (x, y) in visited:
     return inf
   visited.add((x, y))
+  return None

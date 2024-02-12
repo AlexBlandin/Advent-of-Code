@@ -1,11 +1,11 @@
+from enum import Enum
 from itertools import pairwise
 from pathlib import Path
 from typing import NamedTuple
-from enum import Enum
 
 
 class XY(NamedTuple):
-  """XY(x,y) with easy combination or difference"""
+  """XY(x,y) with easy combination or difference."""
 
   x: int
   y: int
@@ -33,13 +33,12 @@ class XY(NamedTuple):
 
 
 class Coord(Enum):
-  """
-  The relative cardinal coordinates:
+  """The relative cardinal coordinates:
   ```
      W       U       N
      L       C       R
      S       D       E
-  ```
+  ```.
   """
 
   W = XY(-1, -1)

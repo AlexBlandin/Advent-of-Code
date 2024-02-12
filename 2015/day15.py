@@ -1,7 +1,8 @@
 from itertools import product, repeat
-from pathlib import Path
-from operator import mul
 from math import prod
+from operator import mul
+from pathlib import Path
+
 from parse import parse
 
 lines = Path("day15.txt").read_text().splitlines()

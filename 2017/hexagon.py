@@ -3,7 +3,7 @@ from typing import NamedTuple, Self
 
 
 class Hex(NamedTuple):  # noqa: PLR0904
-  """A Hexagon, defined as a cube analogue in the space (q,r,s) where q + r + s == 0"""
+  """A Hexagon, defined as a cube analogue in the space (q,r,s) where q + r + s == 0."""
 
   q: int | float
   r: int | float
@@ -55,32 +55,32 @@ class Hex(NamedTuple):  # noqa: PLR0904
 
   @property
   def nn(self):
-    """Move north"""
+    """Move north."""
     return self + Hex(0, -1, 1)  # 2
 
   @property
   def ss(self):
-    """Move south"""
+    """Move south."""
     return self + Hex(0, 1, -1)  # 5
 
   @property
   def nw(self):
-    """Move northwest"""
+    """Move northwest."""
     return self + Hex(-1, 0, 1)  # 3
 
   @property
   def ne(self):
-    """Move northeast"""
+    """Move northeast."""
     return self + Hex(1, -1, 0)  # 1
 
   @property
   def sw(self):
-    """Move southwest"""
+    """Move southwest."""
     return self + Hex(-1, 1, 0)  # 4
 
   @property
   def se(self):
-    """Move southeast"""
+    """Move southeast."""
     return self + Hex(1, 0, -1)  # 0
 
   @property
@@ -100,7 +100,7 @@ class Hex(NamedTuple):  # noqa: PLR0904
     return (abs(self.q) + abs(self.r) + abs(self.s)) // 2
 
   def distance(self, other: Self):
-    """How many steps along the shortest path to the other hexagon"""
+    """How many steps along the shortest path to the other hexagon."""
     return abs(self - other)
 
   def __round__(self):
@@ -191,7 +191,7 @@ def equal_any(name: str, a, b):
 
 def equal_hex_array(name: str, a: list[Hex], b: list[Hex]):
   equal_any(name, len(a), len(b))
-  for i in range(0, len(a)):
+  for i in range(len(a)):
     equal_hex(name, a[i], b[i])
 
 
@@ -250,7 +250,9 @@ def test_hex_round():
 
 def test_hex_linedraw():
   equal_hex_array(
-    "hex_linedraw", [Hex(0, 0, 0), Hex(0, -1, 1), Hex(0, -2, 2), Hex(1, -3, 2), Hex(1, -4, 3), Hex(1, -5, 4)], Hex(0, 0, 0).linedraw(Hex(1, -5, 4))
+    "hex_linedraw",
+    [Hex(0, 0, 0), Hex(0, -1, 1), Hex(0, -2, 2), Hex(1, -3, 2), Hex(1, -4, 3), Hex(1, -5, 4)],
+    Hex(0, 0, 0).linedraw(Hex(1, -5, 4)),
   )
 
 

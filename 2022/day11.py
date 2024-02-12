@@ -1,8 +1,8 @@
-from functools import partial
-from operator import itemgetter, mul, add
-from pathlib import Path
 from collections.abc import Callable
-from math import prod, lcm
+from functools import partial
+from math import lcm, prod
+from operator import add, itemgetter, mul
+from pathlib import Path
 
 
 def last_word(lines: list[str], target: int | slice = -1, post: Callable = int):

@@ -1,6 +1,6 @@
+from math import ceil
 from operator import itemgetter
 from pathlib import Path
-from math import ceil
 
 e, s = tuple(Path("day13.txt").read_text().splitlines())
 e, s = int(e), [int(i) if i != "x" else None for i in s.split(",")]

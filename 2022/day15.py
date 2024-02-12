@@ -25,14 +25,14 @@ sensors = list(
     Point,
     map(itemgetter(0), lines),
     map(itemgetter(1), lines),
-  )
+  ),
 )
 beacons = list(
   map(
     Point,
     map(itemgetter(2), lines),
     map(itemgetter(3), lines),
-  )
+  ),
 )
 
 
@@ -59,6 +59,7 @@ def ranges_at(y, sensors=sensors, beacons=beacons):
     if y in square.y:
       offset = abs(square.mid.y - y)
       return range(square.x.start + offset, square.x.stop - offset)
+    return None
 
   ranges = sorted(filter(None, map(intersect, map(coverage, sensors, beacons))), key=disjoint)
   while len(ranges) != len(
@@ -69,8 +70,8 @@ def ranges_at(y, sensors=sensors, beacons=beacons):
           itemgetter(1),
           groupby(ranges, key=disjoint),
         ),
-      )
-    )
+      ),
+    ),
   ):
     ranges = r
   return ranges
@@ -84,7 +85,7 @@ for y in range(search_space + 1):
     print(y, where_it_isnt)
     break
 else:
-  where_it_isnt = [range(0, 0)]
+  where_it_isnt = [range(0)]
 
 y_at = ranges_at(Y)
 print(

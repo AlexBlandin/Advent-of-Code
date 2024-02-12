@@ -1,6 +1,6 @@
+from copy import deepcopy
 from functools import lru_cache
 from pathlib import Path
-from copy import deepcopy
 
 m = [[None if c == "." else False for c in line.strip()] for line in Path("day11.txt").read_text().splitlines()]
 mx, my = len(m[0]), len(m)

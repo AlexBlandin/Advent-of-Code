@@ -1,4 +1,4 @@
-from itertools import pairwise, repeat, count, chain
+from itertools import chain, count, pairwise, repeat
 from operator import itemgetter
 from pathlib import Path
 
@@ -6,19 +6,8 @@ lines, collide = Path("day14.txt").read_text().splitlines(), set()
 for (ax, ay), (bx, by) in chain.from_iterable(
   map(
     pairwise,
-    map(
-      lambda a: list(
-        map(
-          lambda b: list(map(int, b.split(","))),
-          a,
-        )
-      ),
-      map(
-        lambda s: s.split(" -> "),
-        lines,
-      ),
-    ),
-  )
+    ([list(map(int, b.split(","))) for b in a] for a in (s.split(" -> ") for s in lines)),
+  ),
 ):
   collide |= {(ax, y) for y in range(min(ay, by), max(ay, by) + 1)} if ax == bx else {(x, ay) for x in range(min(ax, bx), max(ax, bx) + 1)}
 ORIGIN, BELOW = (500, 0), max(collide, key=itemgetter(1))[1]

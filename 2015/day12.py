@@ -1,5 +1,5 @@
-from pathlib import Path
 from json import loads
+from pathlib import Path
 
 
 def rsum(x):

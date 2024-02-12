@@ -1,7 +1,7 @@
 from functools import reduce
+from math import prod
 from operator import xor
 from pathlib import Path
-from math import prod
 
 from circular import Circular
 

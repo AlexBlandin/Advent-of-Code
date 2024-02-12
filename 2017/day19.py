@@ -1,7 +1,7 @@
 from functools import cache
 from pathlib import Path
-from typing import NamedTuple, Self
 from string import ascii_uppercase
+from typing import NamedTuple, Self
 
 TILES = ascii_uppercase + "-|+ "
 encode, decode = cache(TILES.index), TILES.__getitem__
@@ -61,9 +61,7 @@ def switchpipe(x: int):
 
 
 class Point(NamedTuple):
-  """
-  A given point on the 2D taxicab `GRID`
-  """
+  """A given point on the 2D taxicab `GRID`."""
 
   x: int = 0
   y: int = 0
@@ -97,10 +95,9 @@ class Point(NamedTuple):
 
 
 class Cardinal(NamedTuple):
-  """
-  The cardinal directions from a point (default `Point(0, 0)`),
+  """The cardinal directions from a point (default `Point(0, 0)`),
   including "+1" points so we can see past pipes that overlap
-  (as there are no `||` we need to worry about, only `|-|`, etc.)
+  (as there are no `||` we need to worry about, only `|-|`, etc.).
   """
 
   up: Point = Point(0, -1)
@@ -127,7 +124,7 @@ start = Point(GRID[0].index(encode("|")))
 curr, prev = start + Cardinal().down, start
 
 while len(
-  neighbours := [p for p in curr() if 0 <= p.x < WIDTH and 0 <= p.y < HEIGHT and p != prev and notblank(p.c)]
+  neighbours := [p for p in curr() if 0 <= p.x < WIDTH and 0 <= p.y < HEIGHT and p != prev and notblank(p.c)],
 ):  # there's maybe legal moves to make, we'll have breaks regardless
   print(curr, decode(curr.c), prev, decode(prev.c))
   if isccnct(curr.c):
@@ -160,7 +157,6 @@ while len(
   - any + has only two neighbours, including prev
   """
 
-  pass
 print(
   "".join(SEEN),
 )

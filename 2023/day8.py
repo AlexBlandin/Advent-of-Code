@@ -4,7 +4,7 @@ from pathlib import Path
 
 lines = Path("day8.txt").read_text().replace("=", "").replace("(", "").replace(",", "").replace(")", "").splitlines()
 just_nodes = sorted(set(chain.from_iterable(map(str.split, lines[2:]))))
-leftright = list(map(lambda line: 0 if line == "L" else 1, lines[0]))
+leftright = [0 if line == "L" else 1 for line in lines[0]]
 nodes = {k: (left, right) for k, left, right in map(str.split, lines[2:])}
 goal = {node for node in just_nodes if node.endswith("Z")}
 
