@@ -1,7 +1,8 @@
+from collections.abc import Generator
 from enum import Enum
 from itertools import product
 from pathlib import Path
-from typing import Any, Generator
+from typing import Any
 
 
 class Status(Enum):

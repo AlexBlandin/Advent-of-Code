@@ -3,6 +3,7 @@ name = "Advent of Code"
 version = "1.0.0"
 description = "Mixture of good and terrible solutions, often one-liners and obtuse on purpose"
 authors = ["AlexBlandin"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -21,17 +22,28 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 indent-width = 2
-format.line-ending = "lf"
 target-version = "py310"
-line-length = 160
-preview = true
+line-length = 120
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["D", "ANN", "C90", "INP", "ERA001", "CPY", "TD003", "S311", "T201", "W191", "E111", "E114", "E117", "E203", "D206", "D300", "Q000", "Q001", "Q002", "Q003", "COM812", "COM819", "ISC001", "ISC002"]
+ignore = ["D", "ANN", "C90", "INP", 
+  "ERA", # code comments actually help 
+  "INP001", # useless before hatch
+  "TD003", # not using github to track todo/issues
+  "S311", # I know when to use secrets
+  "T20", # print is good, actually 
+ "W191", "E111", "E114", "E117", "E203", "D206", "D212", "D300", "Q", "COM812", "COM819", "ISC001", "ISC002", # these are all formatted away
+]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "lf"
+indent-style = "space"
+skip-magic-trailing-comma = false
 
 [tool.isort]
 ensure_newline_before_comments = true
@@ -42,6 +54,6 @@ multi_line_output = 3
 force_grid_wrap = 0
 reverse_sort = true
 length_sort = true
-line_length = 160
+line_length = 120
 from_first = true
 indent = "  "
