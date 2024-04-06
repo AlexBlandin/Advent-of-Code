@@ -54,7 +54,12 @@ now = pendulum.now()
 for year in trange(2023, now.year + 1, desc="year", ncols=120):
   cd = Path(str(year))
   cd.mkdir(exist_ok=True)
-  for day in trange(1, (25 if (year, now.month) != (now.year, 12) or now.day > 25 else now.day if now.hour >= 5 else now.day - 1) + 1, desc="day", leave=False):  # noqa: PLR2004
+  for day in trange(
+    1,
+    (25 if (year, now.month) != (now.year, 12) or now.day > 25 else now.day if now.hour >= 5 else now.day - 1) + 1,
+    desc="day",
+    leave=False,
+  ):
     code = cd / f"day{day}.py"
     data = cd / f"day{day}.txt"
     desc = cd / f"day{day}.md"
@@ -71,7 +76,9 @@ for year in trange(2023, now.year + 1, desc="year", ncols=120):
       _, input_data = download(year, day)
       data.write_text(input_data, encoding="utf8", newline="\n")
       sleep(0.5)
-    if not desc.read_text().strip() or ("--- Part Two ---" not in desc.read_text() and "print(\n  ...," not in code.read_text().strip()):
+    if not desc.read_text().strip() or (
+      "--- Part Two ---" not in desc.read_text() and "print(\n  ...," not in code.read_text().strip()
+    ):
       description, _ = download(year, day)
       desc.write_text(description, encoding="utf8", newline="\n")
       sleep(0.5)

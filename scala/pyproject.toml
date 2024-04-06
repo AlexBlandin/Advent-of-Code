@@ -1,0 +1,89 @@
+[project]
+name = "Advent-of-Scala"
+description = "Trying in Scala, will port to Advent-of-Code/other-langs at some point"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = []
+authors = [{ name = "AlexBlandin" }]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["tqdm", "numpy", "requests", "markdownify"]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+toml = ["pytomlpp"]
+cli = ["colorama; platform_system == 'Windows'"]
+all = ["toml", "cli"]
+lint = ["ruff"]
+check = ["mypy"]
+dev = ["all", "lint", "check"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/__init__.py"
+
+[tool.hatch.envs.default]
+dependencies = ["tqdm", "numpy", "requests", "markdownify"]
+features = ["toml", "cli"]
+
+[tool.hatch.envs.lint]
+dependencies = ["lint"]
+detached = true
+
+[tool.hatch.envs.dev]
+features = ["dev"]
+post-install-commands = ["mypy --install-types --non-interactive src/mymodule"]
+
+[tool.ruff]
+indent-width = 2
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "N803",
+  "N806",
+  "W293",
+  "E261",
+  "PLR0912",
+  "PLW2901",
+  "ERA",     # code comments actually help 
+  "INP001",  # useless before hatch
+  "TD003",   # not using github to track todo/issues
+  "S311",    # I know when to use secrets
+  "T20",     # print is good, actually 
+  "W191",    # ruff format
+  "E111",    # ruff format
+  "E114",    # ruff format
+  "E117",    # ruff format
+  "E203",    # ruff format
+  "D206",    # ruff format
+  "D212",    # ruff format
+  "D300",    # ruff format
+  "Q",       # ruff format
+  "COM812",  # ruff format
+  "COM819",  # ruff format
+  "ISC001",  # ruff format
+  "ISC002",  # ruff format
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "lf"
+indent-style = "space"
+skip-magic-trailing-comma = false

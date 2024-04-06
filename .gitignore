@@ -2,6 +2,19 @@ config.toml
 *.txt
 *.md
 
+*.beam
+*.ez
+build
+erl_crash.dump
+
+zig-cache/
+zig-out/
+release/
+debug/
+build/
+build-*/
+docgen_tmp/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

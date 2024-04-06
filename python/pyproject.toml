@@ -1,0 +1,92 @@
+[project]
+name = "Advent-of-Code-Python"
+description = "Mixture of good and terrible Python solutions, often one-liners and obtuse on purpose"
+version = "2024"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = []
+authors = [{ name = "AlexBlandin" }]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["tqdm", "numpy"]
+
+[project.optional-dependencies]
+toml = ["pytomlpp"]
+cli = ["colorama; platform_system == 'Windows'"]
+all = ["toml", "cli"]
+lint = ["ruff"]
+check = ["mypy"]
+dev = ["all", "lint", "check"]
+
+[project.urls]
+Documentation = "https://github.com/alexblandin/Advent-of-Code#readme"
+Issues = "https://github.com/alexblandin/Advent-of-Code/issues"
+Source = "https://github.com/alexblandin/Advent-of-Code"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/__init__.py"
+
+[tool.hatch.envs.default]
+dependencies = ["tqdm", "numpy"]
+features = ["toml", "cli"]
+
+[tool.hatch.envs.lint]
+dependencies = ["lint"]
+detached = true
+
+[tool.hatch.envs.dev]
+features = ["dev"]
+post-install-commands = ["mypy --install-types --non-interactive src/mymodule"]
+
+[tool.ruff]
+indent-width = 2
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "D",
+  "ANN",
+  "C90",
+  "INP",
+  "ERA",    # code comments actually help 
+  "INP001", # useless before hatch
+  "TD003",  # not using github to track todo/issues
+  "S311",   # I know when to use secrets
+  "T20",    # print is good, actually 
+  "W191",   # ruff format
+  "E111",   # ruff format
+  "E114",   # ruff format
+  "E117",   # ruff format
+  "E203",   # ruff format
+  "D206",   # ruff format
+  "D212",   # ruff format
+  "D300",   # ruff format
+  "Q",      # ruff format
+  "COM812", # ruff format
+  "COM819", # ruff format
+  "ISC001", # ruff format
+  "ISC002", # ruff format
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "lf"
+indent-style = "space"
+skip-magic-trailing-comma = false
