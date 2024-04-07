@@ -1,6 +1,6 @@
 [project]
-name = "Advent-of-Scala"
-description = "Trying in Scala, will port to Advent-of-Code/other-langs at some point"
+name = "Advent-of-Advent"
+description = "Prepare files for Advent of Code"
 version = "2024"
 readme = "README.md"
 requires-python = ">=3.10"

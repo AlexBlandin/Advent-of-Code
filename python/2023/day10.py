@@ -140,7 +140,6 @@ print(*island2shape)  # if we've only got 2 shapes, it's not added the insides y
 # connect "channels"
 # all `||` etc. (basically turns some insides to outsides, and ensure all "outside" are connected, meaning all others are inside shapes)
 
-...
 
 # et voila, sum up the lengths of shapes that aren't "outside" (connected/starting `(0,0)`) and aren't the loop itself, that's part 2
 
