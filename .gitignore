@@ -2,11 +2,6 @@ config.toml
 *.txt
 *.md
 
-*.beam
-*.ez
-build
-erl_crash.dump
-
 zig-cache/
 zig-out/
 release/

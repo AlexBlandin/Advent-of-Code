@@ -23,8 +23,7 @@ toml = ["pytomlpp"]
 cli = ["colorama; platform_system == 'Windows'"]
 all = ["toml", "cli"]
 lint = ["ruff"]
-check = ["mypy"]
-dev = ["all", "lint", "check"]
+dev = ["all", "lint"]
 
 [project.urls]
 Documentation = "https://github.com/alexblandin/Advent-of-Code#readme"
@@ -35,9 +34,6 @@ Source = "https://github.com/alexblandin/Advent-of-Code"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.version]
-path = "src/__init__.py"
-
 [tool.hatch.envs.default]
 dependencies = ["tqdm", "requests", "pendulum", "markdownify"]
 features = ["toml", "cli"]
@@ -46,9 +42,9 @@ features = ["toml", "cli"]
 dependencies = ["lint"]
 detached = true
 
-[tool.hatch.envs.dev]
-features = ["dev"]
-post-install-commands = ["mypy --install-types --non-interactive src/mymodule"]
+# [tool.hatch.envs.dev]
+# features = ["dev"]
+# post-install-commands = ["mypy --install-types --non-interactive src/mymodule"]
 
 [tool.ruff]
 indent-width = 2
@@ -58,8 +54,7 @@ line-length = 120
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-  "ERA",    # code comments actually help 
-  "INP001", # useless before hatch
+  "ERA",    # code comments actually help
   "TD003",  # not using github to track todo/issues
   "S311",   # I know when to use secrets
   "T20",    # print is good, actually 
