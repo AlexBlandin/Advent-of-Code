@@ -33,7 +33,7 @@ def research(n, v=None, t=None, a=None, c=C):
     if n in small:
       v = v | {n}
     return {r for m in c[n] for r in research(m, v, t, [*a, n]) if r}
-  elif t is None and n != "start":
+  if t is None and n != "start":
     return {r for m in c[n] for r in research(m, v, n, [*a, n]) if r}
   return set()
 

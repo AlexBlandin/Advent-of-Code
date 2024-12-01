@@ -6,7 +6,7 @@ lines = Path("day5.txt").read_text().splitlines()
 segments: list[tuple[int, ...]] = []
 for line in lines:
   if p := parse("{:d},{:d} -> {:d},{:d}", line):
-    x1, y1, x2, y2 = p.fixed  # type: ignore
+    x1, y1, x2, y2 = p.fixed
     segments.append((x1, x2, y1, y2))
 gridmax = max(map(max, segments)) + 1
 grid = [[0 for _ in range(gridmax)] for _ in range(gridmax)]

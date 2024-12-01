@@ -13,7 +13,7 @@ def kv_sort(d):
 D, C = defaultdict(int), set()
 for line in Path("day13.txt").read_text().splitlines():
   if p := parse("{} would {} {:d} happiness units by sitting next to {}.", line):
-    a, gain, d, b = p.fixed  # type: ignore
+    a, gain, d, b = p.fixed
     a, b = min(a, b), max(a, b)
     D[(a, b)] += d if gain == "gain" else -d
     C |= {a, b}
@@ -21,7 +21,7 @@ D = kv_sort(D)
 
 
 def delta(c):
-  return sum(map(D.get, c))  # type: ignore
+  return sum(map(D.get, c))
 
 
 def hamiltonian(c):

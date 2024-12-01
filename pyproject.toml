@@ -16,10 +16,10 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["tqdm", "pandas", "numpy", "requests", "pendulum", "markdownify"]
+dependencies = ["pandas", "attrs", "cattrs", "tqdm", "requests", "pendulum", "markdownify"]
 
 [project.optional-dependencies]
-dev = ["ruff"]
+dev = ["ruff", "pdbp", "basedmypy", "basedpyright"]
 
 [project.urls]
 Documentation = "https://github.com/alexblandin/Advent-of-Code#readme"
@@ -37,7 +37,8 @@ ignore = [
   "ERA",    # code comments actually help
   "TD003",  # not using github to track todo/issues
   "S311",   # I know when to use secrets
-  "T20",    # print is good, actually 
+  # "T20",    # print is good, actually 
+  "D202",   # a little vertical separation can be nice
   "W191",   # ruff format
   "E111",   # ruff format
   "E114",   # ruff format

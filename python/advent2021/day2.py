@@ -15,6 +15,5 @@ for d, x in lines:
     case "up":
       v -= x
       a -= x
-      if v < 0:
-        v = 0
+      v = max(v, 0)
 print(h * v, h * va)

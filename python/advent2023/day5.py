@@ -22,7 +22,7 @@ def seed2location(seed: int, maps: tuple[tuple[tuple[range, int], ...], ...]):
       start = mmid.start
       if pos in mmid:
         break
-      elif start > pos:
+      if start > pos:
         high = mid - 1
       elif start < pos:
         low = mid + 1

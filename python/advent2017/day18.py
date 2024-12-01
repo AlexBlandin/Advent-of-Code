@@ -17,11 +17,10 @@ RLUT = dict(zip("abfip0", range(len(REGS)), strict=True))
 def convert(s: str):
   if s in RLUT:
     return RLUT[s]
-  else:
-    i = len(REGS)
-    RLUT[s] = i
-    REGS.append(int(s))
-    return i
+  i = len(REGS)
+  RLUT[s] = i
+  REGS.append(int(s))
+  return i
 
 
 class OP(NamedTuple):

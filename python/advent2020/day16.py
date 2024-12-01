@@ -10,7 +10,7 @@ scanned = [[int(n) for n in line.split(",")] for line in lines[lines.index("near
 inverse: defaultdict[int, set[str]] = defaultdict(set)
 rules = {}
 for rule in findall("{}: {:d}-{:d} or {:d}-{:d}", "\n".join(lines[: lines.index("your ticket:") - 1])):
-  field, a, b, x, y = rule.fixed  # type: ignore
+  field, a, b, x, y = rule.fixed
   field = field.strip()
   rules[field] = (range(a, b + 1), range(x, y + 1))
   for n in list(range(a, b + 1)) + list(range(x, y + 1)):

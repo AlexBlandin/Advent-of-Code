@@ -19,7 +19,7 @@ classifiers = [
 dependencies = ["tqdm", "requests", "pendulum", "markdownify"]
 
 [project.optional-dependencies]
-dev = ["ruff"]
+dev = ["ruff", "pdbp", "basedmypy", "basedpyright"]
 
 [tool.ruff]
 indent-width = 2

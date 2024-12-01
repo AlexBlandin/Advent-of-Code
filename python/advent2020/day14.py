@@ -19,8 +19,7 @@ def mask(v, bits):
       *mask(v | 1 << bits[0], bits[1:]),
       *mask(v & ~(1 << bits[0]), bits[1:]),
     ]
-  else:
-    return []
+  return []
 
 
 for op, val in lines:

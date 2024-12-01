@@ -96,7 +96,7 @@ coord2channel = {}
 for y, row in enumerate(grid):
   for x, c in enumerate(row):
     pos = x, y
-    under = grid[y][x]
+    under = c
     adjs = [((a, b), d) for (a, b), d in [((x - 1, y), D.WEST), ((x, y - 1), D.NORTH)] if a >= 0 and b >= 0]
     match [coord2island[adj] for adj, _ in adjs]:
       case [isle_a, isle_b] if isle_a == isle_b and isle_a not in loopshape:  # join only island

@@ -1,5 +1,6 @@
 """Prep files for advent, update those we can."""
 
+import os
 import re
 from functools import cache
 from pathlib import Path
@@ -22,7 +23,7 @@ print(
 """
 r"/.+?(?=abc)/"
 
-CONFIG = "config.toml"
+CONFIG = Path(__file__).parent / "config.toml"
 RE_DESC = re.compile(r"<article class=\"day-desc\">(.+?)</article>", re.DOTALL)
 RE_EMPH = re.compile(r"<em>(.+?)</em>")
 RE_BOLD = r"<strong>\1</strong>"
@@ -32,7 +33,8 @@ RE_EMCD = r"<em><code>\1</code></em>"
 
 @cache
 def download(year: int, day: int) -> tuple[str, str]:
-  with Path(CONFIG).open("rb") as cfg:
+  "Downloads the description and input for a given day."
+  with CONFIG.open("rb") as cfg:
     session = tomllib.load(cfg)["session"]
   text = requests.get(f"https://adventofcode.com/{year}/day/{day}", cookies={"session": session}, timeout=10)
   inpt = requests.get(f"https://adventofcode.com/{year}/day/{day}/input", cookies={"session": session}, timeout=10)
@@ -50,13 +52,18 @@ def download(year: int, day: int) -> tuple[str, str]:
   return desc, inpt.text.rstrip()
 
 
+if Path.cwd().absolute() == Path(__file__).parent.absolute():
+  advent_dir = Path.cwd().parent / "python"
+  if advent_dir.is_dir():
+    os.chdir(advent_dir)
+
 now = pendulum.now()
-for year in trange(2023, now.year + 1, desc="year", ncols=120):
-  cd = Path(str(year))
+for year in trange(2024, now.year + 1, desc="year", ncols=120):
+  cd = Path(f"advent{year}")
   cd.mkdir(exist_ok=True)
   for day in trange(
     1,
-    (25 if (year, now.month) != (now.year, 12) or now.day > 25 else now.day if now.hour >= 5 else now.day - 1) + 1,
+    (25 if (year, now.month) != (now.year, 12) or now.day > 25 else now.day if now.hour >= 5 else now.day - 1) + 1,  # noqa: PLR2004
     desc="day",
     leave=False,
   ):

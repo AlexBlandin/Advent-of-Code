@@ -31,8 +31,7 @@ while up[root]:
 def weight(node: str) -> int:  # shhh I know that's not right, but shhh
   if down[node]:
     return masses[node] + sum(weight(kid) for kid in down[node])
-  else:
-    return masses[node]
+  return masses[node]
 
 
 def balance(node: str) -> int | None:
@@ -49,8 +48,7 @@ def balance(node: str) -> int | None:
       return 0
     if b := balance(kids[index]):
       return b
-    else:
-      return correct - ws[index] + masses[kids[index]]
+    return correct - ws[index] + masses[kids[index]]
   return None
 
 

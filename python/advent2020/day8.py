@@ -14,7 +14,7 @@ while c not in h and c < len(b):
 p = a
 for s, op in enumerate(b):
   if op[0] in {"jmp", "nop"}:
-    pb, b[s] = op, ("jmp" if op == "nop" else "nop", b[s][1])
+    pb, b[s] = op, ("jmp" if op == "nop" else "nop", op[1])
     h = set()
     a, c = 0, 0
     while c not in h and c < len(b):

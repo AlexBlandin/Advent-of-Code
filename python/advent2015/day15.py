@@ -11,7 +11,7 @@ ingredients = {}  # ingredient
 calories = {}  # calories
 for line in lines:
   if p := parse("{}: capacity {:d}, durability {:d}, flavor {:d}, texture {:d}, calories {:d}", line):
-    i, c, d, f, t, e = p.fixed  # type: ignore
+    i, c, d, f, t, e = p.fixed
     ingredients[i] = (c, d, f, t)
     calories[i] = e
 

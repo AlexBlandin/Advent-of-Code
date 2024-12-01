@@ -36,8 +36,8 @@ RE_DESC = re.compile(r"<article class=\"day-desc\">(.+?)</article>", re.DOTALL)
 def download(year: int, day: int):
   with open(CONFIG, "rb") as cfg:
     session = tomllib.load(cfg)["session"]
-  text = requests.get(f"https://adventofcode.com/{year}/day/{day}", cookies={"session": session})  # type: ignore
-  inpt = requests.get(f"https://adventofcode.com/{year}/day/{day}/input", cookies={"session": session})  # type: ignore
+  text = requests.get(f"https://adventofcode.com/{year}/day/{day}", cookies={"session": session})
+  inpt = requests.get(f"https://adventofcode.com/{year}/day/{day}/input", cookies={"session": session})
   if not inpt.ok or not text.ok:
     for response in inpt, text:
       if response.status_code == 404:

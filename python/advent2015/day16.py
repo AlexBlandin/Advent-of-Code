@@ -8,7 +8,7 @@ A, B = {}, defaultdict(lambda: defaultdict(set))
 
 for line in lines:
   if p := parse("Sue {:d}: {}: {:d}, {}: {:d}, {}: {:d}", line):
-    i, t0, v0, t1, v1, t2, v2 = p.fixed  # type: ignore
+    i, t0, v0, t1, v1, t2, v2 = p.fixed
     A[i] = {t0: v0, t1: v1, t2: v2}
     for t, v in A[i].items():
       B[t][v].add(i)
@@ -35,6 +35,6 @@ def comparator(a, b):
 
 S = {i: sum(1 for t, v in mfcsam.items() if i in B[t][v]) for i in range(1, 501)}
 U = {i: sum(1 for t, v in mfcsam.items() if i in B[t][v] and comparator(A[i][t], v) == comp[t]) for i in range(1, 501)}
-g = max(S, key=S.get)  # type: ignore
-r = max(U, key=U.get)  # type: ignore
+g = max(S, key=S.get)
+r = max(U, key=U.get)
 print(g, r)

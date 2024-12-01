@@ -22,7 +22,7 @@ def hamiltonian(connection: tuple[str, str]):
   return dists.count(1) + dists.count(2) == len(dists) and {a for b in connection for a in b} == connected
 
 
-ham = tuple(filter(hamiltonian, combinations(iter(distances), len(connected) - 1)))  # type: ignore
+ham = tuple(filter(hamiltonian, combinations(iter(distances), len(connected) - 1)))
 mn = min(ham, key=distance)
 mx = max(ham, key=distance)
 print(distance(mn), distance(mx))

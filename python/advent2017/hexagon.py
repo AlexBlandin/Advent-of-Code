@@ -122,7 +122,7 @@ class Hex(NamedTuple):
     a_nudge = Hex(self.q + 1e-06, self.r + 1e-06, self.s - 2e-06)
     b_nudge = Hex(other.q + 1e-06, other.r + 1e-06, other.s - 2e-06)
     step = 1.0 / max(N, 1)
-    return [round(a_nudge.lerp(b_nudge, step * i)) for i in range(N + 1)]  # type: ignore
+    return [round(a_nudge.lerp(b_nudge, step * i)) for i in range(N + 1)]
 
   @property
   def reflect_q(self):
