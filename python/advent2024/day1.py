@@ -15,7 +15,21 @@ print(
   sum(similarity),
 )
 
-# ruff: noqa: B905 E501 E402 I001 F811 E401
-# fmt: off
-import collections, itertools, operator, pathlib
-print(*(sum(foo(bar(a)))for foo, bar, a in zip((lambda a: map(abs, map(operator.sub, next(a), next(a))), lambda a: (n * a[1][n] for n in a[0])), (lambda a: iter(a), lambda a: (next(a), collections.Counter(next(a)))), itertools.tee(list(map(sorted, zip(*(map(int, line.split()) for line in pathlib.Path("day1.txt").read_text().splitlines()))))))))
+# ruff: noqa: B905 E402
+import collections
+import itertools
+import operator
+import pathlib
+
+print(
+  *(
+    sum(foo(bar(a)))
+    for foo, bar, a in zip(
+      (lambda a: map(abs, map(operator.sub, next(a), next(a))), lambda a: (n * a[1][n] for n in a[0])),
+      (lambda a: iter(a), lambda a: (next(a), collections.Counter(next(a)))),
+      itertools.tee(
+        list(map(sorted, zip(*(map(int, line.split()) for line in pathlib.Path("day1.txt").read_text().splitlines()))))
+      ),
+    )
+  )
+)
