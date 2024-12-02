@@ -25,10 +25,21 @@ print(
   *(
     sum(foo(bar(a)))
     for foo, bar, a in zip(
-      (lambda a: map(abs, map(operator.sub, next(a), next(a))), lambda a: (n * a[1][n] for n in a[0])),
-      (lambda a: iter(a), lambda a: (next(a), collections.Counter(next(a)))),
+      (
+        lambda a: map(abs, map(operator.sub, next(a), next(a))),
+        lambda a: (n * a[1][n] for n in a[0]),
+      ),
+      (
+        lambda a: iter(a),
+        lambda a: (next(a), collections.Counter(next(a))),
+      ),
       itertools.tee(
-        list(map(sorted, zip(*(map(int, line.split()) for line in pathlib.Path("day1.txt").read_text().splitlines()))))
+        list(
+          map(
+            sorted,
+            zip(*(map(int, line.split()) for line in pathlib.Path("day1.txt").read_text().splitlines())),
+          )
+        )
       ),
     )
   )
