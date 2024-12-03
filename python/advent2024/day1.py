@@ -15,7 +15,6 @@ print(
   sum(similarity),
 )
 
-# ruff: noqa: B905 E402
 import collections
 import itertools
 import operator

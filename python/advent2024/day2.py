@@ -4,7 +4,6 @@ from pathlib import Path
 lines = Path("day2.txt").read_text().splitlines()
 
 reports = {tuple(map(int, line.split())) for line in lines}
-# ruff: noqa: PLR2004
 safe_reports = {
   report
   for report in reports

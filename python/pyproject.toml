@@ -16,7 +16,15 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["pandas", "attrs", "cattrs", "tqdm", "requests", "pendulum", "markdownify"]
+dependencies = [
+  "pandas",
+  "attrs",
+  "cattrs",
+  "tqdm",
+  "requests",
+  "pendulum",
+  "markdownify",
+]
 
 [project.optional-dependencies]
 dev = ["ruff", "pdbp", "basedmypy", "basedpyright"]
@@ -29,28 +37,31 @@ line-length = 120
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
+  "PLR2004", # it's advent, magic numbers will happen
+  "B905",    # don't fuss over zip()
+  "E402",
   "D",
   "ANN",
   "C90",
   "INP",
-  "ERA",    # code comments actually help
-  "TD003",  # not using github to track todo/issues
-  "S311",   # I know when to use secrets
-  "T20",    # print is good, actually 
-  "D202",   # a little vertical separation can be nice
-  "W191",   # ruff format
-  "E111",   # ruff format
-  "E114",   # ruff format
-  "E117",   # ruff format
-  "E203",   # ruff format
-  "D206",   # ruff format
-  "D212",   # ruff format
-  "D300",   # ruff format
-  "Q",      # ruff format
-  "COM812", # ruff format
-  "COM819", # ruff format
-  "ISC001", # ruff format
-  "ISC002", # ruff format
+  "ERA",     # code comments actually help
+  "TD003",   # not using github to track todo/issues
+  "S311",    # I know when to use secrets
+  "T20",     # print is good, actually 
+  "D202",    # a little vertical separation can be nice
+  "W191",    # ruff format
+  "E111",    # ruff format
+  "E114",    # ruff format
+  "E117",    # ruff format
+  "E203",    # ruff format
+  "D206",    # ruff format
+  "D212",    # ruff format
+  "D300",    # ruff format
+  "Q",       # ruff format
+  "COM812",  # ruff format
+  "COM819",  # ruff format
+  "ISC001",  # ruff format
+  "ISC002",  # ruff format
 ]
 
 [tool.ruff.lint.pydocstyle]
