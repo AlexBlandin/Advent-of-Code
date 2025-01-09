@@ -52,9 +52,7 @@ def which(hand: tuple[Card, ...]) -> Kind:
     case [(_, 2), (_, 2), (Card.Joker, 1)] | [(_, 3), (_, 2)]:
       return Kind.FullHouse
     case (
-      [(_, 2), (_, 1), (_, 1), (Card.Joker, 1)]
-      | [(Card.Joker, 2), (_, 1), (_, 1), (_, 1)]
-      | [(_, 3), (_, 1), (_, 1)]
+      [(_, 2), (_, 1), (_, 1), (Card.Joker, 1)] | [(Card.Joker, 2), (_, 1), (_, 1), (_, 1)] | [(_, 3), (_, 1), (_, 1)]
     ):
       return Kind.ThreeOfAKind
     case [(_, 2), (_, 2), (_, 1)]:
