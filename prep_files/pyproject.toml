@@ -1,29 +1,29 @@
 [project]
 name = "Advent-of-Advent"
 description = "Prepare files for Advent of Code"
-version = "2024"
+version = "2025"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = "MIT"
 keywords = []
 authors = [{ name = "AlexBlandin" }]
 classifiers = [
   "Development Status :: 1 - Planning",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["tqdm", "requests", "pendulum", "markdownify"]
+dependencies = ["tqdm", "requests", "whenever", "markdownify"]
 
 [project.optional-dependencies]
 dev = ["ruff", "pdbp", "basedmypy", "basedpyright"]
 
 [tool.ruff]
 indent-width = 2
-target-version = "py310"
+target-version = "py311"
 line-length = 120
 
 [tool.ruff.lint]

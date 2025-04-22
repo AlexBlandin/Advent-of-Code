@@ -6,9 +6,9 @@ from functools import cache
 from pathlib import Path
 from time import sleep
 
-import pendulum
 import requests
 import tomllib
+import whenever
 from markdownify import markdownify as md
 from tqdm.auto import trange
 
@@ -57,7 +57,7 @@ if Path.cwd().absolute() == Path(__file__).parent.absolute():
   if advent_dir.is_dir():
     os.chdir(advent_dir)
 
-now = pendulum.now()
+now = whenever.SystemDateTime.now()
 for year in trange(2024, now.year + 1, desc="year", ncols=120):
   cd = Path(f"advent{year}")
   cd.mkdir(exist_ok=True)

@@ -1,22 +1,22 @@
 [project]
 name = "Advent-of-Code"
 description = "Solutions for Advent of Code in various language (mostly Python)"
-version = "2024"
+version = "2025"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = "MIT"
 keywords = []
 authors = [{ name = "AlexBlandin" }]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["pandas", "attrs", "cattrs", "tqdm", "requests", "pendulum", "markdownify"]
+dependencies = ["pandas", "attrs", "cattrs", "tqdm", "requests", "whenever", "markdownify"]
 
 [project.optional-dependencies]
 dev = ["ruff", "pdbp", "basedmypy", "basedpyright"]
@@ -28,7 +28,7 @@ Source = "https://github.com/alexblandin/Advent-of-Code"
 
 [tool.ruff]
 indent-width = 2
-target-version = "py310"
+target-version = "py311"
 line-length = 120
 
 [tool.ruff.lint]
