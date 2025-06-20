@@ -90,7 +90,7 @@ while True:
 loopshape = set(loop)
 island2shape = {S: loopshape}
 channel2shape = {}
-coord2island = {c: S for c in loopshape}
+coord2island = dict.fromkeys(loopshape, S)
 coord2channel = {}
 
 for y, row in enumerate(grid):

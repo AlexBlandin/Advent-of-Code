@@ -1,11 +1,11 @@
 import re
+import tomllib
 from datetime import date
 from functools import cache
 from pathlib import Path
 from time import sleep
 
 import requests
-import tomllib
 from markdownify import markdownify as md
 from tqdm.auto import trange
 

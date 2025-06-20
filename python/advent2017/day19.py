@@ -123,9 +123,9 @@ def pipefrom(p: Point):
 start = Point(GRID[0].index(encode("|")))
 curr, prev = start + Cardinal().down, start
 
-while len(
-  neighbours := [p for p in curr() if 0 <= p.x < WIDTH and 0 <= p.y < HEIGHT and p != prev and notblank(p.c)],
-):  # there's maybe legal moves to make, we'll have breaks regardless
+while neighbours := [
+  p for p in curr() if 0 <= p.x < WIDTH and 0 <= p.y < HEIGHT and p != prev and notblank(p.c)
+]:  # there's maybe legal moves to make, we'll have breaks regardless
   print(curr, decode(curr.c), prev, decode(prev.c))
   if isccnct(curr.c):
     # 1. "turn", we are on a connector and so deciding which is next should be unambiguous, there should only be one not-prev direction that connects

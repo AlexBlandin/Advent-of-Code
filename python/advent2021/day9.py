@@ -24,7 +24,7 @@ def basin(xy: tuple):
   if xy not in a_basin:
     search = {xy}
     inbasin[xy] = []
-    while len(search):
+    while search:
       x, y = search.pop()
       a_basin[(x, y)] = xy
       inbasin[xy].append((x, y))

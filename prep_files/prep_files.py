@@ -2,12 +2,12 @@
 
 import os
 import re
+import tomllib
 from functools import cache
 from pathlib import Path
 from time import sleep
 
 import requests
-import tomllib
 import whenever
 from markdownify import markdownify as md
 from tqdm.auto import trange
