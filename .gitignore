@@ -2,6 +2,8 @@ config.toml
 *.txt
 *.md
 
+*.code-workspace
+
 # ---> Python
 requirements.txt
 requirements-*.txt
