@@ -1,3 +1,21 @@
+#!/usr/bin/env -S uv run -qqs
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "attrs",
+#   "cattrs",
+#   "tqdm",
+#   "requests",
+#   "markdownify",
+# ]
+# ///
+#
+"""
+A single file Python script requiring only `uv` to run, no Python install required.
+
+Copyright 20xx Alex
+"""
+
 import re
 import tomllib
 from datetime import date

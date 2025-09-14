@@ -1,4 +1,21 @@
-"""Prep files for advent, update those we can."""
+#!/usr/bin/env -S uv run -qqs
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "attrs",
+#   "cattrs",
+#   "tqdm",
+#   "requests",
+#   "markdownify",
+#   "whenever",
+# ]
+# ///
+#
+"""
+Prep files for advent, update those we can.
+
+Copyright 20xx Alex
+"""
 
 import os
 import re

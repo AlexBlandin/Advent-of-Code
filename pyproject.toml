@@ -19,7 +19,7 @@ classifiers = [
 dependencies = ["pandas", "attrs", "cattrs", "tqdm", "requests", "whenever", "markdownify"]
 
 [project.optional-dependencies]
-dev = ["ruff", "pdbp", "basedmypy", "basedpyright"]
+dev = ["ruff"]
 
 [project.urls]
 Documentation = "https://github.com/alexblandin/Advent-of-Code#readme"
